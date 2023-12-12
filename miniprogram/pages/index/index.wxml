@@ -37,6 +37,8 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 </view>
 
 
+<!--遮罩层-->
+
 <view class = "container" style="background-color:rgb(80, 80, 80);" >
   <image id = "bgimg" class = "bg"  src="cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/心书底图/心书-无模糊底图.jpg" ></image>
   <!-- 心书小图-无人.jpg cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/心书底图/心书-无模糊底图.jpg-->
