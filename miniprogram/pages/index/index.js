@@ -20,14 +20,15 @@ var fireauths = Math.ceil(Math.random(0,1)*5)
 var earthauths = Math.ceil(Math.random(0,1)*6)
 var windauths = Math.ceil(Math.random(0,1)*7) 
 var waterauths = Math.ceil(Math.random(0,1)*7) 
-// var firebooks = Math.ceil(Math.random(0,1)*7)
-var firebooks = 7
-// var earthbooks = Math.ceil(Math.random(0,1)*7)
-var earthbooks = 1
-// var windbooks = Math.ceil(Math.random(0,1)*7)
-var windbooks = 2
-// var waterbooks  = Math.ceil(Math.random(0,1)*7)
-var waterbooks = 1
+var firebooks = Math.ceil(Math.random(0,1)*7)
+// var firebooks = 7
+var earthbooks = Math.ceil(Math.random(0,1)*7)
+// var earthbooks = 1
+var windbooks = Math.ceil(Math.random(0,1)*7)
+// var windbooks = 2
+var waterbooks  = Math.ceil(Math.random(0,1)*7)
+// var waterbooks = 1
+var result_bookname = ""
 
 var bookrand = 0
 var elementrand = 0
@@ -198,47 +199,87 @@ Page({
       checked14 = true
 
     ///小人进出
-    var ani_tps_c = wx.createAnimation({
-      delay: 300,
-      duration: 600
-    })
-    ani_tps_c.opacity(0.0).step()
+    // var ani_tps_c = wx.createAnimation({
+    //   delay: 300,
+    //   duration: 600
+    // })
+    // ani_tps_c.opacity(0.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_person_1",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},300)
+
     
-    var ani_tps = wx.createAnimation({
-      delay: 4700,
-      duration:600,
-    })
-    ani_tps.opacity(1.0).step()
+    // var ani_tps = wx.createAnimation({
+    //   delay: 4700,
+    //   duration:600,
+    // })
+    // ani_tps.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_person_2",[
+        {opacity:0.0},
+        {opacity:1.0}],600,)},4700)
+
     
-    var ani_t0 = wx.createAnimation({
-      delay: 5800, // 5000 4800 4600 5000 4600 4100
-      duration: 100
-    })
-    ani_t0.translate(5,5).step() //无translate
-    //ani_t0.opacity(0.0).translate(5,5).step() 
+    // var ani_t0 = wx.createAnimation({
+    //   delay: 5800, // 5000 4800 4600 5000 4600 4100
+    //   duration: 100
+    // })
+    // ani_t0.translate(5,5).step() //无translate
+    // //ani_t0.opacity(0.0).translate(5,5).step() 
 
 
-    var ani_to1 = wx.createAnimation({
-    delay: 300,
-    duration:1200});
-    ani_to1.opacity(0.0).translate(-10,0).step()
+    // var ani_to1 = wx.createAnimation({
+    // delay: 300,
+    // duration:1200});
+    // ani_to1.opacity(0.0).translate(-10,0).step()
     
-    var ani_to2 = wx.createAnimation({
-      delay: 700, //1000
-      duration: 1200});
-    ani_to2.opacity(0.0).step()
-    //ani_to2.opacity(0.0).translate(0,10).step()
+    // var ani_to2 = wx.createAnimation({
+    //   delay: 700, //1000
+    //   duration: 1200});
+    // ani_to2.opacity(0.0).step()
+    // //ani_to2.opacity(0.0).translate(0,10).step()
 
-    var ani_to3 = wx.createAnimation({
-      delay: 300,
-      duration: 1200});
-      ani_to3.opacity(0.0).translate(10,0).step()
+    setTimeout(()=>{
+      this.animate("#ani_title",[
+        {opacity:1.0},
+        {opacity:0.0}],1200,)},700)
 
-    var ani_to4 = wx.createAnimation({
-      delay: 300,
-      duration: 1200});
-    ani_to4.opacity(0.0).translate(0, 5).step()
-    ani_to4.opacity(0.0).translate(0,350*2*windowWidth/750).step() // 190*2rpx 290*2rpx
+    setTimeout(()=>{
+      this.animate("#ani_title_2",[
+        {opacity:1.0},
+        {opacity:0.0}],1200,)},700)
+
+
+    // var ani_to3 = wx.createAnimation({
+    //   delay: 300,
+    //   duration: 1200});
+    //   ani_to3.opacity(0.0).translate(10,0).step()
+
+    // var ani_to4 = wx.createAnimation({
+    //   delay: 300,
+    //   duration: 1200});
+    // ani_to4.opacity(0.0).translate(0, 5).step()
+    // ani_to4.opacity(0.0).translate(0,350*2*windowWidth/750).step() // 190*2rpx 290*2rpx
+
+    setTimeout(()=>{
+      this.animate("#ani_start",[
+        {translateY:0, opacity:1.0}, 
+        {translateY:5, opacity:0.0},
+      ], 300)}, 1200)
+
+    setTimeout(()=>{
+      this.animate("#ani_start",[
+        {translateY:5}, 
+        {translateY:350*2*windowWidth/750},
+      ], 300)}, 1200)
+
+    // setTimeout(()=>{
+    //   this.animate("#ani_start",[
+    //     {translateX:-1150*windowWidth/750,translateY:-2210*windowWidth/750,opacity:0.0},
+    //     {translateX:-1250*windowWidth/750, translateY:-1260*windowWidth/750,opacity:1.0},],1200,)},300)
 
     //var ani_to5 = wx.createAnimation({
     //  delay: 2100, //2500
@@ -310,15 +351,28 @@ Page({
     
     //{-1050,-520}, translate1050,-520) {-1150,-620}{-1200,-620}/ {-1230,-620}
 
-    var ani_tp1 = wx.createAnimation({
-      delay: 5800, //5100 5500 5800 5500 5000 3500 3000
-      duration: 1200}); //1500
-    ani_tp1.opacity(1.0).step()//.translate(6,0)
+    // var ani_tp1 = wx.createAnimation({
+    //   delay: 5800, //5100 5500 5800 5500 5000 3500 3000
+    //   duration: 1200}); //1500
+    // ani_tp1.opacity(1.0).step()//.translate(6,0)
 
-    var ani_tqa2 = wx.createAnimation({
-      delay: 5800, //6100 6500 6900 5500 5000 3500 3000
-      duration: 1200}); //2000
-    ani_tqa2.opacity(1.0).step()//.translate(-8,0)
+    setTimeout(()=>{
+      this.animate("#question1",[
+        {opacity: 0.0}, 
+        {opacity: 1.0},
+      ], 1200)}, 5800)
+
+
+    // var ani_tqa2 = wx.createAnimation({
+    //   delay: 5800, //6100 6500 6900 5500 5000 3500 3000
+    //   duration: 1200}); //2000
+    // ani_tqa2.opacity(1.0).step()//.translate(-8,0)
+
+    setTimeout(()=>{
+      this.animate("#ani_question1_add1",[
+        {opacity: 0.0}, 
+        {opacity: 1.0},
+      ], 1200)}, 5800)
 
     var ani_tp3 = wx.createAnimation({
       delay: 3000, //4000 4200 3500 4000 3200 3000 2800 2500 2600 2300X4 1800X4
@@ -326,11 +380,89 @@ Page({
     ani_tp3.translate(780*windowWidth/750,0).step() //、400(px) /74 800rpx 750rpx
     ani_tp3.opacity(1.0).step()
 
+
+    setTimeout(()=>{
+      this.animate("#firebook",[
+        {translateX:0, opacity:0.0},
+        {translateX:780*windowWidth/750, opacity:0.0},
+        {translateX:780*windowWidth/750, opacity:1.0}
+      ],1000,)},7000)
+          
+    
+    // setTimeout(()=>{
+    //   this.animate("#firebook",[
+    //     {opacity:0.0},
+    //     {opacity:1.0}],1000)},1000)
+
+
+    // function yanshi1(){
+    //   setTimeout(()=>{
+    //     this.animate("#firebook",[
+    //       {opacity:0.0},
+    //       {opacity:1.0}],1000)},1500);
+    // }
+
+    // function yanshi1(){
+    //   this.animate("#firebook",[
+    //     {opacity:0.0},
+    //     {opacity:1.0}],1000)};
+    
+
+    // function yanshi2(){
+    //   setTimeout(()=>{
+    //     this.animate("#firebook",[
+    //       {opacity:0.0, translateX:0},
+    //       {translateX:780*windowWidth/750, opacity:0.0}],1000,)},300); // 3000
+    // }
+
+      // function yanshi2(){
+      //   this.animate("#firebook",[
+      //     {opacity:0.0, translateX:0},
+      //     {translateX:780*windowWidth/750, opacity:1.0}],1000); // 3000
+      // }
+
+
+
+    // async function async2() {
+    //   return new Promise(resolve => {
+    //     console.log('async2 start');
+    //     setTimeout(()=>{
+    //       this.animate("#firebook",[
+    //         {translateX:0, opacity:0.0},
+    //         {translateX:780*windowWidth/750, opacity:1.0}],1000,)},300);
+    //   })
+  //}
+
+    // yanshi1();
+
+    // setTimeout(()=>{
+    //   this.animate("#firebook",[
+    //     {opacity:0.0},
+    //     {translateX:780*windowWidth/750, opacity:0.0}],1000,)},300); 
+
+    // setTimeout(()=>{
+    //   this.animate("#firebook",[
+    //     {opacity:0.0},
+    //     {opacity:1.0}],1000)},1500);
+
+
+
     var ani_tp4 = wx.createAnimation({
       delay: 3000,
       duration: 1000});
     ani_tp4.translate(780*windowWidth/750,0).step()//400 800rpx 
     ani_tp4.opacity(1.0).step()
+
+
+    // setTimeout(()=>{
+    //   this.animate("#earthbook",[
+    //     {translateX:0},
+    //     {translateX:780*windowWidth/750}],1000,)},3000)
+    
+    // setTimeout(()=>{
+    //   this.animate("#earthbook",[
+    //     {opacity:0.0},
+    //     {opacity:1.0}],1000,)},3000)
 
     var ani_tp5 = wx.createAnimation({
       delay: 3000,
@@ -338,11 +470,33 @@ Page({
     ani_tp5.translate(780*windowWidth/750,0).step()//400 800rpx
     ani_tp5.opacity(1.0).step()
 
+
+    // setTimeout(()=>{
+    //   this.animate("#windbook",[
+    //     {translateX:0},
+    //     {translateX:780*windowWidth/750}],1000,)},3000)
+    
+    // setTimeout(()=>{
+    //   this.animate("#windbook",[
+    //     {opacity:0.0},
+    //     {opacity:1.0}],1000,)},3000)
+
     var ani_tp6 = wx.createAnimation({
       delay: 3000, //2800
       duration:1000});
     ani_tp6.translate(780*windowWidth/750,0).step()//400 800rpx
     ani_tp6.opacity(1.0).step()
+
+
+    // setTimeout(()=>{
+    //   this.animate("#waterbook",[
+    //     {translateX:0},
+    //     {translateX:780*windowWidth/750}],1000,)},3000)
+    
+    // setTimeout(()=>{
+    //   this.animate("#waterbook",[
+    //     {opacity:1.0},
+    //     {opacity:1.0}],1000,)},3000)
 
     var ani_kelp = wx.createAnimation({
       delay: 500,
@@ -353,22 +507,23 @@ Page({
     
 
     this.setData({
-      ani_title: ani_to2.export(),
+      // ani_title: ani_to2.export(),
       //ani_title1: ani_to1.export(),
       //ani_title2: ani_to2.export(),
       //ani_title3: ani_to3.export(),
-      ani_start: ani_to4.export(),
-      ani_person_1: ani_tps_c.export(),
-      ani_person_2: ani_tps.export(),
+      // ani_start: ani_to4.export(),
+      //ani_person_1: ani_tps_c.export(),
+      //ani_person_2: ani_tps.export(),
       //ani_blur: ani_t0.export(),//)//e/s
       ani_aboutKELP: ani_kelp.export(),
 
       //ani_movebk: ani_to5.export(),
       //ani_question1_part1: ani_tp1.export(),
       //ani_question1_part2: ani_tp2.export(),
-      ani_question1: ani_tp1.export(),
-      ani_question1_add1: ani_tqa2.export(),
-      ani_firebook: ani_tp3.export(),//、、
+      //ani_question1: ani_tp1.export(),
+      //ani_question1_add1: ani_tqa2.export(),
+      
+      // ani_firebook: ani_tp3.export(),//、、
       ani_earthbook: ani_tp4.export(),//
       ani_windbook: ani_tp5.export(),//
       ani_waterbook: ani_tp6.export(),//
@@ -391,15 +546,15 @@ Page({
         ele: "火",
       },
     }).then(res=>{
-      console.log(res.result.list[6])
+      console.log(res.result.list[firebooks-1])
       this.setData({
-        firebookpic:res.result.list[6].picture,
-        firebookname: res.result.list[6].name,
-        firebookauthor_na: res.result.list[6].nationality,
-        firebookauthor: res.result.list[6].authorname,
-        firebookcontent1: res.result.list[6].introduce1,
-        firebookcontent2: res.result.list[6].introduce2,
-        firebookcontent3: res.result.list[6].introduce3
+        firebookpic:res.result.list[firebooks-1].picture,
+        firebookname: res.result.list[firebooks-1].name,
+        firebookauthor_na: res.result.list[firebooks-1].nationality,
+        firebookauthor: res.result.list[firebooks-1].authorname,
+        firebookcontent1: res.result.list[firebooks-1].introduce1,
+        firebookcontent2: res.result.list[firebooks-1].introduce2,
+        firebookcontent3: res.result.list[firebooks-1].introduce3
       })
     })
 
@@ -435,14 +590,14 @@ Page({
         ele: "土",
       }
     }).then(res=>{
-      console.log(res.result.list[0])
+      console.log(res.result.list[earthbooks-1])
       this.setData({
-        earthbookname: res.result.list[0].name,
-        earthbookauthor_na: res.result.list[0].nationality,
-        earthbookauthor: res.result.list[0].authorname,
-        earthbookcontent1: res.result.list[0].introduce1,
-        earthbookcontent2: res.result.list[0].introduce2,
-        earthbookcontent3: res.result.list[0].introduce3,
+        earthbookname: res.result.list[earthbooks-1].name,
+        earthbookauthor_na: res.result.list[earthbooks-1].nationality,
+        earthbookauthor: res.result.list[earthbooks-1].authorname,
+        earthbookcontent1: res.result.list[earthbooks-1].introduce1,
+        earthbookcontent2: res.result.list[earthbooks-1].introduce2,
+        earthbookcontent3: res.result.list[earthbooks-1].introduce3,
       })
     })
 
@@ -461,12 +616,12 @@ Page({
     }).then(res=>{
       console.log(res.result.list[0])
       this.setData({
-        windbookname: res.result.list[0].name,
-        windbookauthor_na: res.result.list[0].nationality,
-        windbookauthor: res.result.list[0].authorname,
-        windbookcontent1: res.result.list[0].introduce1,
-        windbookcontent2: res.result.list[0].introduce2,
-        windbookcontent3: res.result.list[0].introduce3,
+        windbookname: res.result.list[windbooks-1].name,
+        windbookauthor_na: res.result.list[windbooks-1].nationality,
+        windbookauthor: res.result.list[windbooks-1].authorname,
+        windbookcontent1: res.result.list[windbooks-1].introduce1,
+        windbookcontent2: res.result.list[windbooks-1].introduce2,
+        windbookcontent3: res.result.list[windbooks-1].introduce3,
 
       })
     })
@@ -484,12 +639,12 @@ Page({
     }).then(res=>{
       console.log(res.result.list)
       this.setData({
-        waterbookname: res.result.list[0].name,
-        waterbookauthor_na: res.result.list[0].nationality,
-        waterbookauthor: res.result.list[0].authorname,
-        waterbookcontent1: res.result.list[0].introduce1,
-        waterbookcontent2: res.result.list[0].introduce2,
-        waterbookcontent3: res.result.list[0].introduce3,
+        waterbookname: res.result.list[waterbooks-1].name,
+        waterbookauthor_na: res.result.list[waterbooks-1].nationality,
+        waterbookauthor: res.result.list[windbooks-1].authorname,
+        waterbookcontent1: res.result.list[windbooks-1].introduce1,
+        waterbookcontent2: res.result.list[windbooks-1].introduce2,
+        waterbookcontent3: res.result.list[windbooks-1].introduce3,
         //i: res.result.list[firebooks-1].authorname
       })
     })
@@ -640,17 +795,30 @@ Page({
     ani_tp6_c.opacity(0.0).translate(390*2*windowWidth/750, 0).step()// **397 6 400*2rpx
     ani_tp6_c.opacity(0.0).translate(0,0).step()
 
-    var ani_tqa1_c = wx.createAnimation({
-      delay: 500,
-      duration:600,
-    })
-    ani_tqa1_c.opacity(0.0).step()
+    // var ani_tqa1_c = wx.createAnimation({
+    //   delay: 500,
+    //   duration:600,
+    // })
+    // ani_tqa1_c.opacity(0.0).step()
 
-    var ani_tqa2 = wx.createAnimation({
-      delay:1700,
-      duration:1200,
-    })
-    ani_tqa2.opacity(1.0).step()
+    setTimeout(()=>{
+      this.animate("#ani_question1_add1",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},500)
+
+
+    // var ani_tqa2 = wx.createAnimation({
+    //   delay:1700,
+    //   duration:1200,
+    // })
+    // ani_tqa2.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_question1_add2",[
+        {opacity:0.0},
+        {opacity:1.0}],1200,)},1700)
+
+
 
     //、、ani_ti7与ani_ti8互换
     var ani_ti8 = wx.createAnimation({
@@ -673,8 +841,8 @@ Page({
       ani_earthbook: ani_tp4_c.export(),
       ani_windbook: ani_tp5_c.export(),
       ani_waterbook: ani_tp6_c.export(),
-      ani_question1_add1: ani_tqa1_c.export(),
-      ani_question1_add2: ani_tqa2.export(),
+      // ani_question1_add1: ani_tqa1_c.export(),
+      // ani_question1_add2: ani_tqa2.export(),
       ani_confirm: ani_ti7.export(),
       ani_bocktoconfirm: ani_ti8.export(),
     })
@@ -729,17 +897,27 @@ Page({
     ani_tp6_c.opacity(0.0).translate(390*2*windowWidth/750, 0).step()
     ani_tp6_c.opacity(0.0).translate(0,6).step()
 
-    var ani_tqa1_c = wx.createAnimation({
-      delay: 300,
-      duration:600,
-    })
-    ani_tqa1_c.opacity(0.0).step()
+    // var ani_tqa1_c = wx.createAnimation({
+    //   delay: 300,
+    //   duration:600,
+    // })
+    // ani_tqa1_c.opacity(0.0).step()
 
-    var ani_tqa2 = wx.createAnimation({
-      delay:1700,//1500 1700
-      duration:1200,
-    })
-    ani_tqa2.opacity(1.0).step()
+    setTimeout(()=>{
+      this.animate("#ani_question1_add1",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},300)
+
+    // var ani_tqa2 = wx.createAnimation({
+    //   delay:1700,//1500 1700
+    //   duration:1200,
+    // })
+    // ani_tqa2.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_question1_add2",[
+        {opacity:0.0},
+        {opacity:1.0}],1200,)},1700)
   
     // ani_ti7与ani_ti8互换
     var ani_ti8= wx.createAnimation({
@@ -762,8 +940,8 @@ Page({
       ani_earthbook: ani_tp4_c.export(),
       ani_windbook: ani_tp5_c.export(),
       ani_waterbook: ani_tp6_c.export(),
-      ani_question1_add1: ani_tqa1_c.export(),
-      ani_question1_add2: ani_tqa2.export(),
+      // ani_question1_add1: ani_tqa1_c.export(),
+      // ani_question1_add2: ani_tqa2.export(),
       ani_confirm: ani_ti7.export(),
       ani_bocktoconfirm: ani_ti8.export(),
     })
@@ -842,17 +1020,27 @@ Page({
     ani_tp6_c.opacity(0.0).translate(0,6).step()
     //ani_tp6_c.opai
 
-    var ani_tqa1_c = wx.createAnimation({
-      delay: 400,
-      duration:600,
-    })
-    ani_tqa1_c.opacity(0.0).step()
+    // var ani_tqa1_c = wx.createAnimation({
+    //   delay: 400,
+    //   duration:600,
+    // })
+    // ani_tqa1_c.opacity(0.0).step()
 
-    var ani_tqa2 = wx.createAnimation({
-      delay:1500,
-      duration:1200,
-    })
-    ani_tqa2.opacity(1.0).step()
+    setTimeout(()=>{
+      this.animate("#ani_question1_add1",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},400)
+
+    setTimeout(()=>{
+      this.animate("#ani_question1_add2",[
+        {opacity:0.0},
+        {opacity:1.0}],1200,)},1500)
+
+    // var ani_tqa2 = wx.createAnimation({
+    //   delay:1500,
+    //   duration:1200,
+    // })
+    // ani_tqa2.opacity(1.0).step()
 
     // 互换
     var ani_ti8= wx.createAnimation({
@@ -874,8 +1062,8 @@ Page({
     ani_earthbook: ani_tp4_c.export(),
     ani_windbook: ani_tp5_c.export(),
     ani_waterbook: ani_tp6_c.export(),
-    ani_question1_add1: ani_tqa1_c.export(),
-    ani_question1_add2: ani_tqa2.export(),
+    // ani_question1_add1: ani_tqa1_c.export(),
+    // ani_question1_add2: ani_tqa2.export(),
     ani_confirm: ani_ti7.export(),
     ani_bocktoconfirm: ani_ti8.export(),
   })
@@ -931,17 +1119,27 @@ Page({
       ani_tp6_c.opacity(0.0).translate(390*2*windowWidth/750, 0).step()
       ani_tp6_c.opacity(0.0).translate(0,0).step()
 
-      var ani_tqa1_c = wx.createAnimation({
-        delay: 500,
-        duration:600,
-      })
-      ani_tqa1_c.opacity(0.0).step()
+      // var ani_tqa1_c = wx.createAnimation({
+      //   delay: 500,
+      //   duration:600,
+      // })
+      // ani_tqa1_c.opacity(0.0).step()
   
-      var ani_tqa2 = wx.createAnimation({
-        delay:1600,
-        duration:1200,
-      })
-      ani_tqa2.opacity(1.0).step()
+      // var ani_tqa2 = wx.createAnimation({
+      //   delay:1600,
+      //   duration:1200,
+      // })
+      // ani_tqa2.opacity(1.0).step()
+
+      setTimeout(()=>{
+        this.animate("#ani_question1_add1",[
+          {opacity:1.0},
+          {opacity:0.0}],600,)},500)
+  
+      setTimeout(()=>{
+        this.animate("#ani_question1_add2",[
+          {opacity:0.0},
+          {opacity:1.0}],1200,)},1600)
 
       // ani_ti7 ani_ti8互换
       var ani_ti8 = wx.createAnimation({
@@ -961,8 +1159,8 @@ Page({
       ani_earthbook: ani_tp4_c.export(),
       ani_windbook: ani_tp5_c.export(),
       ani_waterbook: ani_tp6_c.export(),
-      ani_question1_add1: ani_tqa1_c.export(),
-      ani_question1_add2: ani_tqa2.export(),
+      // ani_question1_add1: ani_tqa1_c.export(),
+      // ani_question1_add2: ani_tqa2.export(),
       ani_confirm: ani_ti7.export(),
       ani_bocktoconfirm: ani_ti8.export(),
 
@@ -1012,17 +1210,27 @@ Page({
     ani_tp6.opacity(0.0).translate(390*2*windowWidth/750,0).step()//winod 397,5
     ani_tp6.opacity(1.0).translate(390*2*windowWidth/750,0).step() //(390*2,5)
 
-    var ani_tqa1 = wx.createAnimation({
-      delay: 2200,
-      duration: 800,
-    })
-    ani_tqa1.opacity(1.0).step()
+    // var ani_tqa1 = wx.createAnimation({
+    //   delay: 2200,
+    //   duration: 800,
+    // })
+    // ani_tqa1.opacity(1.0).step()
 
-    var ani_tqa2_c = wx.createAnimation({
-      delay:600,
-      duration:600,
-    })
-    ani_tqa2_c.opacity(0.0).step()
+    // var ani_tqa2_c = wx.createAnimation({
+    //   delay:600,
+    //   duration:600,
+    // })
+    // ani_tqa2_c.opacity(0.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_question1_add1",[
+        {opacity:0.0},
+        {opacity:1.0}],800,)},2200)
+
+    setTimeout(()=>{
+      this.animate("#ani_question1_add2",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},600)
 
     var ani_ti1_c = wx.createAnimation({
       delay: 600, // 1000 1200
@@ -1073,8 +1281,8 @@ Page({
       ani_earthbook: ani_tp4.export(),
       ani_windbook: ani_tp5.export(),
       ani_waterbook: ani_tp6.export(),
-      ani_question1_add1: ani_tqa1.export(),//expoty
-      ani_question1_add2: ani_tqa2_c.export(),
+      // ani_question1_add1: ani_tqa1.export(),//expoty
+      // ani_question1_add2: ani_tqa2_c.export(),
       introfirebook: ani_ti1_c.export(),
       introearthbook: ani_ti2_c.export(), //aniPt2
       introwindbook: ani_ti3_c.export(),
@@ -1157,31 +1365,43 @@ Page({
     
 
     // 护花设置//h
-    var ani_t0 = wx.createAnimation({
-      delay: 2300,// 3500
-      duration: 100
-    })//e
-    //ani_t0.opacity(1.0).step()//t
-    ani_t0.opacity(0.0).translate(-7,0).step() //(-10,0)
+    // var ani_t0 = wx.createAnimation({
+    //   delay: 2300,// 3500
+    //   duration: 100
+    // })//e
+    // //ani_t0.opacity(1.0).step()//t
+    // ani_t0.opacity(0.0).translate(-7,0).step() //(-10,0)
 
-    var ani_t0in = wx.createAnimation({
-      delay: 7300,//5900 5850 6050 6550 6650 6800 6900 6840
-      duration: 50, //10
-    })
-    ani_t0in.opacity(0.0).translate(-7,0).step() //(-10,0)
+    // var ani_t0in = wx.createAnimation({
+    //   delay: 7300,//5900 5850 6050 6550 6650 6800 6900 6840
+    //   duration: 50, //10
+    // })
+    // ani_t0in.opacity(0.0).translate(-7,0).step() //(-10,0)
 
     // 小人进出
-    var ani_tps_c = wx.createAnimation({
-      delay: 2500,
-      duration: 600
-    })
-    ani_tps_c.opacity(0.0).step()
+    // var ani_tps_c = wx.createAnimation({
+    //   delay: 2500,
+    //   duration: 600
+    // })
+    // ani_tps_c.opacity(0.0).step()
 
-    var ani_tps = wx.createAnimation({
-      delay: 6200,
-      duration: 600
-    })
-    ani_tps.opacity(1.0).step()
+    // var ani_tps = wx.createAnimation({
+    //   delay: 6200,
+    //   duration: 600
+    // })
+    // ani_tps.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_person_2",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},2500)
+
+    setTimeout(()=>{
+      this.animate("#ani_person_3",[
+        {opacity:0.0},
+        {opacity:1.0}],600,)},6200)
+
+
 
     // 地图移动
     
@@ -1364,8 +1584,8 @@ Page({
       ani_whether_nostar: ani_tsj_op11.export(),
       //ani_blur: ani_t0.export(),
       //ani_blurin: ani_t0in.export(),
-      ani_person_2:ani_tps_c.export(),
-      ani_person_3:ani_tps.export(),
+      // ani_person_2:ani_tps_c.export(),
+      // ani_person_3:ani_tps.export(),
     })
       
 
@@ -1469,17 +1689,27 @@ Page({
 
 
     // 小人进出
-    var ani_tps_c = wx.createAnimation({
-      delay:2200,
-      duration:600,
-    })
-    ani_tps_c.opacity(0.0).step()//opacity(9)
+    // var ani_tps_c = wx.createAnimation({
+    //   delay:2200,
+    //   duration:600,
+    // })
+    // ani_tps_c.opacity(0.0).step()//opacity(9)
 
-    var ani_tps = wx.createAnimation({
-      delay: 11800,//9500
-      duration:600,//5--,
-    })
-    ani_tps.opacity(1.0).step()
+    // var ani_tps = wx.createAnimation({
+    //   delay: 11800,//9500
+    //   duration:600,//5--,
+    // })
+    // ani_tps.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_person_3",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},2200)
+
+    setTimeout(()=>{
+      this.animate("#ani_person_10",[
+        {opacity:0.0},
+        {opacity:1.0}],600,)},11800)
 
 
     // 是的与不是的选项消失
@@ -1666,8 +1896,8 @@ Page({
     ani_whichstar: ani_tsj1_c.export(),
     ani_whetherstar: ani_tsj_op1_c.export(),
     ani_whether_nostar: ani_tsj_op11_c.export(),
-    ani_person_3: ani_tps_c.export(),
-    ani_person_10: ani_tps.export(),
+    // ani_person_3: ani_tps_c.export(),
+    // ani_person_10: ani_tps.export(),
     // ani_fivestarbook: ani_ti9.export(),
     ani_fivestar: ani_five.export(),
     ani_continue: ani_continue.export(),
@@ -1687,7 +1917,7 @@ Page({
     if (introrand ==1){
       fivestarbookscontent = "凡对于以真话为笑话的，以笑话为真话的，以笑话为笑话的，只有一个方法：就是不说话。"//白羊座五星书简介白羊座五星书简介白羊座五星书简介
       wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "鲁迅全集"}}).then(res=>{
       //console.log(res.result.data)
       this.setData({
@@ -1701,7 +1931,7 @@ Page({
     if (introrand == 2){
       fivestarbookscontent = "从来如此，便对么？"
       wx.cloud.callFunction({
-        name: "queryResultBook",
+        name: "queryresultbook",
         data:{bookname: "鲁迅全集"}}).then(res=>{
         //console.log(res.result.data)
         this.setData({
@@ -1721,7 +1951,7 @@ Page({
    bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=7b06d4eca1d4904e304494536f38010c&t=1672208250"
    
    wx.cloud.callFunction({
-    name: "queryResultBook",
+    name: "queryresultbook",
     data:{bookname: "喻世明言"}
   }).then(res=>{
     console.log(res.result.data)
@@ -1742,7 +1972,7 @@ Page({
     bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=03891cf7e08e4c27bc4fc7400363e67f&t=1672208281"
     
     wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "晚学盲言"}
     }).then(res=>{
       console.log(res.result.data)
@@ -1764,7 +1994,7 @@ Page({
     if (introrand == 1){
       fivestarbookscontent = "怕打仗，躲避打仗，无可躲避了就打，没打的时候怕死，到打的时候怕得忘了死。"//巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简。
       wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "人·兽·鬼"}
       }).then(res=>{
       console.log(res.result.data)
@@ -1780,7 +2010,7 @@ Page({
     if (introrand == 2){
       fivestarbookscontent = "譬如家畜里最胆小的是猫，我们只看见小孩子给家里养的猫抓破了皮，没见过狗会咬痛小孩子。"//巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简。
       wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "人·兽·鬼"}
       }).then(res=>{
       console.log(res.result.data)
@@ -1796,7 +2026,7 @@ Page({
     if (introrand == 3){
       fivestarbookscontent = "恋爱里的确有“心理距离”，所以西洋的爱神专射冷箭。"//巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简介巨蟹座五星书简。
       wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "人·兽·鬼"}//人·兽·鬼
       }).then(res=>{
       console.log(res.result.data)
@@ -1822,7 +2052,7 @@ Page({
     fivestarbookscontent = "只有当我们独处时，我们才会更清楚地意识到，我们与万物同在。"//狮子座五星书简介
 
     wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "空谷幽兰"}
     }).then(res=>{
       console.log(res.result.data)
@@ -1838,7 +2068,7 @@ Page({
     fivestarbookscontent = "只要你不受欲望的困扰，只要你的心不受妄想左右，那么你是出家人还是在家人，根本没有什么区别。一旦你的心很清净，你就能理解业。"//狮子座五星书简介
 
     wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "空谷幽兰"}
     }).then(res=>{
       console.log(res.result.data)
@@ -1858,7 +2088,7 @@ Page({
   bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=421a50df6927df4de6a3cfd2136a2fd9&t=1672208493"
   
   wx.cloud.callFunction({
-    name: "queryResultBook",
+    name: "queryresultbook",
     data:{bookname: "金线"}
   }).then(res=>{
     console.log(res.result.data)
@@ -1877,7 +2107,7 @@ Page({
     bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=1eb3b68aedfe2e54b571f19c95fe9e9d&t=1672208399"
     
     wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "挚友"}
     }).then(res=>{
       console.log(res.result.data)
@@ -1896,8 +2126,8 @@ Page({
   bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=6fc3c700dc4ae294ae2b579619bf32e0&t=1672208303"
 
   wx.cloud.callFunction({
-    name: "queryResultBook",
-    data:{bookname: "在深渊里仰望星空: 魏晋名士的卑微与骄傲"}//西藏生死书
+    name: "queryresultbook",
+    data:{bookname: "西藏生死书"}//西藏生死书
   }).then(res=>{
     console.log(res.result.data)
     this.setData({
@@ -1917,7 +2147,7 @@ Page({
   bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=ba105e64ab9aefcedd99491f9d19db32&t=1672208534",
 
   wx.cloud.callFunction({
-    name: "queryResultBook",
+    name: "queryresultbook",
     data:{
       bookname: "标竿人生"
     }
@@ -1939,7 +2169,7 @@ Page({
   bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=421a50df6927df4de6a3cfd2136a2fd9&t=1672208493"
   
   wx.cloud.callFunction({
-    name: "queryResultBook",
+    name: "queryresultbook",
     data:{bookname: "辨喜的生平、思想与影响"}
   }).then(res=>{
     console.log(res.result.data)
@@ -1959,7 +2189,7 @@ Page({
     bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=1eb3b68aedfe2e54b571f19c95fe9e9d&t=1672208399"
 
     wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "哲学人生问答"}//悠悠岁月
     }).then(res=>{
       console.log(res.result.data)
@@ -1977,7 +2207,7 @@ Page({
     fivestarbookscontent = "耐心和适当时机每件事在该来的时候就会来。人生是急不得的，不能像许多人希望的时间表那样。我们必须接受凡事来临的时间，不要强求。",
     bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=6fc3c700dc4ae294ae2b579619bf32e0&t=1672208303"
     wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "前世今生: 生命轮回的启示"}
     }).then(res=>{
       console.log(res.result.data)
@@ -2237,17 +2467,27 @@ Page({
 
 
     // 小人进出
-    var ani_tps_c = wx.createAnimation({
-      delay: 2050,
-      duration:600,
-    })
-    ani_tps_c.opacity(0.0).step()
+    // var ani_tps_c = wx.createAnimation({
+    //   delay: 2050,
+    //   duration:600,
+    // })
+    // ani_tps_c.opacity(0.0).step()
 
-    var ani_tps = wx.createAnimation({
-      delay: 6250, //5850
-      duration:600,
-    })
-    ani_tps.opacity(1.0).step()
+    // var ani_tps = wx.createAnimation({
+    //   delay: 6250, //5850
+    //   duration:600,
+    // })
+    // ani_tps.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_person_3",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},2050)
+
+    setTimeout(()=>{
+      this.animate("#ani_person_4",[
+        {opacity:0.0},
+        {opacity:1.0}],600,)},6250)
 
 
   // 地图移动
@@ -2330,11 +2570,18 @@ Page({
 
 
   // 问题2和选项出现
-  var ani_tsj2 = wx.createAnimation({
-    delay: 7300, //4700 4800 5000 5200 5350 5400 5500 61200 6600 6900 6200 3200 3450 3650 4450
-    duration: 1900  // 1200 1300 1600 1800 2100
-  });
-  ani_tsj2.opacity(1.0).step()
+  // var ani_tsj2 = wx.createAnimation({
+  //   delay: 7300, //4700 4800 5000 5200 5350 5400 5500 61200 6600 6900 6200 3200 3450 3650 4450
+  //   duration: 1900  // 1200 1300 1600 1800 2100
+  // });
+  // ani_tsj2.opacity(1.0).step()
+
+  setTimeout(()=>{
+    this.animate("#ddlikestar",[
+      {opacity:0.0},
+      {opacity:1.0}],1900,)},7300)
+
+  
 
   var ani_tsj_op2 = wx.createAnimation({
     delay: 3300, //(6300, 6500, 6900))(6500,6700,7000) {6600, 6900, 7400} {7000, 7400, 7900}{3000,3200,3450}{43100, 3400, 3700} 「3250 3500 3750」{3300 3550 3800} 3300X3 3200X3  1200X3 1300x3 1500X3 1600X3 3000X3
@@ -2366,14 +2613,14 @@ Page({
     ani_whether_nostar: ani_tsj_op11_c.export(),
     //ani_whetherstar: ani_tsj_op1.export(),
     //ani_whether_nostar: ani_tsj_op11.export(),
-    ani_ddlikestar: ani_tsj2.export(),
+    //ani_ddlikestar: ani_tsj2.export(),
     ani_honeystar: ani_tsj_op2.export(),
     ani_whateverstar: ani_tsj_op22.export(),
     ani_nolikestar: ani_tsj_op222.export(),
     //ani_blur: ani_t0.export(),
     //ani_blurin: ani_t0in.export(),
-    ani_person_3: ani_tps_c.export(),
-    ani_person_4:ani_tps.export(),
+    // ani_person_3: ani_tps_c.export(),
+    // ani_person_4:ani_tps.export(),
 
   })
 
@@ -2392,17 +2639,17 @@ sweetstar:function(){
   var windowHeight = wx.getSystemInfoSync().windowHeight
   if (checked1){
   beginnum = 4
-  var ani_t0 = wx.createAnimation({
-    delay: 2300, // 、、25600 2900 2550
-    duration: 50//L
-  })
-  ani_t0.opacity(0.0).translate(5,0).step()
+  // var ani_t0 = wx.createAnimation({
+  //   delay: 2300, // 、、25600 2900 2550
+  //   duration: 50//L
+  // })
+  // ani_t0.opacity(0.0).translate(5,0).step()
 
-  var ani_t0in = wx.createAnimation({
-    delay: 6300, //6300 7200 6750 6000 4800 4600 4600
-    duration: 50
-  })//ex.
-  ani_t0in.opacity(0.0).translate(5,0).step()
+  // var ani_t0in = wx.createAnimation({
+  //   delay: 6300, //6300 7200 6750 6000 4800 4600 4600
+  //   duration: 50
+  // })//ex.
+  // ani_t0in.opacity(0.0).translate(5,0).step()
 
 
   if (windowHeight>=800){
@@ -2470,17 +2717,27 @@ this.animate("#bgimg_blur1",[
 
 
   // 小人进出
-  var ani_tps_c = wx.createAnimation({
-    delay: 2500,
-    duration:600,
-  })
-  ani_tps_c.opacity(0.0).step()//opacitt
+  // var ani_tps_c = wx.createAnimation({
+  //   delay: 2500,
+  //   duration:600,
+  // })
+  // ani_tps_c.opacity(0.0).step()//opacitt
 
-  var ani_tps = wx.createAnimation({
-    delay: 6700,
-    duration:600,
-  })
-  ani_tps.opacity(1.0).step()
+  // var ani_tps = wx.createAnimation({
+  //   delay: 6700,
+  //   duration:600,
+  // })
+  // ani_tps.opacity(1.0).step()
+
+  setTimeout(()=>{
+    this.animate("#ani_person_4",[
+      {opacity:1.0},
+      {opacity:0.0}],600,)},2500)
+
+  setTimeout(()=>{
+    this.animate("#ani_person_5",[
+      {opacity:0.0},
+      {opacity:1.0}],600,)},6700)
 
 
   // 地图移动
@@ -2515,11 +2772,17 @@ this.animate("#bgimg_blur1",[
     }
 
   // 当前的问题和选项消失
-  var ani_tsj2_c = wx.createAnimation({
-    delay: 1000,  //600,900, 1200 1400 1200 1800
-    duration: 800 //800
-  })
-  ani_tsj2_c.opacity(0.0).step()
+  // var ani_tsj2_c = wx.createAnimation({
+  //   delay: 1000,  //600,900, 1200 1400 1200 1800
+  //   duration: 800 //800
+  // })
+  // ani_tsj2_c.opacity(0.0).step()
+
+  setTimeout(()=>{
+    this.animate("#ddlikestar",[
+      {opacity:1.0},
+      {opacity:0.0}],800,)},1000)
+
 
   var ani_tsj_op2_c = wx.createAnimation({
     delay: 600,  //(300,330,400)  (500,560,680)(680,740,850)（880，940，1050）600X3
@@ -2597,7 +2860,7 @@ this.animate("#bgimg_blur1",[
   // 传入wxml
   this.setData({
     //ani_movebk: ani_tq3.export(),
-    ani_ddlikestar: ani_tsj2_c.export(),
+    //ani_ddlikestar: ani_tsj2_c.export(),
     ani_honeystar: ani_tsj_op2_c.export(),
     ani_whateverstar: ani_tsj_op22_c.export(),
     ani_nolikestar: ani_tsj_op222_c.export(),
@@ -2607,8 +2870,8 @@ this.animate("#bgimg_blur1",[
     // ani_windauthor: ani_tsj3_wind.export(),
     // ani_waterauthor: ani_tsj3_water.export(),
     ani_selectauthors: ani_tsas.export(),
-    ani_person_4: ani_tps_c.export(),
-    ani_person_5: ani_tps.export(),
+    // ani_person_4: ani_tps_c.export(),
+    // ani_person_5: ani_tps.export(),
   })
 
   // 该元素累积两分 y一分
@@ -2624,17 +2887,17 @@ coolstar: function(){
   var windowHeight = wx.getSystemInfoSync().windowHeight
   if (checked1){
   beginnum = 4
-  var ani_t0 = wx.createAnimation({
-    delay: 2340, //2600 2400 2300 2350
-    duration: 10//L 50 10
-  })
-  ani_t0.opacity(0.0).translate(5,0).step()
+  // var ani_t0 = wx.createAnimation({
+  //   delay: 2340, //2600 2400 2300 2350
+  //   duration: 10//L 50 10
+  // })
+  // ani_t0.opacity(0.0).translate(5,0).step()
 
-  var ani_t0in = wx.createAnimation({
-    delay: 6400, //6300 6450 6500 6000 4600
-    duration: 50
-  })//ex.
-  ani_t0in.opacity(0.0).translate(5,0).step()
+  // var ani_t0in = wx.createAnimation({
+  //   delay: 6400, //6300 6450 6500 6000 4600
+  //   duration: 50
+  // })//ex.
+  // ani_t0in.opacity(0.0).translate(5,0).step()
 
   if (windowHeight>=800){
     setTimeout(()=>{
@@ -2699,17 +2962,27 @@ this.animate("#bgimg_blur1",[
 
 
   // 小人进出
-  var ani_tps_c = wx.createAnimation({
-    delay: 2500,
-    duration:600,
-  })
-  ani_tps_c.opacity(0.0).step()//opacitt
+  // var ani_tps_c = wx.createAnimation({
+  //   delay: 2500,
+  //   duration:600,
+  // })
+  // ani_tps_c.opacity(0.0).step()//opacitt
 
-  var ani_tps = wx.createAnimation({
-    delay: 6700, //6500
-    duration:600,
-  })
-  ani_tps.opacity(1.0).step()
+  // var ani_tps = wx.createAnimation({
+  //   delay: 6700, //6500
+  //   duration:600,
+  // })
+  // ani_tps.opacity(1.0).step()
+
+  setTimeout(()=>{
+    this.animate("#ani_person_4",[
+      {opacity:1.0},
+      {opacity:0.0}],600,)},2500)
+
+  setTimeout(()=>{
+    this.animate("#ani_person_5",[
+      {opacity:0.0},
+      {opacity:1.0}],600,)},6700)
 
 
   // 地图移动
@@ -2746,11 +3019,16 @@ this.animate("#bgimg_blur1",[
   //ani_tq3.translate(-2200*windowWidth/750,-1150*windowWidth/750).step() // (-1200,-300)
   //{-1320,-300} (-1820,-595) {-1520,-595} {-12220,-450} {-1380,-400} {-1430,-380} {-1480,-380} {-1480.-370} {-1500,-370} {-1520,-370}(-1510,-370){-320, 720}
   //当前的问题和选项消失
-  var ani_tsj2_c = wx.createAnimation({
-    delay: 1000, //600
-    duration: 800  //800
-  })
-  ani_tsj2_c.opacity(0.0).step()
+  // var ani_tsj2_c = wx.createAnimation({
+  //   delay: 1000, //600
+  //   duration: 800  //800
+  // })
+  // ani_tsj2_c.opacity(0.0).step()
+
+  setTimeout(()=>{
+    this.animate("#ddlikestar",[
+      {opacity:1.0},
+      {opacity:0.0}],800,)},1000)
 
   var ani_tsj_op2_c = wx.createAnimation({
     delay: 600, //300 {880 904-940 1050 } 600X3
@@ -2822,7 +3100,7 @@ this.animate("#bgimg_blur1",[
 
   this.setData({
     //ani_movebk: ani_tq3.export(),
-    ani_ddlikestar: ani_tsj2_c.export(),
+    //ani_ddlikestar: ani_tsj2_c.export(),
     ani_honeystar: ani_tsj_op2_c.export(),
     ani_whateverstar: ani_tsj_op22_c.export(),
     ani_nolikestar: ani_tsj_op222_c.export(), 
@@ -2835,8 +3113,8 @@ this.animate("#bgimg_blur1",[
     ani_selectauthors: ani_tsas.export(),
     //ani_blur: ani_t0.export(),
     //ani_blurin: ani_t0in.export(),
-    ani_person_4: ani_tps_c.export(),
-    ani_person_5: ani_tps.export(),
+    // ani_person_4: ani_tps_c.export(),
+    // ani_person_5: ani_tps.export(),
   });
 
   // 该元素累积零分
@@ -2854,17 +3132,17 @@ coldstar:function(){
   if (checked1){
 // 糊化效果
   beginnum = 4
-  var ani_t0 = wx.createAnimation({
-    delay: 2300, // 、、25600 2600 2500 2300 2550
-    duration: 50//L
-  })
-  ani_t0.opacity(0.0).translate(5,0).step()
+  // var ani_t0 = wx.createAnimation({
+  //   delay: 2300, // 、、25600 2600 2500 2300 2550
+  //   duration: 50//L
+  // })
+  // ani_t0.opacity(0.0).translate(5,0).step()
 
-  var ani_t0in = wx.createAnimation({
-    delay: 6300, //6300 6400 6800 v6000 4600
-    duration: 50
-  })//ex.
-  ani_t0in.opacity(0.0).translate(5,0).step()
+  // var ani_t0in = wx.createAnimation({
+  //   delay: 6300, //6300 6400 6800 v6000 4600
+  //   duration: 50
+  // })//ex.
+  // ani_t0in.opacity(0.0).translate(5,0).step()
 
   if (windowHeight>=800){
     setTimeout(()=>{
@@ -2929,17 +3207,27 @@ this.animate("#bgimg_blur1",[
 
 
   // 小人进出
-  var ani_tps_c = wx.createAnimation({
-    delay: 2500,
-    duration:600,
-  })
-  ani_tps_c.opacity(0.0).step()//opacitt
+  // var ani_tps_c = wx.createAnimation({
+  //   delay: 2500,
+  //   duration:600,
+  // })
+  // ani_tps_c.opacity(0.0).step()//opacitt
 
-  var ani_tps = wx.createAnimation({
-    delay: 6700,
-    duration:600,
-  })
-  ani_tps.opacity(1.0).step()
+  // var ani_tps = wx.createAnimation({
+  //   delay: 6700,
+  //   duration:600,
+  // })
+  // ani_tps.opacity(1.0).step()
+
+  setTimeout(()=>{
+    this.animate("#ani_person_4",[
+      {opacity:1.0},
+      {opacity:0.0}],600,)},2500)
+
+  setTimeout(()=>{
+    this.animate("#ani_person_5",[
+      {opacity:0.0},
+      {opacity:1.0}],600,)},6700)
 
 
   // 地图移动
@@ -2989,11 +3277,16 @@ this.animate("#bgimg_blur1",[
   //ani_tq3.translate(-2200*windowWidth/750, -1150*windowWidth/750).step() //(-1320,-300)
 //、{-1720,-615} {-1510,-370}
   // 当前的问题和选项消失
-  var ani_tsj2_c = wx.createAnimation({
-    delay: 1000, // 600 1200
-    duration: 800
-  })
-  ani_tsj2_c.opacity(0.0).step()
+  // var ani_tsj2_c = wx.createAnimation({
+  //   delay: 1000, // 600 1200
+  //   duration: 800
+  // })
+  // ani_tsj2_c.opacity(0.0).step()
+
+  setTimeout(()=>{
+    this.animate("#ddlikestar",[
+      {opacity:1.0},
+      {opacity:0.0}],800,)},1000)
 
   var ani_tsj_op2_c = wx.createAnimation({
     delay: 600, //300,330,400 「880，940， 1050」
@@ -3070,7 +3363,7 @@ this.animate("#bgimg_blur1",[
 
   this.setData({
     //ani_movebk: ani_tq3.export(),
-    ani_ddlikestar: ani_tsj2_c.export(),
+    //ani_ddlikestar: ani_tsj2_c.export(),
     ani_honeystar: ani_tsj_op2_c.export(),
     ani_whateverstar: ani_tsj_op22_c.export(),
     ani_nolikestar: ani_tsj_op222_c.export(), 
@@ -3083,8 +3376,8 @@ this.animate("#bgimg_blur1",[
     ani_selectauthors: ani_tsas.export(),
     //ani_blur: ani_t0.export(),
     //ani_blurin: ani_t0in.export(),
-    ani_person_4: ani_tps_c.export(),
-    ani_person_5: ani_tps.export(),
+    // ani_person_4: ani_tps_c.export(),
+    // ani_person_5: ani_tps.export(),
     //ani_blurin: ani_toin.export(),
   })
 
@@ -3102,17 +3395,17 @@ fireauthorsure:function(){
   if (checked3){
     //num
   beginnum = 5
-  var ani_t0 = wx.createAnimation({
-    delay: 2330, // 2700、、 2650 2850
-    duration: 20 // 50
-  })//
-  ani_t0.translate(-5,0).step()//expor
+  // var ani_t0 = wx.createAnimation({
+  //   delay: 2330, // 2700、、 2650 2850
+  //   duration: 20 // 50
+  // })//
+  // ani_t0.translate(-5,0).step()//expor
 
-  var ani_t0in = wx.createAnimation({
-    delay: 5950, //、、5600 6100 7000 5500 4000
-    duration: 50
-  })//
-  ani_t0in.translate(-5,0).step()
+  // var ani_t0in = wx.createAnimation({
+  //   delay: 5950, //、、5600 6100 7000 5500 4000
+  //   duration: 50
+  // })//
+  // ani_t0in.translate(-5,0).step()
 
   // 糊化
   if (windowHeight>=800){
@@ -3177,17 +3470,27 @@ fireauthorsure:function(){
 
 
   // 小人进出
-  var ani_tps_c = wx.createAnimation({
-    delay: 2550,
-    durtaion:600,
-  })
-  ani_tps_c.opacity(0.0).step()
+  // var ani_tps_c = wx.createAnimation({
+  //   delay: 2550,
+  //   durtaion:600,
+  // })
+  // ani_tps_c.opacity(0.0).step()
 
-  var ani_tps = wx.createAnimation({
-    delay: 6200, //5150
-    durtaion:600,
-  })
-  ani_tps.opacity(1.0).step()
+  // var ani_tps = wx.createAnimation({
+  //   delay: 6200, //5150
+  //   durtaion:600,
+  // })
+  // ani_tps.opacity(1.0).step()
+
+  setTimeout(()=>{
+    this.animate("#ani_person_5",[
+      {opacity:1.0},
+      {opacity:0.0}],600,)},2550)
+
+  setTimeout(()=>{
+    this.animate("#ani_person_6",[
+      {opacity:0.0},
+      {opacity:1.0}],600,)},6200)
 
 
   // 地图转移
@@ -3232,12 +3535,18 @@ fireauthorsure:function(){
   //ani_pc.translate(3,0).opacity(1.0).export()
 
   // 本题问题消失
-  var ani_tqq3_c = wx.createAnimation({
-    delay: 1000, // 700 1400
-    duration: 800 //500 700 900
-  })
-  ani_tqq3_c.opacity(0.0).step()
-  // ani--
+  // var ani_tqq3_c = wx.createAnimation({
+  //   delay: 1000, // 700 1400
+  //   duration: 800 //500 700 900
+  // })
+  // ani_tqq3_c.opacity(0.0).step()
+  // // ani--
+
+  setTimeout(()=>{
+    this.animate("#likeauthor",[
+      {opacity:1.0},
+      {opacity:0.0}],800,)},1000)
+  
 
   // 卡牌浮现
   var ani_show = wx.createAnimation({
@@ -3269,10 +3578,10 @@ fireauthorsure:function(){
 
   // 数据传入wxml
   this.setData({
-    ani_person_5: ani_tps_c.export(),
-    ani_person_6: ani_tps.export(),
+    // ani_person_5: ani_tps_c.export(),
+    // ani_person_6: ani_tps.export(),
     ani_pickcards: ani_pc.export(),
-    ani_likeauthor: ani_tqq3_c.export(), 
+    // ani_likeauthor: ani_tqq3_c.export(), 
     ani_card: ani_show.export(),
     ani_selectauthors: ani_tsas_c.export(),
   })
@@ -3285,22 +3594,22 @@ fireauthorsure:function(){
   //决定卡牌背面
 
   if (backgroundcard == 1)
-  {this.setData({starcardspic: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type1.jpeg"})}
+  {this.setData({starcardspic: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type1.jpeg"})}
 
   if (backgroundcard == 2)
-  {this.setData({starcardspic: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type2.jpeg"})}
+  {this.setData({starcardspic: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type2.jpeg"})}
 
   if (backgroundcard == 3)
-  {this.setData({starcardspic:"cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type3.jpeg"})}
+  {this.setData({starcardspic:"cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type3.jpeg"})}
 
   if (backgroundcard == 4)
-  {this.setData({starcardspic:"cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type4.jpeg"})}
+  {this.setData({starcardspic:"cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type4.jpeg"})}
 
   if (backgroundcard == 5)
-  {this.setData({starcardspic:"cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type5.jpeg"})}
+  {this.setData({starcardspic:"cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type5.jpeg"})}
 
   if (backgroundcard == 6)
-  {this.setData({starcardspic: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type6.jpeg"})}
+  {this.setData({starcardspic: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type6.jpeg"})}
 
     checked3 = false;
   }
@@ -3394,17 +3703,17 @@ fireauthorsure:function(){
     var windowHeight = wx.getSystemInfoSync().windowHeight
     if (checked3){
     beginnum = 5
-    var ani_t0 = wx.createAnimation({
-      delay: 2330, 
-      duration: 20 
-    })
-    ani_t0.translate(-5,0).step()
+    // var ani_t0 = wx.createAnimation({
+    //   delay: 2330, 
+    //   duration: 20 
+    // })
+    // ani_t0.translate(-5,0).step()
   
-    var ani_t0in = wx.createAnimation({
-      delay: 5950,
-      duration: 50
-    })
-    ani_t0in.translate(-5,0).step()
+    // var ani_t0in = wx.createAnimation({
+    //   delay: 5950,
+    //   duration: 50
+    // })
+    // ani_t0in.translate(-5,0).step()
   
     // 糊化
     if (windowHeight>=800){
@@ -3469,17 +3778,27 @@ fireauthorsure:function(){
   
   
     // 小人进出
-    var ani_tps_c = wx.createAnimation({
-      delay: 2550,
-      durtaion:600,
-    })
-    ani_tps_c.opacity(0.0).step()
+    // var ani_tps_c = wx.createAnimation({
+    //   delay: 2550,
+    //   durtaion:600,
+    // })
+    // ani_tps_c.opacity(0.0).step()
   
-    var ani_tps = wx.createAnimation({
-      delay: 6200, 
-      durtaion:600,
-    })
-    ani_tps.opacity(1.0).step()
+    // var ani_tps = wx.createAnimation({
+    //   delay: 6200, 
+    //   durtaion:600,
+    // })
+    // ani_tps.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_person_5",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},2550)
+  
+    setTimeout(()=>{
+      this.animate("#ani_person_6",[
+        {opacity:0.0},
+        {opacity:1.0}],600,)},6200)
   
   
     // 地图转移
@@ -3522,12 +3841,17 @@ fireauthorsure:function(){
     ani_pc.translate(0,3).opacity(1.0).step()
   
     // 本题问题消失
-    var ani_tqq3_c = wx.createAnimation({
-      delay: 1000,
-      duration: 800,
-    })
-    ani_tqq3_c.opacity(0.0).step()
-    // ani--
+    // var ani_tqq3_c = wx.createAnimation({
+    //   delay: 1000,
+    //   duration: 800,
+    // })
+    // ani_tqq3_c.opacity(0.0).step()
+    // // ani--
+
+    setTimeout(()=>{
+      this.animate("#likeauthor",[
+        {opacity:1.0},
+        {opacity:0.0}],800,)},1000)
   
     // 卡牌浮现
     var ani_show = wx.createAnimation({
@@ -3547,10 +3871,10 @@ fireauthorsure:function(){
   
     // 数据传入wxml
     this.setData({
-      ani_person_5: ani_tps_c.export(),
-      ani_person_6: ani_tps.export(),
+      // ani_person_5: ani_tps_c.export(),
+      // ani_person_6: ani_tps.export(),
       ani_pickcards: ani_pc.export(),
-      ani_likeauthor: ani_tqq3_c.export(), 
+      // ani_likeauthor: ani_tqq3_c.export(), 
       ani_card: ani_show.export(),
       ani_selectauthors: ani_tsas_c.export(),
     })
@@ -3562,22 +3886,22 @@ fireauthorsure:function(){
   
     //决定卡牌背面
     if (backgroundcard == 1)
-    {this.setData({starcardspic: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type1.jpeg"})}
+    {this.setData({starcardspic: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type1.jpeg"})}
   
     if (backgroundcard == 2)
-    {this.setData({starcardspic: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type2.jpeg"})}
+    {this.setData({starcardspic: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type2.jpeg"})}
   
     if (backgroundcard == 3)
-    {this.setData({starcardspic:"cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type3.jpeg"})}
+    {this.setData({starcardspic:"cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type3.jpeg"})}
   
     if (backgroundcard == 4)
-    {this.setData({starcardspic:"cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type4.jpeg"})}
+    {this.setData({starcardspic:"cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type4.jpeg"})}
   
     if (backgroundcard == 5)
-    {this.setData({starcardspic:"cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type5.jpeg"})}
+    {this.setData({starcardspic:"cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type5.jpeg"})}
   
     if (backgroundcard == 6)
-    {this.setData({starcardspic: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type6.jpeg"})}
+    {this.setData({starcardspic: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type6.jpeg"})}
   
     checked3 = false;
     }
@@ -3667,17 +3991,17 @@ fireauthorsure:function(){
     var windowHeight = wx.getSystemInfoSync().windowHeight
     if (checked3){
     beginnum = 5
-    var ani_t0 = wx.createAnimation({
-      delay: 2330, 
-      duration: 20 
-    })
-    ani_t0.translate(-5,0).step()
+    // var ani_t0 = wx.createAnimation({
+    //   delay: 2330, 
+    //   duration: 20 
+    // })
+    // ani_t0.translate(-5,0).step()
   
-    var ani_t0in = wx.createAnimation({
-      delay: 5950,
-      duration: 50
-    })
-    ani_t0in.translate(-5,0).step()
+    // var ani_t0in = wx.createAnimation({
+    //   delay: 5950,
+    //   duration: 50
+    // })
+    // ani_t0in.translate(-5,0).step()
   
     // 糊化
     if (windowHeight>=800){
@@ -3742,17 +4066,27 @@ fireauthorsure:function(){
   
   
     // 小人进出
-    var ani_tps_c = wx.createAnimation({
-      delay: 2550,
-      durtaion:600,
-    })
-    ani_tps_c.opacity(0.0).step()
+    // var ani_tps_c = wx.createAnimation({
+    //   delay: 2550,
+    //   durtaion:600,
+    // })
+    // ani_tps_c.opacity(0.0).step()
   
-    var ani_tps = wx.createAnimation({
-      delay: 6200, 
-      durtaion:600,
-    })
-    ani_tps.opacity(1.0).step()
+    // var ani_tps = wx.createAnimation({
+    //   delay: 6200, 
+    //   durtaion:600,
+    // })
+    // ani_tps.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_person_5",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},2550)
+  
+    setTimeout(()=>{
+      this.animate("#ani_person_6",[
+        {opacity:0.0},
+        {opacity:1.0}],600,)},6200)
   
   
     // 地图转移
@@ -3795,12 +4129,16 @@ fireauthorsure:function(){
     ani_pc.translate(0,3).opacity(1.0).step()
   
     // 本题问题消失
-    var ani_tqq3_c = wx.createAnimation({
-      delay: 1000,
-      duration: 800,
-    })
-    ani_tqq3_c.opacity(0.0).step()
-    // ani--
+    // var ani_tqq3_c = wx.createAnimation({
+    //   delay: 1000,
+    //   duration: 800,
+    // })
+    // ani_tqq3_c.opacity(0.0).step()
+    // // ani--
+    setTimeout(()=>{
+      this.animate("#likeauthor",[
+        {opacity:1.0},
+        {opacity:0.0}],800,)},1000)
   
     // 卡牌浮现
     var ani_show = wx.createAnimation({
@@ -3820,37 +4158,37 @@ fireauthorsure:function(){
   
     // 数据传入wxml
     this.setData({
-      ani_person_5: ani_tps_c.export(),
-      ani_person_6: ani_tps.export(),
+      // ani_person_5: ani_tps_c.export(),
+      // ani_person_6: ani_tps.export(),
       ani_pickcards: ani_pc.export(),
-      ani_likeauthor: ani_tqq3_c.export(), 
+      // ani_likeauthor: ani_tqq3_c.export(), 
       ani_card: ani_show.export(),
       ani_selectauthors: ani_tsas_c.export(),
     })
   
-  // 土象元素积累两分
+  // 风象元素积累两分
     authorelement = 3
     point[authorelement-1] = point[authorelement-1]+2
     console.log(point)
   
     //决定卡牌背面
     if (backgroundcard == 1)
-    {this.setData({starcardspic: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type1.jpeg"})}
+    {this.setData({starcardspic: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type1.jpeg"})}
   
     if (backgroundcard == 2)
-    {this.setData({starcardspic: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type2.jpeg"})}
+    {this.setData({starcardspic: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type2.jpeg"})}
   
     if (backgroundcard == 3)
-    {this.setData({starcardspic:"cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type3.jpeg"})}
+    {this.setData({starcardspic:"cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type3.jpeg"})}
   
     if (backgroundcard == 4)
-    {this.setData({starcardspic:"cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type4.jpeg"})}
+    {this.setData({starcardspic:"cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type4.jpeg"})}
   
     if (backgroundcard == 5)
-    {this.setData({starcardspic:"cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type5.jpeg"})}
+    {this.setData({starcardspic:"cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type5.jpeg"})}
   
     if (backgroundcard == 6)
-    {this.setData({starcardspic: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type6.jpeg"})}
+    {this.setData({starcardspic: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type6.jpeg"})}
   
     checked3 = false;
     }
@@ -3939,17 +4277,17 @@ fireauthorsure:function(){
     var windowHeight = wx.getSystemInfoSync().windowHeight
     if (checked3){
     beginnum = 5
-    var ani_t0 = wx.createAnimation({
-      delay: 2330, 
-      duration: 20 
-    })
-    ani_t0.translate(-5,0).step()
+    // var ani_t0 = wx.createAnimation({
+    //   delay: 2330, 
+    //   duration: 20 
+    // })
+    // ani_t0.translate(-5,0).step()
   
-    var ani_t0in = wx.createAnimation({
-      delay: 5950,
-      duration: 50
-    })
-    ani_t0in.translate(-5,0).step()
+    // var ani_t0in = wx.createAnimation({
+    //   delay: 5950,
+    //   duration: 50
+    // })
+    // ani_t0in.translate(-5,0).step()
   
     // 糊化
     if (windowHeight>=800){
@@ -4014,17 +4352,27 @@ fireauthorsure:function(){
   
   
     // 小人进出
-    var ani_tps_c = wx.createAnimation({
-      delay: 2550,
-      durtaion:600,
-    })
-    ani_tps_c.opacity(0.0).step()
+    // var ani_tps_c = wx.createAnimation({
+    //   delay: 2550,
+    //   durtaion:600,
+    // })
+    // ani_tps_c.opacity(0.0).step()
   
-    var ani_tps = wx.createAnimation({
-      delay: 6200, 
-      durtaion:600,
-    })
-    ani_tps.opacity(1.0).step()
+    // var ani_tps = wx.createAnimation({
+    //   delay: 6200, 
+    //   durtaion:600,
+    // })
+    // ani_tps.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_person_5",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},2550)
+  
+    setTimeout(()=>{
+      this.animate("#ani_person_6",[
+        {opacity:0.0},
+        {opacity:1.0}],600,)},6200)
   
   
     // 地图转移
@@ -4067,13 +4415,18 @@ fireauthorsure:function(){
     ani_pc.translate(0,3).opacity(1.0).step()
   
     // 本题问题消失
-    var ani_tqq3_c = wx.createAnimation({
-      delay: 1000,
-      duration: 800,
-    })
-    ani_tqq3_c.opacity(0.0).step()
-    // ani--
+    // var ani_tqq3_c = wx.createAnimation({
+    //   delay: 1000,
+    //   duration: 800,
+    // })
+    // ani_tqq3_c.opacity(0.0).step()
+    // // ani--
   
+    setTimeout(()=>{
+      this.animate("#likeauthor",[
+        {opacity:1.0},
+        {opacity:0.0}],800,)},1000)
+    
     // 卡牌浮现
     var ani_show = wx.createAnimation({
       delay: 8000,
@@ -4092,37 +4445,37 @@ fireauthorsure:function(){
   
     // 数据传入wxml
     this.setData({
-      ani_person_5: ani_tps_c.export(),
-      ani_person_6: ani_tps.export(),
+      // ani_person_5: ani_tps_c.export(),
+      // ani_person_6: ani_tps.export(),
       ani_pickcards: ani_pc.export(),
-      ani_likeauthor: ani_tqq3_c.export(), 
+      // ani_likeauthor: ani_tqq3_c.export(), 
       ani_card: ani_show.export(),
       ani_selectauthors: ani_tsas_c.export(),
     })
   
-  // 土象元素积累两分
+  // 水象元素积累两分
     authorelement = 4
     point[authorelement-1] = point[authorelement-1]+2
     console.log(point)
   
     //决定卡牌背面
     if (backgroundcard == 1)
-    {this.setData({starcardspic: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type1.jpeg"})}
+    {this.setData({starcardspic: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type1.jpeg"})}
   
     if (backgroundcard == 2)
-    {this.setData({starcardspic: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type2.jpeg"})}
+    {this.setData({starcardspic: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type2.jpeg"})}
   
     if (backgroundcard == 3)
-    {this.setData({starcardspic:"cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type3.jpeg"})}
+    {this.setData({starcardspic:"cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type3.jpeg"})}
   
     if (backgroundcard == 4)
-    {this.setData({starcardspic:"cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type4.jpeg"})}
+    {this.setData({starcardspic:"cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type4.jpeg"})}
   
     if (backgroundcard == 5)
-    {this.setData({starcardspic:"cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type5.jpeg"})}
+    {this.setData({starcardspic:"cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type5.jpeg"})}
   
     if (backgroundcard == 6)
-    {this.setData({starcardspic: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌背面/卡牌背面-type6.jpeg"})}
+    {this.setData({starcardspic: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌背面/卡牌背面-type6.jpeg"})}
   
     checked3 = false;
     }
@@ -4615,18 +4968,18 @@ fireauthorsure:function(){
     console.log(whichstar2)
 
     // 用随机数对应twelvestar赋值
-    if (whichstar2 == 1){this.setData({twelvestar2: "白羊座", card: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌正面/卡牌正面-白羊座"})}
-    if (whichstar2 == 2){this.setData({twelvestar2: "金牛座", card: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌正面/卡牌正面-金牛座"})}
-    if (whichstar2 == 3){this.setData({twelvestar2: "双子座", card: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌正面/卡牌正面-双子座"})}
-    if (whichstar2 == 4){this.setData({twelvestar2: "巨蟹座", card: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌正面/卡牌正面-巨蟹座"})}
-    if (whichstar2 == 5){this.setData({twelvestar2: "狮子座", card: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌正面/卡牌正面-狮子座"})}
-    if (whichstar2 == 6){this.setData({twelvestar2: "处女座", card: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌正面/卡牌正面-处女座"})}
-    if (whichstar2 == 7){this.setData({twelvestar2: "天秤座", card: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌正面/卡牌正面-天秤座"})}
-    if (whichstar2 == 8){this.setData({twelvestar2: "天蝎座", card: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌正面/卡牌正面-天蝎座"})}
-    if (whichstar2 == 9){this.setData({twelvestar2: "射手座", card: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌正面/卡牌正面-射手座"})}
-    if (whichstar2 == 10){this.setData({twelvestar2: "摩羯座", card: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌正面/卡牌正面-摩羯座"})}// twelvesta2r
-    if (whichstar2 == 11){this.setData({twelvestar2: "水瓶座", card: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌正面/卡牌正面-水瓶座"})}
-    if (whichstar2 == 12){this.setData({twelvestar2: "双鱼座", card: "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/卡牌正面/卡牌正面-双鱼座"})}
+    if (whichstar2 == 1){this.setData({twelvestar2: "白羊座", card: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌正面/卡牌正面-白羊座"})}
+    if (whichstar2 == 2){this.setData({twelvestar2: "金牛座", card: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌正面/卡牌正面-金牛座"})}
+    if (whichstar2 == 3){this.setData({twelvestar2: "双子座", card: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌正面/卡牌正面-双子座"})}
+    if (whichstar2 == 4){this.setData({twelvestar2: "巨蟹座", card: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌正面/卡牌正面-巨蟹座"})}
+    if (whichstar2 == 5){this.setData({twelvestar2: "狮子座", card: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌正面/卡牌正面-狮子座"})}
+    if (whichstar2 == 6){this.setData({twelvestar2: "处女座", card: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌正面/卡牌正面-处女座"})}
+    if (whichstar2 == 7){this.setData({twelvestar2: "天秤座", card: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌正面/卡牌正面-天秤座"})}
+    if (whichstar2 == 8){this.setData({twelvestar2: "天蝎座", card: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌正面/卡牌正面-天蝎座"})}
+    if (whichstar2 == 9){this.setData({twelvestar2: "射手座", card: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌正面/卡牌正面-射手座"})}
+    if (whichstar2 == 10){this.setData({twelvestar2: "摩羯座", card: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌正面/卡牌正面-摩羯座"})}// twelvesta2r
+    if (whichstar2 == 11){this.setData({twelvestar2: "水瓶座", card: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌正面/卡牌正面-水瓶座"})}
+    if (whichstar2 == 12){this.setData({twelvestar2: "双鱼座", card: "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/卡牌正面/卡牌正面-双鱼座"})}
 
     // s随机数对应的whichstar的数值
     if (whichstar2 == 1){whichelement = 1} //whichstar
@@ -4677,17 +5030,17 @@ fireauthorsure:function(){
 
     if (checked11){
     beginnum = 6
-    var ani_t0 = wx.createAnimation({
-      delay: 2340,
-      duration: 10,
-    })
-    ani_t0.translate(0,10).step()
+    // var ani_t0 = wx.createAnimation({
+    //   delay: 2340,
+    //   duration: 10,
+    // })
+    // ani_t0.translate(0,10).step()
 
-    var ani_t0in = wx.createAnimation({
-      delay: 5500,
-      duration: 10,
-    })
-    ani_t0in.translate(0,10).step()
+    // var ani_t0in = wx.createAnimation({
+    //   delay: 5500,
+    //   duration: 10,
+    // })
+    // ani_t0in.translate(0,10).step()
 
     // 糊化
     if (windowHeight>=800){
@@ -4751,17 +5104,28 @@ fireauthorsure:function(){
     }
 
     //小人进出
-    var ani_tps_c = wx.createAnimation({
-      delay: 2250, // 5750
-      duration: 600,
-    })
-    ani_tps_c.opacity(0.0).step()
+    // var ani_tps_c = wx.createAnimation({
+    //   delay: 2250, // 5750
+    //   duration: 600,
+    // })
+    // ani_tps_c.opacity(0.0).step()
 
-    var ani_tps = wx.createAnimation({
-      delay: 5700, //9200
-      duration: 600,
-    })
-    ani_tps.opacity(1.0).step()//ani_tps_c
+    // var ani_tps = wx.createAnimation({
+    //   delay: 5700, //9200
+    //   duration: 600,
+    // })
+    // ani_tps.opacity(1.0).step()//ani_tps_c
+
+    setTimeout(()=>{
+      this.animate("#ani_person_6",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},2250)
+  
+    setTimeout(()=>{
+      this.animate("#ani_person_7",[
+        {opacity:0.0},
+        {opacity:1.0}],600,)},5700)
+
 
     // 地图移动
     if (windowHeight>=800){
@@ -4804,11 +5168,17 @@ fireauthorsure:function(){
     ani_sure_c.translate(0,0).step()
 
     // 当前的问题消失
-    var ani_tqq4_c = wx.createAnimation({
-      delay: 700, //4200
-      duration: 800, //800
-    })
-    ani_tqq4_c.opacity(0.0).step()
+    // var ani_tqq4_c = wx.createAnimation({
+    //   delay: 700, //4200
+    //   duration: 800, //800
+    // })
+    // ani_tqq4_c.opacity(0.0).step()
+
+    setTimeout(()=>{
+      this.animate("#pick12cards",[
+        {opacity:1.0},
+        {opacity:0.0}],800,)},700)
+
 
     // 卡牌正面消失
      setTimeout(()=>{
@@ -4830,11 +5200,18 @@ fireauthorsure:function(){
     // if (whichstar2 == 1){this.setData({twelvestar: "白羊座"})}
   
     // 显示问题：是XX星座
-    var ani_tsj6 = wx.createAnimation({
-      delay: 6700,
-      duration: 1200,
-    })
-    ani_tsj6.opacity(1.0).step()
+    // var ani_tsj6 = wx.createAnimation({
+    //   delay: 6700,
+    //   duration: 1200,
+    // })
+    // ani_tsj6.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#questionstar",[
+        {opacity:0.0},
+        {opacity:1.0}],1200,)},6700)
+
+
 
     // 显示选项：是 /不是的
     var ani_tsj_op6 = wx.createAnimation({
@@ -4854,10 +5231,10 @@ fireauthorsure:function(){
     //jiang data tranform into wxml
     this.setData({
       ani_cardsure: ani_sure_c.export(),
-      ani_person_6: ani_tps_c.export(),
-      ani_person_7: ani_tps.export(),
-      ani_pickcards: ani_tqq4_c.export(),
-      ani_questionstar: ani_tsj6.export(),
+      // ani_person_6: ani_tps_c.export(),
+      // ani_person_7: ani_tps.export(),
+      // ani_pickcards: ani_tqq4_c.export(),
+      // ani_questionstar: ani_tsj6.export(),
       ani_yesstar: ani_tsj_op6.export(),
       ani_nostar: ani_tsj_op66.export(),
     })
@@ -4871,17 +5248,18 @@ fireauthorsure:function(){
     var windowHeight = wx.getSystemInfoSync().windowHeight
     if (checked4) {
       beginnum = 7
-    var ani_t0 = wx.createAnimation({
-      delay: 2340,
-      duration: 10
-    })
-    ani_t0.translate(0,5).step()
 
-    var ani_t0in = wx.createAnimation({
-      delay: 5340,
-      duration: 10,
-    })
-    ani_t0in.translate(0,5).step()
+    // var ani_t0 = wx.createAnimation({
+    //   delay: 2340,
+    //   duration: 10
+    // })
+    // ani_t0.translate(0,5).step()
+
+    // var ani_t0in = wx.createAnimation({
+    //   delay: 5340,
+    //   duration: 10,
+    // })
+    // ani_t0in.translate(0,5).step()
 
     // 糊化出入
     if (windowHeight>=800){
@@ -4945,18 +5323,28 @@ fireauthorsure:function(){
     }
 
     // 小人进出
-    var ani_tps_c = wx.createAnimation({
-      delay: 2550,
-      duration: 600,
-    })
-    ani_tps_c.opacity(0.0).step()
+    // var ani_tps_c = wx.createAnimation({
+    //   delay: 2550,
+    //   duration: 600,
+    // })
+    // ani_tps_c.opacity(0.0).step()
 
     
-    var ani_tps = wx.createAnimation({
-      delay:5900, // 4550
-      duration: 600,
-    })
-    ani_tps.opacity(1.0).step()
+    // var ani_tps = wx.createAnimation({
+    //   delay:5900, // 4550
+    //   duration: 600,
+    // })
+    // ani_tps.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_person_7",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},2550)
+  
+    setTimeout(()=>{
+      this.animate("#ani_person_8",[
+        {opacity:0.0},
+        {opacity:1.0}],600,)},5900)
 
 
     // 地图移动
@@ -4991,11 +5379,16 @@ fireauthorsure:function(){
     }
 
     // 当前问题消失
-    var ani_tqq6_c = wx.createAnimation({
-      delay: 1000,
-      duration: 800,
-    })
-    ani_tqq6_c.opacity(0.0).step()
+    // var ani_tqq6_c = wx.createAnimation({
+    //   delay: 1000,
+    //   duration: 800,
+    // })
+    // ani_tqq6_c.opacity(0.0).step()
+
+    setTimeout(()=>{
+      this.animate("#questionstar",[
+        {opacity:1.0},
+        {opacity:0.0}],800)},1000)
 
     // 当前选项消失并移动到点击不到的区域
     var ani_tsj_op6_c = wx.createAnimation({
@@ -5015,11 +5408,18 @@ fireauthorsure:function(){
 
 
     // 显示问题：对XX星座印象
-    var ani_tq7 = wx.createAnimation({
-      delay: 6900,
-      duration: 1200,
-    })
-    ani_tq7.opacity(1.0).step()
+    // var ani_tq7 = wx.createAnimation({
+    //   delay: 6900,
+    //   duration: 1200,
+    // })
+    // ani_tq7.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#questionimpress",[
+        {opacity:0.0},
+        {opacity:1.0}],1200)},6900)
+    
+
 
     // 显示选项:喜欢 无感 不喜欢
     var ani_tsj_op7 = wx.createAnimation({
@@ -5046,15 +5446,15 @@ fireauthorsure:function(){
 
     // 将数据传入wxml之中
     this.setData({
-      ani_questionstar: ani_tqq6_c.export(),
+      // ani_questionstar: ani_tqq6_c.export(),
       ani_yesstar: ani_tsj_op6_c.export(),
       ani_nostar: ani_tsj_op66_c.export(),
-      ani_impression: ani_tq7.export(),
+      // ani_impression: ani_tq7.export(),
       ani_likestar2: ani_tsj_op7.export(),
       ani_whateverstar2: ani_tsj_op77.export(),
       ani_dislikestar2: ani_tsj_op777.export(),
-      ani_person_7: ani_tps_c.export(),
-      ani_person_8: ani_tps.export(),
+      // ani_person_7: ani_tps_c.export(),
+      // ani_person_8: ani_tps.export(),
     })
       checked4 = false;
     }
@@ -5140,24 +5540,39 @@ fireauthorsure:function(){
     }
 
     // 小人进出
-    var ani_tps_c = wx.createAnimation({
-      delay: 2550,
-      duration: 600,
-    })
-    ani_tps_c.opacity(0.0).step()
+    // var ani_tps_c = wx.createAnimation({
+    //   delay: 2550,
+    //   duration: 600,
+    // })
+    // ani_tps_c.opacity(0.0).step()
 
-    var ani_tps = wx.createAnimation({
-      delay: 13200,
-      duration: 600,
-    })
-    ani_tps.opacity(1.0).step()
+    // var ani_tps = wx.createAnimation({
+    //   delay: 13200,
+    //   duration: 600,
+    // })
+    // ani_tps.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_person_7",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},2550)
+  
+    setTimeout(()=>{
+      this.animate("#ani_person_10",[
+        {opacity:0.0},
+        {opacity:1.0}],600,)},13200)
 
     // 当前界面问题消失
-    var ani_tqq6_c = wx.createAnimation({
-      delay: 1000,
-      duration: 800, 
-    })
-    ani_tqq6_c.opacity(0.0).step()
+    // var ani_tqq6_c = wx.createAnimation({
+    //   delay: 1000,
+    //   duration: 800, 
+    // })
+    // ani_tqq6_c.opacity(0.0).step()
+
+    setTimeout(()=>{
+      this.animate("#questionstar",[
+        {opacity:1.0},
+        {opacity:0.0}],800)},1000)
 
     // 当前界面选项消失并移动到点击不到的区域
     var ani_tsj_op6_c = wx.createAnimation({
@@ -5306,9 +5721,9 @@ fireauthorsure:function(){
     
     // transform infor into wxml
     this.setData({
-      ani_person_7: ani_tps_c.export(),
-      ani_person_10: ani_tps.export(),
-      ani_questionstar: ani_tqq6_c.export(),
+      // ani_person_7: ani_tps_c.export(),
+      // ani_person_10: ani_tps.export(),
+      // ani_questionstar: ani_tqq6_c.export(),
       ani_yesstar: ani_tsj_op6_c.export(),
       ani_nostar: ani_tsj_op66_c.export(),
       // ani_paper_1: ani_tpp1.export(),
@@ -5330,7 +5745,7 @@ fireauthorsure:function(){
     if (introrand ==1){
       fivestarbookscontent = "凡对于以真话为笑话的，以笑话为真话的，以笑话为笑话的，只有一个方法：就是不说话。"//白羊座五星书简介白羊座五星书简介白羊座五星书简介
       wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "鲁迅全集"}}).then(res=>{
       //console.log(res.result.data)
       this.setData({
@@ -5344,7 +5759,7 @@ fireauthorsure:function(){
     if (introrand == 2){
       fivestarbookscontent = "从来如此，便对么？"
       wx.cloud.callFunction({
-        name: "queryResultBook",
+        name: "queryresultbook",
         data:{bookname: "鲁迅全集"}}).then(res=>{
         //console.log(res.result.data)
         this.setData({
@@ -5363,7 +5778,7 @@ fireauthorsure:function(){
    bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=7b06d4eca1d4904e304494536f38010c&t=1672208250"
    
    wx.cloud.callFunction({
-    name: "queryResultBook",
+    name: "queryresultbook",
     data:{bookname: "喻世明言"}
   }).then(res=>{
     console.log(res.result.data)
@@ -5383,7 +5798,7 @@ fireauthorsure:function(){
     bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=03891cf7e08e4c27bc4fc7400363e67f&t=1672208281"
     
     wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "晚学盲言"}
     }).then(res=>{
       console.log(res.result.data)
@@ -5405,7 +5820,7 @@ fireauthorsure:function(){
     if (introrand == 1){
       fivestarbookscontent = "怕打仗，躲避打仗，无可躲避了就打，没打的时候怕死，到打的时候怕得忘了死。"
       wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "人·兽·鬼"}
       }).then(res=>{
       console.log(res.result.data)
@@ -5421,7 +5836,7 @@ fireauthorsure:function(){
     if (introrand == 2){
       fivestarbookscontent = "譬如家畜里最胆小的是猫，我们只看见小孩子给家里养的猫抓破了皮，没见过狗会咬痛小孩子。"/
       wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "人·兽·鬼"}
       }).then(res=>{
       console.log(res.result.data)
@@ -5437,7 +5852,7 @@ fireauthorsure:function(){
     if (introrand == 3){
       fivestarbookscontent = "恋爱里的确有“心理距离”，所以西洋的爱神专射冷箭。"
       wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "人·兽·鬼"}
       }).then(res=>{
       console.log(res.result.data)
@@ -5461,7 +5876,7 @@ fireauthorsure:function(){
     fivestarbookscontent = "只有当我们独处时，我们才会更清楚地意识到，我们与万物同在。"//狮子座五星书简介
 
     wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "空谷幽兰"}
     }).then(res=>{
       console.log(res.result.data)
@@ -5477,7 +5892,7 @@ fireauthorsure:function(){
     fivestarbookscontent = "只要你不受欲望的困扰，只要你的心不受妄想左右，那么你是出家人还是在家人，根本没有什么区别。一旦你的心很清净，你就能理解业。"//狮子座五星书简介
 
     wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "空谷幽兰"}
     }).then(res=>{
       console.log(res.result.data)
@@ -5497,7 +5912,7 @@ fireauthorsure:function(){
   bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=421a50df6927df4de6a3cfd2136a2fd9&t=1672208493"
   
   wx.cloud.callFunction({
-    name: "queryResultBook",
+    name: "queryresultbook",
     data:{bookname: "金线"}
   }).then(res=>{
     console.log(res.result.data)
@@ -5516,7 +5931,7 @@ fireauthorsure:function(){
     bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=1eb3b68aedfe2e54b571f19c95fe9e9d&t=1672208399"
     
     wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "挚友"}
     }).then(res=>{
       console.log(res.result.data)
@@ -5535,7 +5950,7 @@ fireauthorsure:function(){
   bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=6fc3c700dc4ae294ae2b579619bf32e0&t=1672208303"
 
   wx.cloud.callFunction({
-    name: "queryResultBook",
+    name: "queryresultbook",
     data:{bookname: "西藏生死书"}
   }).then(res=>{
     console.log(res.result.data)
@@ -5554,7 +5969,7 @@ fireauthorsure:function(){
   bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=ba105e64ab9aefcedd99491f9d19db32&t=1672208534",
 
   wx.cloud.callFunction({
-    name: "queryResultBook",
+    name: "queryresultbook",
     data:{
       bookname: "标竿人生"
     }
@@ -5576,7 +5991,7 @@ fireauthorsure:function(){
   bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=421a50df6927df4de6a3cfd2136a2fd9&t=1672208493"
   
   wx.cloud.callFunction({
-    name: "queryResultBook",
+    name: "queryresultbook",
     data:{bookname: "辨喜的生平、思想与影响"}
   }).then(res=>{
     console.log(res.result.data)
@@ -5595,7 +6010,7 @@ fireauthorsure:function(){
     bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=1eb3b68aedfe2e54b571f19c95fe9e9d&t=1672208399"
 
     wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "悠悠岁月"}
     }).then(res=>{
       console.log(res.result.data)
@@ -5613,7 +6028,7 @@ fireauthorsure:function(){
     fivestarbookscontent = "耐心和适当时机每件事在该来的时候就会来。人生是急不得的，不能像许多人希望的时间表那样。我们必须接受凡事来临的时间，不要强求。",
     bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=6fc3c700dc4ae294ae2b579619bf32e0&t=1672208303"
     wx.cloud.callFunction({
-      name: "queryResultBook",
+      name: "queryresultbook",
       data:{bookname: "前生今世: 生命轮回的启示"}
     }).then(res=>{
       console.log(res.result.data)
@@ -5797,17 +6212,27 @@ fireauthorsure:function(){
 
 
     //小人进出
-    var ani_tps_c = wx.createAnimation({
-      delay: 2550,
-      duration:600,
-    })
-    ani_tps_c.opacity(0.0).step()
+    // var ani_tps_c = wx.createAnimation({
+    //   delay: 2550,
+    //   duration:600,
+    // })
+    // ani_tps_c.opacity(0.0).step()
 
-    var ani_tps = wx.createAnimation({
-      delay: 11900,
-      duration: 600,
-    })
-    ani_tps.opacity(1.0).step()
+    // var ani_tps = wx.createAnimation({
+    //   delay: 11900,
+    //   duration: 600,
+    // })
+    // ani_tps.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_person_8",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},2550)
+  
+    setTimeout(()=>{
+      this.animate("#ani_person_10",[
+        {opacity:0.0},
+        {opacity:1.0}],600,)},11900)
 
     // 地图移动
     //var ani_tmap = wx.createAnimation({
@@ -5867,11 +6292,18 @@ fireauthorsure:function(){
     }
     
     // 当前的问题和选项消失
-    var ani_tqq7_c = wx.createAnimation({
-      delay: 1000,
-      duration: 800,
-    });
-    ani_tqq7_c.opacity(0.0).step()
+    // var ani_tqq7_c = wx.createAnimation({
+    //   delay: 1000,
+    //   duration: 800,
+    // });
+    // ani_tqq7_c.opacity(0.0).step()
+
+    setTimeout(()=>{
+      this.animate("#questionimpress",[
+        {opacity:1.0},
+        {opacity:0.0}],800,)},1000)
+
+
 
     var ani_tsj7_op_c=wx.createAnimation({
       delay: 600,
@@ -5997,7 +6429,7 @@ fireauthorsure:function(){
     // the last steps
     this.setData({
       //ani_movebk: ani_tmap.export(),
-      ani_impression: ani_tqq7_c.export(),
+      // ani_impression: ani_tqq7_c.export(),
       ani_likestar2: ani_tsj7_op_c.export(),
       ani_whateverstar2: ani_tsj_op77_c.export(),
       ani_dislikestar2: ani_tsj_op777_c.export(),
@@ -6007,8 +6439,8 @@ fireauthorsure:function(){
       // ani_fourstarbook: ani_fourstar.export(),
       ani_fourstar: ani_four.export(),
       ani_continue: ani_continue.export(),
-      ani_person_8: ani_tps_c.export(),
-      ani_person_10: ani_tps.export()
+      // ani_person_8: ani_tps_c.export(),
+      // ani_person_10: ani_tps.export()
     })
 
     point[whichelement-1] = point[whichelement-1] + 2
@@ -6032,125 +6464,23 @@ fireauthorsure:function(){
     }
     console.log(num_negative)
 
-    // 单元素 case：火
-    if (point[0]>0 && num_positive == 1)//喜火，有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
 
-      if (bookrand==1){
-        fourstarbook = "酝酿之道: 当漫画遇见葡萄酒", 
-        fourstarbookcontent="酒液滋滋作响，泡沫浮出，酵母工作，酒沫满溢。这是全年中葡萄酒最像一头活物的时刻。它精力充沛，汁液饱满，酒窖中充满了它的情绪。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"//火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "酝酿之道: 当漫画遇见葡萄酒"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data.name,//firestarbook
-            fourbookcontent: res.result.data.picture,//firebookcontent
-            fourstarintro: res.result.data.introduce,
-            bookpic: res.result.data.element
-          })
-        })
+    wx.cloud.callFunction({
+      name: "getResultBook",
+      data: {
+        point: point,
+        num_zero: num_zero,
+        num_negative: num_negative,
+        num_positive: num_positive
       }
-
-      if (bookrand==2){
-        fourstarbook = "先知·沙与沫", 
-        fourstarbookcontent="学者与诗人之间相隔着一片土地，学者走过去便成为大智。诗人走过来便成为先知。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "先知·沙与沫"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-    
-    // 单元素 case：土 有无抗拒
-    if (point[1]>0 && num_positive == 1)
-    { bookrand = Math.ceil(Math.random(0,1)*3)
-
-      if (bookrand == 1){
-        fourstarbook = "杂草的故事", //赳赳说千字文
-        fourstarbookcontent="有些植物被贬为杂草，只是因为我们在道德层面不赞许它们的行为。",//fourstarintro="书籍的100字介绍",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{
-            bookname: "杂草的故事"
-          }
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].name,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "乞力马扎罗的雪",
-        fourstarbookcontent="就在前方，他看到的，是如整个世界一般的广阔，宏大、高耸，在阳光下闪耀着不可思议的洁白光芒，那是乞力马扎罗的方形雪山。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "乞力马扎罗的雪"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "南北极", 
-        fourstarbookcontent="简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "南北极"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-    }
-
-
-    // 单元素 case: 风
-    if (point[2]>0 && num_zero == 3)//喜风，无抗拒
-    { fourstarbook = "赳赳说千字文", 
-      fourstarbookcontent="一个人想要做到称心如意，有两种方式，一种方式是提高你的行动力。另外一种是降低你的欲望和目标。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
+    }).then(res=>{
+      console.log("获取结果书籍成功,", res.result)
+      result_bookname = res.result.fourstarbook
+      // console.log("结果书籍是1：", result_bookname)
+      
       wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "赳赳说千字文"}
+        name: "queryresultbook",
+        data:{bookname: result_bookname}
       }).then(res=>{
         console.log(res.result.data)
         this.setData({
@@ -6160,1851 +6490,7 @@ fireauthorsure:function(){
           bookpic: res.result.data[0].bookpic
         })
       })
-    }
-
-    if (point[2]>0 && num_positive == 1 && num_negative > 0)//喜风，有抗拒
-    { fourstarbook = "幻灭三部曲", 
-      fourstarbookcontent="死亡在虚无的永恒中散布了一小撮尘土便越过主宰死亡的时光。任何恢复青春的泉水此时也不能与朴实的怀念相比拟。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "幻灭三部曲"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    // 单元素 case:水
-    if (point[3]>0 && num_positive == 1)//喜水，有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*4)
-      console.log(bookrand);
-
-      if (bookrand == 1){
-      fourstarbook = "新月集", //"喜水，无抗拒"
-      fourstarbookcontent="他没有什么事情急着要做，他没有哪条街一定要走，他没有什么地方一定要去，他没有什么时间一定要回家。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "新月集"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){
-      fourstarbook = "心: 和盛稻夫的一生嘱托", //心: 和盛稻夫的寄托
-      fourstarbookcontent="全身心投入工作，精益求精，从中获得乐趣，就能抑制怠惰之心。同时，聚精会神，专注于工作，私心杂念自然就会消退。这是最有效的修行。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "心: 和盛稻夫的一生嘱托"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-    if (bookrand == 3){//4
-      fourstarbook = "次第花开", 
-      fourstarbookcontent="你永远得不到你想要的，因为没有什么是你真正想要的。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "次第花开"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (bookrand == 4){ //6
-      fourstarbook = "蜘蛛女之吻", 
-      fourstarbookcontent="一个不想获得他人东西的人也是一个...小气鬼，因为他也不喜欢给他人任何东西。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "蜘蛛女之吻"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-  }
-    
-    // 双元素情况  case: 火土
-    if (point[0]>0 && point[1]>0 && num_positive == 2 && point[0]>point[1])  //火土偏火  有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*4)
-      //bookrand = 1
-      
-      if (bookrand == 1){
-        fourstarbook = "德米安", //狮60% 牛40%
-        fourstarbookcontent="可是我们是由世界的整个存在所组成，每一个人都是，正如我们背负了进化的家谱，一直可以追溯到鱼类，以及更多更久远之前，在我们的心灵中，也同样拥有所有曾居住过人类心灵的一切。",//德米安简介
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "德米安"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-
-      if (bookrand == 2){
-        fourstarbook = "哲学人生问答", //射手60% 金牛40%
-        fourstarbookcontent="哲学人生问答简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "哲学人生问答"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "空中有苍鹰", //白羊80% 处女20%
-        fourstarbookcontent="空中有苍鹰简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "空中有苍鹰"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      } 
-
-
-      if (bookrand == 4){
-        fourstarbook = "人生拼图版", //射手55% 处女45%
-        fourstarbookcontent="人生拼图版简介",//人生拼图版简介
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人生拼图版"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-    }
-
-    if (point[0]>0 && point[1]>0 && num_zero == 2 && point[0]<point[1])//火土偏土 无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand == 1){
-        fourstarbook = "花衣魔笛手", // 摩羯70% 狮子30% 
-        fourstarbookcontent="花衣魔笛手简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" // 书图连接 网页版
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "花衣魔笛手"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "让感受自由", // 处女70% 狮子30% （禁狮子 处女）
-        fourstarbookcontent="让感受自由简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" // 书图连接 网页版
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "让感受自由"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-    }
-
-
-    if (point[0]>0 && point[1]>0 && num_negative == 1 && num_zero == 1 && point[0]<point[1])  //火土偏土  有抗拒 //num_positive == 2
-    { fourstarbook = "下沉年代", // 金牛65% 射手35% （禁狮子 处女）
-      fourstarbookcontent="一旦道路成型，要想换一条路走，就得耗费巨大的精神和力气。因为你已经接受了那一套思维模式，它会一代又一代地传递下去。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" // 书图连接 网页版
-      
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "下沉年代"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-
-    if (point[0]>0 && point[1]>0 && num_zero == 2 && point[0]==point[1])//喜火土，平均，无抗拒
-    { bookrand = Math.ceil(Math.ceil(0,1)*3)
-
-      if (bookrand == 1){
-        fourstarbook = "德米安"
-        fourstarbookcontent = "可是我们是由世界的整个存在所组成，每一个人都是，正如我们背负了进化的家谱，一直可以追溯到鱼类，以及更多更久远之前，在我们的心灵中，也同样拥有所有曾居住过人类心灵的一切。"
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "德米安"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-
-      if (bookrand == 2){
-        fourstarbook = "哲学人生问答"
-        fourstarbookcontent = "哲学人生问答简介"
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "哲学人生问答"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "人生拼图版"
-        fourstarbookcontent = ""
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人生拼图版"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-    }
-
-    if (point[0]>0 && point[1]>0 && num_negative == 1 && num_zero == 1 && point[0]==point[1])//喜火土，平均，有抗拒  （平均可以达到 6.5: 3.5）
-    { 
-      fourstarbook = "下沉年代", //
-      fourstarbookcontent="一旦道路成型，要想换一条路走，就得耗费巨大的精神和力气。因为你已经接受了那一套思维模式，它会一代又一代地传递下去。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-      
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "下沉年代"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    // 双元素情况  case: 火风
-    if (point[0]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[0]>point[2])//喜火风，偏火，有抗拒 num_positive == 2
-    { fourstarbook = "歌德谈话录", //喜火风，偏火，有无抗拒 狮子55% 双子45%（禁摩羯 水瓶）
-      fourstarbookcontent="诗人的本领，正在于他有足够的智慧，能从惯见的平凡事物中见出引人入胜的一个侧面。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"//链接
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "歌德谈话录"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      
-      /*this.setData({
-      fourstarcontent: "",
-      fourstarbook: "歌德谈话录",
-      fourstarintro:"歌德谈话录书籍的100字介绍",
-      bookpic:"cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/书道具-设计稿-火.png"
-    })*/
-    }
-
-    if (point[0]>0 && point[2]>0 && num_zero == 2 && point[0]>point[2])//喜火风，偏火，无抗拒
-    {
-      fourstarbook = "不受掌控", //喜火风，偏火，无抗拒 射手60% 双子40%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"//链接
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "不受掌控"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[0]>0 && point[2]>0 && num_positive == 2 && point[0]<point[2])//喜火风，偏风，有无抗拒
-    {
-      fourstarbook = "何故为敌", //喜火风，偏风，无抗拒 射手40% 水瓶60%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"//链接
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "何故为敌"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-
-    }
-
-    
-    // if (point[0]>0 && point[2]>0 && num_zero == 1  && num_negative == 1 && point[0]<point[2])//喜火风，偏风，有抗拒
-    // {}
-
-    //
-    if (point[0]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[0]==point[2])//喜火风，平均，有抗拒
-    {
-      fourstarbook = "歌德谈话录", //
-      fourstarbookcontent="诗人的本领，正在于他有足够的智慧，能从惯见的平凡事物中见出引人入胜的一个侧面。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "歌德谈话录"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[0]>0 && point[2]>0 && num_zero == 2 && point[0]==point[2])//喜火风，平均，无抗拒
-    {
-      bookrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand == 1){
-      fourstarbook = "不受掌控", //喜火风，偏火，无抗拒 射手60% 双子40%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "不受掌控"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){
-      fourstarbook = "何故为敌", //喜火风，偏风，无抗拒 射手40% 水瓶60%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "何故为敌"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-      
-    }
-
-
-    // 双元素情况  case: 火水 // [bookrand is not defined]
-    if (point[0]>0 && point[3]>0 && num_positive == 2 && point[0]>point[3]) // 火水偏火 有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){//bandrand
-      fourstarbook = "安徒生自传: 我的童话人生", //喜火风，偏火，无抗拒  鱼40% 羊40% 狮20%
-      fourstarbookcontent="国内还有一些人早就期望着从我这里了解点什么，他们并未想到，即使幕布拉开了，也不会立即看到戏，或者一眼就把一出戏看完。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "安徒生自传: 我的童话人生"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-    if (bookrand== 2){//bandrand
-      fourstarbook = "上帝与黄金", //射手50% 天蝎50% 无抗拒
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "上帝与黄金"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic1
-        })
-      })
-    }
-
-    // if (bookrand == 3){//bandrand
-    // }
-
-    }
-
-    if (point[0]>0 && point[3]>0 && num_positive == 2 && point[0]<point[3])
-    {//火水偏水 有无抗拒
-      bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-      fourstarbook = "昨日的世界: 一个欧洲人的回忆", //巨蟹60%  狮子30% 射手10%
-      fourstarbookcontent="命运总是有办法找到它需要的那个人，要他完成那秘密的使命，哪怕这个人自己想躲起来也无济于事。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359",
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "昨日的世界: 一个欧洲人的回忆"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){
-      fourstarbook = "上帝与黄金", //巨蟹60%  狮子30% 射手10%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359",
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "上帝与黄金"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic2
-        })
-      })
-      }
-      
-    }
-
-    if (point[0]>0 && point[3]>0 && num_positive == 2 && point[0]==point[3])//喜火水，平均，有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*3)
-      elementrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand==1){
-        fourstarbook = "安徒生自传：我的童话人生", //
-        fourstarbookcontent="国内还有一些人早就期望着从我这里了解点什么，他们并未想到，即使幕布拉开了，也不会立即看到戏，或者一眼就把一出戏看完。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "安徒生自传: 我的童话人生"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand==2){
-        fourstarbook = "昨日的世界: 一个欧洲人的回忆", //
-        fourstarbookcontent="命运总是有办法找到它需要的那个人，要他完成那秘密的使命，哪怕这个人自己想躲起来也无济于事。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "昨日的世界: 一个欧洲人的回忆"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 1){
-        fourstarbook = "上帝与黄金", //
-        fourstarbookcontent="",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "上帝与黄金"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 2){
-        fourstarbook = "上帝与黄金", //
-        fourstarbookcontent="",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "上帝与黄金"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-    }
-
-
-    // 双元素情况  case :土风
-    if (point[2]>0 && point[1]>0 && num_zero == 1 && num_negative == 1 && point[2]>point[1])//喜风土，偏风，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand==1){
-        fourstarbook = "呼兰河传", // 双子65% 金牛35%（禁 天蝎 射手）
-        fourstarbookcontent="天空是发灰的，云彩也失了形状，好像被洗过砚台的水盆，有深有浅，混洞洞的。这样的云彩，有的带来了雨点，有时带来了细雪。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "呼兰河传"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        }) 
-      }
-
-      if (bookrand==2){
-        fourstarbook = "判断力批判",  //双子60% 金牛40%（禁 天秤）
-        fourstarbookcontent="要说一个对象是美的并证明我有品味，这取决于我怎样评价自己心中的这个表相，而不是取决于我在哪方面依赖于该对象的实存。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "判断力批判"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-    if (point[2]>0 && point[1]>0 && num_zero == 2 && point[2]>point[1])//喜风土，偏风，无抗拒
-    {
-      fourstarbook = "狂人日记", //天秤60% 处女 40%（风土）
-      fourstarbookcontent="凡是愚弱的国民，即使体格如何健全，如何茁壮，也只能做毫无意义的示众材料和看客，病死多少是不必以为不幸的。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780",
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "狂人日记"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[2]>0 && point[1]>0 && num_zero == 1 && num_negative==1 && point[2]<point[1])//喜风土，偏土，有抗拒 // 名字太长，这个要专门看一下效果
-    { fourstarbook = "在深渊里仰望星空: 魏晋名士的卑微与骄傲", // 处女70% 天秤30% （禁 白羊 双鱼）
-      fourstarbookcontent="人之所以为人, 并不因为完美, 恰恰是因为那些无法用理智约束的部分, 无法约束, 就无法预测到它的走向。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623",
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "在深渊里仰望星空: 魏晋名士的卑微与骄傲"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[2]>0 && point[1]>0 && num_zero == 2 && point[2]<point[1])//喜风土，偏土，无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-      fourstarbook = "阿赞德人的巫术，神谕和魔法", // 处60% 牛30% 秤10%
-      fourstarbookcontent="他们就某个人是否是巫师而请教毒药神谕，神谕说他是巫师，病人的亲属就会给这个人一只鸡翅膀，如果这个人会给鸡翅膀喷水，那么这个人就是巫师。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "阿赞德人的巫术，神谕和魔法"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){
-      fourstarbook = "这世上的偶然", // 摩80% 双20%
-      fourstarbookcontent="观察是对他人抱有关心，仔细观看和聆听其世界的行为，同时也使人重新审视自身。观察，说到底是观察包括自己在内的世界（参与观察）。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "这世上的偶然"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-    }
-
-    if (point[1]>0 && point[2]>0 && num_zero == 2 && point[1]==point[2])//土风平均，无抗拒
-    {
-      fourstarbook = "狂人日记", 
-      fourstarbookcontent="凡是愚弱的国民，即使体格如何健全，如何茁壮，也只能做毫无意义的示众材料和看客，病死多少是不必以为不幸的。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "狂人日记"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[1]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[1]== point[2])//土风平均，有抗拒
-    { bookrand =  Math.ceil(Math.random(0,1)*2)
-      if (bookrand==1){
-        fourstarbook = "呼兰河传", 
-        fourstarbookcontent="天空是发灰的，云彩也失了形状，好像被洗过砚台的水盆，有深有浅，混洞洞的。这样的云彩，有的带来了雨点，有时带来了细雪。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "呼兰河传"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand==2){
-        fourstarbook = "判断力批判", 
-        fourstarbookcontent="要说一个对象是美的并证明我有品味，这取决于我怎样评价自己心中的这个表相，而不是取决于我在哪方面依赖于该对象的实存。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "判断力批判"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      } //bopk
-    }
-
-    // 双元素情况：土水
-    if (point[3]>0 && point[1]>0 && num_zero == 2 && point[3]>point[1])//喜水土，偏水，无抗拒
-    { fourstarbook = "骆驼祥子", // 蟹60% 摩40%
-      fourstarbookcontent="人间的真话本来不多，一个女子的脸红胜过一大片话。", 
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"//小书人网页链接
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "骆驼祥子"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[3]>0 && point[1]>0 && num_zero == 1 && num_negative == 1 && point[3]>point[1])//喜水土，偏水，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*3)
-      if (bookrand == 1){
-        fourstarbook = "背德者", // 巨蟹60% 金牛30% 天蝎10%（禁 射手）
-        fourstarbookcontent=" 我不喜欢往后看，我把过去远远抛开，就像小鸟为了高飞必须离开它的影子。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "背德者"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "人子", // 天蝎65% 摩羯35%（禁 金牛 巨蟹）
-        fourstarbookcontent="莫非这就是乌托邦的真谛？浪子归家，家不在的乌托邦，那些渴望回到家乡的人或被剥夺土地、被驱逐、被隔离的流放者的乌托邦。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      // 【细雪是直接放在水土平均里，还是也都放在偏土/偏水里？都放。】
-      if (bookrand == 3){
-        fourstarbook = "细雪",  // 金牛50% 双鱼30% 巨蟹20%（禁 射手 狮子） 用水元素
-        fourstarbookcontent="悲痛固然悲痛，不过那是超越个人关系、惋惜美好事物离开尘世的一种悲痛，是一种伴有音乐妙味的悲痛。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "细雪"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-    }
-
-    if (point[3]>0 && point[1]>0 && num_zero == 1 && num_negative==1 && point[3]<point[1])//喜水土，偏土，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)//3
-      
-      if (bookrand == 1){
-      fourstarbook = "斯通纳", //处女85% 巨蟹15%（禁 射手 水瓶）
-      fourstarbookcontent="他有过一份憧憬，一直锁在内心某个地方的憧憬，就像一个见不得人的秘密，这个憧憬表面上是一个地方，其实就是他自己。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "斯通纳"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){//3
-      fourstarbook = "细雪",  // 金牛50% 双鱼30% 巨蟹20%（禁 射手 狮子）
-      fourstarbookcontent="他有过一份憧憬，一直锁在内心某个地方的憧憬，就像一个见不得人的秘密，这个憧憬表面上是一个地方，其实就是他自己。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "细雪"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic1
-        })
-      })
-      }
-    }
-
-    if (point[3]>0 && point[1]>0 && num_zero == 2 && point[3]<point[1])//喜水土，偏土，无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*1)//3
-      
-      if (bookrand == 1){
-        fourstarbook = "西方的智慧", // 处55% 蟹45% 
-        fourstarbookcontent="就像一个人不可能设想一条没有下坡路的上坡路一样，我们也不可能在不理解恶的情况下去理解善的概念。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "西方的智慧"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-    if (point[1]>0 && point[3]>0 && num_zero == 2 && point[1]==point[3])//土水平均，无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)* 2) // X
-
-      if (bookrand == 1) {
-        fourstarbook = "西方的智慧", 
-        fourstarbookcontent="就像一个人不可能设想一条没有下坡路的上坡路一样，我们也不可能在不理解恶的情况下去理解善的概念。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "西方的智慧"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2) {
-        fourstarbook = "骆驼祥子", 
-        fourstarbookcontent="人间的真话本来不多，一个女子的脸红胜过一大片话。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骆驼祥子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-    }
-
-    if (point[1]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[1]== point[2])//土水平均，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)* 2),
-      elementrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand == 1){
-        fourstarbook = "人子", 
-        fourstarbookcontent="莫非这就是乌托邦的真谛？浪子归家，家不在的乌托邦，那些渴望回到家乡的人或被剥夺土地、被驱逐、被隔离的流放者的乌托邦。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"//[平均时的bookpic怎么出现？]
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 1){//土
-        fourstarbook = "细雪", 
-        fourstarbookcontent="悲痛固然悲痛，不过那是超越个人关系、惋惜美好事物离开尘世的一种悲痛，是一种伴有音乐妙味的悲痛。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "细雪"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 2){//水
-        fourstarbook = "细雪", 
-        fourstarbookcontent="悲痛固然悲痛，不过那是超越个人关系、惋惜美好事物离开尘世的一种悲痛，是一种伴有音乐妙味的悲痛。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "细雪"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-    }
-
-    // 双元素情况  case: 水风
-    if (point[3]>0 && point[2]>0 && num_zero == 2 && point[3]>point[2])//喜水风，偏水，无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*4)
-
-      if (bookrand == 1){
-        fourstarbook = "园圃之乐", // 蟹65% 双35%
-        fourstarbookcontent="一棵树说：我的力量是信念我深信上帝在我心中，出于这样的信念我生活着。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "园圃之乐"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "头上的星空和心中的道德法则",  // 鱼60% 瓶40%  前世今生：生命轮回的启示 // 天蝎80% 天秤20%
-        fourstarbookcontent="头上的星空和心中的道德法则简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "头上的星空和心中的道德法则"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "大唐西域记",  // 蝎50% 秤50%
-        fourstarbookcontent="幼日王母亲说：“国家兴随时变化，存在灭亡各有运数。若对万物荣辱等同视之，得失就会记；若被荣辱左右你心，则毁誉相继产生。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "大唐西域记"}//在深渊里仰望星空: 魏晋名士的卑微与骄傲
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-      if (bookrand == 4){
-        fourstarbook = "骑驴找马——让子弹飞",  // 蝎50% 秤50%
-        fourstarbookcontent="真正的革命是你真正能够按人的精神世界去表达我们精神上的感受，那个时候恐怕是真正能追上人的需求了。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骑驴找马——让子弹飞"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-    }
-
-    if (point[3]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[3]>point[2])//喜水风，偏水，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-        fourstarbook = "叫魂: 1768年中国妖术大恐慌", // 巨蟹55% 双子45%（禁 水瓶 摩羯）
-        fourstarbookcontent = "毫不奇怪，冤冤相报（这是“受困扰社会”中最为普遍的社会进攻方式）仍然是中国社会生活的一个显著特点。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"// 图片地址
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "叫魂: 1768年中国妖术大恐慌"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "东京贫困女子", // 天蝎60% 天秤40%（禁 双子 金牛）
-        fourstarbookcontent="贫困会造就贫困，苦难会跨越世代持续传递，如果逃不出来，甚至会让人看见死亡。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "东京贫困女子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-    }
-
-    // if (point[3]>0 && point[2]>0 && num_zero == 1 && num_negative==1 && point[3]<point[2])//喜水风，偏风，有抗拒
-    // { 
-
-    // }
-
-    if (point[3]>0 && point[2]>0 && num_positive == 2 && point[3]<point[2])//喜水风，偏风，有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand==1){ //bookrang
-        fourstarbook = "大唐西域记", // 蝎50% 秤50%
-        fourstarbookcontent="幼日王母亲说：“国家兴随时变化，存在灭亡各有运数。若对万物荣辱等同视之，得失就会记；若被荣辱左右你心，则毁誉相继产生。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "大唐西域记"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand==2){
-        fourstarbook = "骑驴找马——让子弹飞", // 蝎50% 秤50%
-        fourstarbookcontent="真正的革命是你真正能够按人的精神世界去表达我们精神上的感受，那个时候恐怕是真正能追上人的需求了。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骑驴找马——让子弹飞"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-    }
-
-    if (point[3]>0 && point[2]>0 && num_zero == 2 && point[3]==point[2])//喜水风，平均，无抗拒 【前世今生这本书要不要放入？不要。】
-    { bookrand = Math.ceil(Math.random(0,1)*3),//2
-      elementrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand == 1){
-        fourstarbook = "园圃之乐", //
-        fourstarbookcontent="一棵树说：我的力量是信念我深信上帝在我心中，出于这样的信念我生活着。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-      
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "园圃之乐"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 1){//风
-        fourstarbook = "大唐西域记", //
-        fourstarbookcontent="幼日王母亲说：“国家兴随时变化，存在灭亡各有运数。若对万物荣辱等同视之，得失就会记；若被荣辱左右你心，则毁誉相继产生。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "大唐西域记"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 2){//水
-        fourstarbook = "大唐西域记", //
-        fourstarbookcontent="幼日王母亲说：“国家兴随时变化，存在灭亡各有运数。若对万物荣辱等同视之，得失就会记；若被荣辱左右你心，则毁誉相继产生。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "大唐西域记"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-      
-
-      if (bookrand == 3 && elementrand == 1){//风
-        fourstarbook = "骑驴找马——让子弹飞", //
-        fourstarbookcontent="真正的革命是你真正能够按人的精神世界去表达我们精神上的感受，那个时候恐怕是真正能追上人的需求了。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-      
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骑驴找马——让子弹飞"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 2){//水
-        fourstarbook = "骑驴找马——让子弹飞", //
-        fourstarbookcontent="真正的革命是你真正能够按人的精神世界去表达我们精神上的感受，那个时候恐怕是真正能追上人的需求了。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骑驴找马——让子弹飞"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-      
-    }
-
-    if (point[3]>0 && point[2]>0 && num_negative == 1 && num_zero == 1 && point[3]==point[2])//喜水风，平均，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-        fourstarbook = "叫魂: 1768年中国妖术大恐慌", //
-        fourstarbookcontent="毫不奇怪，冤冤相报（这是“受困扰社会”中最为普遍的社会进攻方式）仍然是中国社会生活的一个显著特点。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-      
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "叫魂: 1768年中国妖术大恐慌"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "东京贫困女子", //
-        fourstarbookcontent="贫困会造就贫困，苦难会跨越世代持续传递，如果逃不出来，甚至会让人看见死亡。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "东京贫困女子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-
-    // 三类元素
-    if (point[0]>0 && point[1]>0 && point[2]>0 && num_zero == 1)//喜火-土-风
-    { bookrand = Math.ceil(Math.randon(0,1)*3)
-
-      if (bookrand==1){
-        fourstarbook = "人类群星闪耀时", //"喜火-土-风"
-        fourstarbookcontent="人生中最大的幸事，莫过于在富于创造力的壮年发现了自己的使命。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" //待定 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人类群星闪耀时"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand==2){
-        fourstarbook = "雕刻时光", //"喜火-土-风"
-        fourstarbookcontent="电影创作工作的实质是什么？一定程度上可以界定为雕刻时光。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" //待定 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "雕刻时光"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "白云之道", //"喜火-土-风"
-        fourstarbookcontent="白云之道简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "白云之道"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-    }
-
-    if (point[0]>0 && point[1]>0 && point[3]>0 && num_zero == 1)//喜火-土-水
-    { bookrand = Math.ceil(Math.randon(0,1)*4)
-      
-      if (bookrand == 1){
-        fourstarbook = "吃的美德: 餐桌上的哲学思考",//吃的美德-餐桌上的哲学思考
-        fourstarbookcontent="美德要求我们不做味觉欲望的奴隶。被自己胃口控制的人，永远不可能成为自己的主人。",  
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "吃的美德: 餐桌上的哲学思考"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-      if (bookrand == 2){
-        fourstarbook = "艺术中的黄金、珠宝和宝石",
-        fourstarbookcontent="红宝石在希腊语中被称作“燃烧的碳”，这种精小与稀有的宝石，因其外表和特征常常和火联系在一起。",  
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "艺术中的黄金、珠宝和宝石"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "神的食物", 
-        fourstarbookcontent="完全没有想象力就是野蛮；低等的想象力只是肉欲和怯懦；而高尚的想象力则如同上帝重又在地球上行走", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "神的食物"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 4){
-        fourstarbook = "偶然的创造",// 摩羯50% 巨蟹 30% 射手20%
-        fourstarbookcontent="偶然的创造简介",  
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" //土
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "偶然的创造"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }  
-    }
-
-    if (point[0]>0 && point[2]>0 && point[3]>0 && num_zero == 1)//喜火-风-水  土
-    { bookrand = Math.ceil(Math.randon(0,1)*4)
-      elementrand = Math.ceil(Math.randon(0,1)*2)
-
-      if (bookrand == 1){
-        fourstarbook = "西方的没落", // "喜火-风-水"
-        fourstarbookcontent="真正的信仰是彻底的沉默无言的。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" // 待定 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "西方的没落"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 1){ //火
-        fourstarbook = "纳尼亚传奇", //"喜火-风-水"
-        fourstarbookcontent="如果你整夜没睡，哭得再也哭不出眼泪——你就知道到头来，心境就会有一种平静。你觉得似乎再也不会出什么事了", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" // 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "纳尼亚传奇"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-      
-      if (bookrand == 2 && elementrand == 2){//水
-        fourstarbook = "纳尼亚传奇", //"喜火-风-水"
-        fourstarbookcontent="纳尼亚传奇简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" // 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "纳尼亚传奇"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 1){
-        fourstarbook = "所罗门王的指环", //"喜火-风-水"
-        fourstarbookcontent="所罗门王的指环介绍", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" // 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "所罗门王的指环"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 2){
-        fourstarbook = "所罗门王的指环", //"喜火-风-水"
-        fourstarbookcontent="所罗门王的指环介绍", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" // 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "所罗门王的指环"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-      if (bookrand == 4){
-        fourstarbook = "万物的签名", // "喜火-风-水" 巨蟹40% 射手30% 天秤30%
-        fourstarbookcontent="万物的签名介绍", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" // 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "万物的签名"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-    if (point[1]>0 && point[2]>0 && point[3]>0 && num_zero == 1)//喜土-风-水
-    { bookrand = Math.ceil(Math.random(0,1)*5)
-      elementrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-        fourstarbook = "金花的秘密", //"喜土-风-水"
-        fourstarbookcontent="只要我们还有所牵挂，就做不了自己的主，而只要做不了自己的主，就意味着还有某种比自我更强大的东西。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" //水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "金花的秘密"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "心流", //"喜土-风-水"
-        fourstarbookcontent = "体验过心流的人都知道，那份深沉的快乐是严格的自律、集中注意力换来的。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" //待定 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "心流"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-      if (bookrand == 3){
-        fourstarbook = "重力小丑", //"喜土-风-水"
-        fourstarbookcontent="“他作出决定，紧张期待，慈爱迎接，张开双臂欢迎了春的降生。一直站在母亲的产床旁，第一个轻蹭刚出生的春的小脸，那个人当然也是父亲。”", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" //待定 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "重力小丑"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-      if (bookrand == 4 && element == 1){
-        fourstarbook = "余命十年", //"喜土-风-水" 牛40% 蟹40% 双20%
-        fourstarbookcontent="余命十年简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" //土
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "余命十年"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        }) 
-      }
-
-      if (bookrand == 4 && element == 2){
-        fourstarbook = "余命十年", //"喜土-风-水"
-        fourstarbookcontent="余命十年简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" //水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "余命十年"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-      if (bookrand == 5){
-        fourstarbook = "北海鲸梦",//巨蟹60% 双子30% 金牛10%
-        fourstarbookcontent = "北海鲸梦简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "北海鲸梦"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-    }
-
-
-    // 无明显喜好
-    if (num_zero == 4 || (num_zero == 3 && num_negative == 1))//无倾向 zeros
-    { bookrand == Math.ceil(Math.random(0,1)*3)
-      //bookrand == 2
-      
-      if (bookrand == 1){
-        fourstarbook = "伊甸园",
-        fourstarbookcontent="为什么我们不得不按照所有其他人的准则行事？我们就是我们嘛。",  
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B7%B7%E5%90%88.png?sign=568d9599ec7e40c896f04cb07caaca9c&t=1677253681" // 混合书图
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "伊甸园"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "无法触碰的爱", 
-        fourstarbookcontent="在这里，人需要为最伟大的战役而战：从入侵意识的肿瘤中保存自己领地的战争。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B7%B7%E5%90%88.png?sign=568d9599ec7e40c896f04cb07caaca9c&t=1677253681"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "无法触碰的爱"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook: "外婆的道歉信",
-        fourstarbookcontent="对外婆来说，任何事情都不是非黑即白。故事既可以是完全真实的，同时也可以是彻底虚构的。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B7%B7%E5%90%88.png?sign=568d9599ec7e40c896f04cb07caaca9c&t=1677253681"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "外婆的道歉信"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
+    })
 
     
     var word = "你的四星正缘书"//您的四星正缘书
@@ -8152,17 +6638,29 @@ fireauthorsure:function(){
 
 
     //小人进出
-    var ani_tps_c = wx.createAnimation({
-      delay: 2550,
-      duration:600,
-    })
-    ani_tps_c.opacity(0.0).step()
+    // var ani_tps_c = wx.createAnimation({
+    //   delay: 2550,
+    //   duration:600,
+    // })
+    // ani_tps_c.opacity(0.0).step()
 
-    var ani_tps = wx.createAnimation({
-      delay: 11900,
-      duration: 600,
-    })
-    ani_tps.opacity(1.0).step()
+    // var ani_tps = wx.createAnimation({
+    //   delay: 11900,
+    //   duration: 600,
+    // })
+    // ani_tps.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_person_8",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},2550)
+  
+    setTimeout(()=>{
+      this.animate("#ani_person_10",[
+        {opacity:0.0},
+        {opacity:1.0}],600,)},11900)
+
+
 
     // 地图移动
     //var ani_tmap = wx.createAnimation({
@@ -8219,11 +6717,16 @@ fireauthorsure:function(){
     }
 
     // 当前的问题和选项消失
-    var ani_tqq7_c = wx.createAnimation({
-      delay: 1000, //600 800 1400 1700
-      duration: 800 //600 650
-    });
-    ani_tqq7_c.opacity(0.0).step()
+    // var ani_tqq7_c = wx.createAnimation({
+    //   delay: 1000, //600 800 1400 1700
+    //   duration: 800 //600 650
+    // });
+    // ani_tqq7_c.opacity(0.0).step()
+
+    setTimeout(()=>{
+      this.animate("#questionimpress",[
+        {opacity:1.0},
+        {opacity:0.0}],800,)},1000)
 
     var ani_tsj7_op_c=wx.createAnimation({
       delay: 600, //700 {900 1150 1400}
@@ -8377,10 +6880,10 @@ fireauthorsure:function(){
     // 把信息传入index.wxml
     // the last steps
     this.setData({
-      ani_person_8: ani_tps_c.export(),
-      ani_person_10: ani_tps.export(),
+      // ani_person_8: ani_tps_c.export(),
+      // ani_person_10: ani_tps.export(),
       //ani_movebk: ani_tmap.export(),
-      ani_impression: ani_tqq7_c.export(),
+      // ani_impression: ani_tqq7_c.export(),
       ani_likestar2: ani_tsj7_op_c.export(),
       ani_whateverstar2: ani_tsj_op77_c.export(), 
       ani_dislikestar2: ani_tsj_op777_c.export(),
@@ -8413,125 +6916,23 @@ fireauthorsure:function(){
     }
     console.log(num_negative)
 
-    // 单元素 case：火
-    if (point[0]>0 && num_positive == 1)//喜火，有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
 
-      if (bookrand==1){
-        fourstarbook = "酝酿之道: 当漫画遇见葡萄酒", 
-        fourstarbookcontent="酒液滋滋作响，泡沫浮出，酵母工作，酒沫满溢。这是全年中葡萄酒最像一头活物的时刻。它精力充沛，汁液饱满，酒窖中充满了它的情绪。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"//火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "酝酿之道: 当漫画遇见葡萄酒"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data.name,//firestarbook
-            fourbookcontent: res.result.data.picture,//firebookcontent
-            fourstarintro: res.result.data.introduce,
-            bookpic: res.result.data.element
-          })
-        })
+    wx.cloud.callFunction({
+      name: "getResultBook",
+      data: {
+        point: point,
+        num_zero: num_zero,
+        num_negative: num_negative,
+        num_positive: num_positive
       }
-
-      if (bookrand==2){
-        fourstarbook = "先知·沙与沫", 
-        fourstarbookcontent="学者与诗人之间相隔着一片土地，学者走过去便成为大智。诗人走过来便成为先知。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "先知·沙与沫"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-    
-    // 单元素 case：土 有无抗拒
-    if (point[1]>0 && num_positive == 1)
-    { bookrand = Math.ceil(Math.random(0,1)*3)
-
-      if (bookrand == 1){
-        fourstarbook = "杂草的故事", //赳赳说千字文
-        fourstarbookcontent="有些植物被贬为杂草，只是因为我们在道德层面不赞许它们的行为。",//fourstarintro="书籍的100字介绍",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{
-            bookname: "杂草的故事"
-          }
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].name,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "乞力马扎罗的雪",
-        fourstarbookcontent="就在前方，他看到的，是如整个世界一般的广阔，宏大、高耸，在阳光下闪耀着不可思议的洁白光芒，那是乞力马扎罗的方形雪山。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "乞力马扎罗的雪"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "南北极", 
-        fourstarbookcontent="简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "南北极"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-    }
-
-
-    // 单元素 case: 风
-    if (point[2]>0 && num_zero == 3)//喜风，无抗拒
-    { fourstarbook = "赳赳说千字文", 
-      fourstarbookcontent="一个人想要做到称心如意，有两种方式，一种方式是提高你的行动力。另外一种是降低你的欲望和目标。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
+    }).then(res=>{
+      console.log("获取结果书籍成功,", res.result)
+      result_bookname = res.result.fourstarbook
+      // console.log("结果书籍是1：", result_bookname)
+      
       wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "赳赳说千字文"}
+        name: "queryresultbook",
+        data:{bookname: result_bookname}
       }).then(res=>{
         console.log(res.result.data)
         this.setData({
@@ -8541,1851 +6942,8 @@ fireauthorsure:function(){
           bookpic: res.result.data[0].bookpic
         })
       })
-    }
+    })
 
-    if (point[2]>0 && num_positive == 1 && num_negative > 0)//喜风，有抗拒
-    { fourstarbook = "幻灭三部曲", 
-      fourstarbookcontent="死亡在虚无的永恒中散布了一小撮尘土便越过主宰死亡的时光。任何恢复青春的泉水此时也不能与朴实的怀念相比拟。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "幻灭三部曲"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    // 单元素 case:水
-    if (point[3]>0 && num_positive == 1)//喜水，有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*4)
-      console.log(bookrand);
-
-      if (bookrand == 1){
-      fourstarbook = "新月集", //"喜水，无抗拒"
-      fourstarbookcontent="他没有什么事情急着要做，他没有哪条街一定要走，他没有什么地方一定要去，他没有什么时间一定要回家。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "新月集"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){
-      fourstarbook = "心: 和盛稻夫的一生嘱托", //心: 和盛稻夫的寄托
-      fourstarbookcontent="全身心投入工作，精益求精，从中获得乐趣，就能抑制怠惰之心。同时，聚精会神，专注于工作，私心杂念自然就会消退。这是最有效的修行。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "心: 和盛稻夫的一生嘱托"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-    if (bookrand == 3){//4
-      fourstarbook = "次第花开", 
-      fourstarbookcontent="你永远得不到你想要的，因为没有什么是你真正想要的。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "次第花开"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (bookrand == 4){ //6
-      fourstarbook = "蜘蛛女之吻", 
-      fourstarbookcontent="一个不想获得他人东西的人也是一个...小气鬼，因为他也不喜欢给他人任何东西。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "蜘蛛女之吻"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-  }
-    
-    // 双元素情况  case: 火土
-    if (point[0]>0 && point[1]>0 && num_positive == 2 && point[0]>point[1])  //火土偏火  有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*4)
-      //bookrand = 1
-      
-      if (bookrand == 1){
-        fourstarbook = "德米安", //狮60% 牛40%
-        fourstarbookcontent="可是我们是由世界的整个存在所组成，每一个人都是，正如我们背负了进化的家谱，一直可以追溯到鱼类，以及更多更久远之前，在我们的心灵中，也同样拥有所有曾居住过人类心灵的一切。",//德米安简介
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "德米安"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-
-      if (bookrand == 2){
-        fourstarbook = "哲学人生问答", //射手60% 金牛40%
-        fourstarbookcontent="哲学人生问答简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "哲学人生问答"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "空中有苍鹰", //白羊80% 处女20%
-        fourstarbookcontent="空中有苍鹰简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "空中有苍鹰"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      } 
-
-
-      if (bookrand == 4){
-        fourstarbook = "人生拼图版", //射手55% 处女45%
-        fourstarbookcontent="人生拼图版简介",//人生拼图版简介
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人生拼图版"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-    }
-
-    if (point[0]>0 && point[1]>0 && num_zero == 2 && point[0]<point[1])//火土偏土 无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand == 1){
-        fourstarbook = "花衣魔笛手", // 摩羯70% 狮子30% 
-        fourstarbookcontent="花衣魔笛手简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" // 书图连接 网页版
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "花衣魔笛手"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "让感受自由", // 处女70% 狮子30% （禁狮子 处女）
-        fourstarbookcontent="让感受自由简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" // 书图连接 网页版
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "让感受自由"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-    }
-
-
-    if (point[0]>0 && point[1]>0 && num_negative == 1 && num_zero == 1 && point[0]<point[1])  //火土偏土  有抗拒 //num_positive == 2
-    { fourstarbook = "下沉年代", // 金牛65% 射手35% （禁狮子 处女）
-      fourstarbookcontent="一旦道路成型，要想换一条路走，就得耗费巨大的精神和力气。因为你已经接受了那一套思维模式，它会一代又一代地传递下去。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" // 书图连接 网页版
-      
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "下沉年代"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-
-    if (point[0]>0 && point[1]>0 && num_zero == 2 && point[0]==point[1])//喜火土，平均，无抗拒
-    { bookrand = Math.ceil(Math.ceil(0,1)*3)
-
-      if (bookrand == 1){
-        fourstarbook = "德米安"
-        fourstarbookcontent = "可是我们是由世界的整个存在所组成，每一个人都是，正如我们背负了进化的家谱，一直可以追溯到鱼类，以及更多更久远之前，在我们的心灵中，也同样拥有所有曾居住过人类心灵的一切。"
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "德米安"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-
-      if (bookrand == 2){
-        fourstarbook = "哲学人生问答"
-        fourstarbookcontent = "哲学人生问答简介"
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "哲学人生问答"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "人生拼图版"
-        fourstarbookcontent = ""
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人生拼图版"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-    }
-
-    if (point[0]>0 && point[1]>0 && num_negative == 1 && num_zero == 1 && point[0]==point[1])//喜火土，平均，有抗拒  （平均可以达到 6.5: 3.5）
-    { 
-      fourstarbook = "下沉年代", //
-      fourstarbookcontent="一旦道路成型，要想换一条路走，就得耗费巨大的精神和力气。因为你已经接受了那一套思维模式，它会一代又一代地传递下去。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-      
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "下沉年代"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    // 双元素情况  case: 火风
-    if (point[0]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[0]>point[2])//喜火风，偏火，有抗拒 num_positive == 2
-    { fourstarbook = "歌德谈话录", //喜火风，偏火，有无抗拒 狮子55% 双子45%（禁摩羯 水瓶）
-      fourstarbookcontent="诗人的本领，正在于他有足够的智慧，能从惯见的平凡事物中见出引人入胜的一个侧面。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"//链接
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "歌德谈话录"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      
-      /*this.setData({
-      fourstarcontent: "",
-      fourstarbook: "歌德谈话录",
-      fourstarintro:"歌德谈话录书籍的100字介绍",
-      bookpic:"cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/书道具-设计稿-火.png"
-    })*/
-    }
-
-    if (point[0]>0 && point[2]>0 && num_zero == 2 && point[0]>point[2])//喜火风，偏火，无抗拒
-    {
-      fourstarbook = "不受掌控", //喜火风，偏火，无抗拒 射手60% 双子40%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"//链接
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "不受掌控"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[0]>0 && point[2]>0 && num_positive == 2 && point[0]<point[2])//喜火风，偏风，有无抗拒
-    {
-      fourstarbook = "何故为敌", //喜火风，偏风，无抗拒 射手40% 水瓶60%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"//链接
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "何故为敌"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-
-    }
-
-    
-    // if (point[0]>0 && point[2]>0 && num_zero == 1  && num_negative == 1 && point[0]<point[2])//喜火风，偏风，有抗拒
-    // {}
-
-    //
-    if (point[0]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[0]==point[2])//喜火风，平均，有抗拒
-    {
-      fourstarbook = "歌德谈话录", //
-      fourstarbookcontent="诗人的本领，正在于他有足够的智慧，能从惯见的平凡事物中见出引人入胜的一个侧面。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "歌德谈话录"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[0]>0 && point[2]>0 && num_zero == 2 && point[0]==point[2])//喜火风，平均，无抗拒
-    {
-      bookrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand == 1){
-      fourstarbook = "不受掌控", //喜火风，偏火，无抗拒 射手60% 双子40%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "不受掌控"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){
-      fourstarbook = "何故为敌", //喜火风，偏风，无抗拒 射手40% 水瓶60%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "何故为敌"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-      
-    }
-
-
-    // 双元素情况  case: 火水 // [bookrand is not defined]
-    if (point[0]>0 && point[3]>0 && num_positive == 2 && point[0]>point[3]) // 火水偏火 有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){//bandrand
-      fourstarbook = "安徒生自传: 我的童话人生", //喜火风，偏火，无抗拒  鱼40% 羊40% 狮20%
-      fourstarbookcontent="国内还有一些人早就期望着从我这里了解点什么，他们并未想到，即使幕布拉开了，也不会立即看到戏，或者一眼就把一出戏看完。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "安徒生自传: 我的童话人生"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-    if (bookrand== 2){//bandrand
-      fourstarbook = "上帝与黄金", //射手50% 天蝎50% 无抗拒
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "上帝与黄金"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic1
-        })
-      })
-    }
-
-    // if (bookrand == 3){//bandrand
-    // }
-
-    }
-
-    if (point[0]>0 && point[3]>0 && num_positive == 2 && point[0]<point[3])
-    {//火水偏水 有无抗拒
-      bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-      fourstarbook = "昨日的世界: 一个欧洲人的回忆", //巨蟹60%  狮子30% 射手10%
-      fourstarbookcontent="命运总是有办法找到它需要的那个人，要他完成那秘密的使命，哪怕这个人自己想躲起来也无济于事。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359",
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "昨日的世界: 一个欧洲人的回忆"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){
-      fourstarbook = "上帝与黄金", //巨蟹60%  狮子30% 射手10%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359",
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "上帝与黄金"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic2
-        })
-      })
-      }
-      
-    }
-
-    if (point[0]>0 && point[3]>0 && num_positive == 2 && point[0]==point[3])//喜火水，平均，有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*3)
-      elementrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand==1){
-        fourstarbook = "安徒生自传：我的童话人生", //
-        fourstarbookcontent="国内还有一些人早就期望着从我这里了解点什么，他们并未想到，即使幕布拉开了，也不会立即看到戏，或者一眼就把一出戏看完。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "安徒生自传: 我的童话人生"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand==2){
-        fourstarbook = "昨日的世界: 一个欧洲人的回忆", //
-        fourstarbookcontent="命运总是有办法找到它需要的那个人，要他完成那秘密的使命，哪怕这个人自己想躲起来也无济于事。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "昨日的世界: 一个欧洲人的回忆"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 1){
-        fourstarbook = "上帝与黄金", //
-        fourstarbookcontent="",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "上帝与黄金"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 2){
-        fourstarbook = "上帝与黄金", //
-        fourstarbookcontent="",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "上帝与黄金"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-    }
-
-
-    // 双元素情况  case :土风
-    if (point[2]>0 && point[1]>0 && num_zero == 1 && num_negative == 1 && point[2]>point[1])//喜风土，偏风，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand==1){
-        fourstarbook = "呼兰河传", // 双子65% 金牛35%（禁 天蝎 射手）
-        fourstarbookcontent="天空是发灰的，云彩也失了形状，好像被洗过砚台的水盆，有深有浅，混洞洞的。这样的云彩，有的带来了雨点，有时带来了细雪。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "呼兰河传"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        }) 
-      }
-
-      if (bookrand==2){
-        fourstarbook = "判断力批判",  //双子60% 金牛40%（禁 天秤）
-        fourstarbookcontent="要说一个对象是美的并证明我有品味，这取决于我怎样评价自己心中的这个表相，而不是取决于我在哪方面依赖于该对象的实存。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "判断力批判"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-    if (point[2]>0 && point[1]>0 && num_zero == 2 && point[2]>point[1])//喜风土，偏风，无抗拒
-    {
-      fourstarbook = "狂人日记", //天秤60% 处女 40%（风土）
-      fourstarbookcontent="凡是愚弱的国民，即使体格如何健全，如何茁壮，也只能做毫无意义的示众材料和看客，病死多少是不必以为不幸的。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780",
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "狂人日记"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[2]>0 && point[1]>0 && num_zero == 1 && num_negative==1 && point[2]<point[1])//喜风土，偏土，有抗拒 // 名字太长，这个要专门看一下效果
-    { fourstarbook = "在深渊里仰望星空: 魏晋名士的卑微与骄傲", // 处女70% 天秤30% （禁 白羊 双鱼）
-      fourstarbookcontent="人之所以为人, 并不因为完美, 恰恰是因为那些无法用理智约束的部分, 无法约束, 就无法预测到它的走向。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623",
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "在深渊里仰望星空: 魏晋名士的卑微与骄傲"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[2]>0 && point[1]>0 && num_zero == 2 && point[2]<point[1])//喜风土，偏土，无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-      fourstarbook = "阿赞德人的巫术，神谕和魔法", // 处60% 牛30% 秤10%
-      fourstarbookcontent="他们就某个人是否是巫师而请教毒药神谕，神谕说他是巫师，病人的亲属就会给这个人一只鸡翅膀，如果这个人会给鸡翅膀喷水，那么这个人就是巫师。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "阿赞德人的巫术，神谕和魔法"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){
-      fourstarbook = "这世上的偶然", // 摩80% 双20%
-      fourstarbookcontent="观察是对他人抱有关心，仔细观看和聆听其世界的行为，同时也使人重新审视自身。观察，说到底是观察包括自己在内的世界（参与观察）。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "这世上的偶然"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-    }
-
-    if (point[1]>0 && point[2]>0 && num_zero == 2 && point[1]==point[2])//土风平均，无抗拒
-    {
-      fourstarbook = "狂人日记", 
-      fourstarbookcontent="凡是愚弱的国民，即使体格如何健全，如何茁壮，也只能做毫无意义的示众材料和看客，病死多少是不必以为不幸的。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "狂人日记"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[1]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[1]== point[2])//土风平均，有抗拒
-    { bookrand =  Math.ceil(Math.random(0,1)*2)
-      if (bookrand==1){
-        fourstarbook = "呼兰河传", 
-        fourstarbookcontent="天空是发灰的，云彩也失了形状，好像被洗过砚台的水盆，有深有浅，混洞洞的。这样的云彩，有的带来了雨点，有时带来了细雪。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "呼兰河传"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand==2){
-        fourstarbook = "判断力批判", 
-        fourstarbookcontent="要说一个对象是美的并证明我有品味，这取决于我怎样评价自己心中的这个表相，而不是取决于我在哪方面依赖于该对象的实存。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "判断力批判"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      } //bopk
-    }
-
-    // 双元素情况：土水
-    if (point[3]>0 && point[1]>0 && num_zero == 2 && point[3]>point[1])//喜水土，偏水，无抗拒
-    { fourstarbook = "骆驼祥子", // 蟹60% 摩40%
-      fourstarbookcontent="人间的真话本来不多，一个女子的脸红胜过一大片话。", 
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"//小书人网页链接
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "骆驼祥子"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[3]>0 && point[1]>0 && num_zero == 1 && num_negative == 1 && point[3]>point[1])//喜水土，偏水，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*3)
-      if (bookrand == 1){
-        fourstarbook = "背德者", // 巨蟹60% 金牛30% 天蝎10%（禁 射手）
-        fourstarbookcontent=" 我不喜欢往后看，我把过去远远抛开，就像小鸟为了高飞必须离开它的影子。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "背德者"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "人子", // 天蝎65% 摩羯35%（禁 金牛 巨蟹）
-        fourstarbookcontent="莫非这就是乌托邦的真谛？浪子归家，家不在的乌托邦，那些渴望回到家乡的人或被剥夺土地、被驱逐、被隔离的流放者的乌托邦。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      // 【细雪是直接放在水土平均里，还是也都放在偏土/偏水里？都放。】
-      if (bookrand == 3){
-        fourstarbook = "细雪",  // 金牛50% 双鱼30% 巨蟹20%（禁 射手 狮子） 用水元素
-        fourstarbookcontent="悲痛固然悲痛，不过那是超越个人关系、惋惜美好事物离开尘世的一种悲痛，是一种伴有音乐妙味的悲痛。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "细雪"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-    }
-
-    if (point[3]>0 && point[1]>0 && num_zero == 1 && num_negative==1 && point[3]<point[1])//喜水土，偏土，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)//3
-      
-      if (bookrand == 1){
-      fourstarbook = "斯通纳", //处女85% 巨蟹15%（禁 射手 水瓶）
-      fourstarbookcontent="他有过一份憧憬，一直锁在内心某个地方的憧憬，就像一个见不得人的秘密，这个憧憬表面上是一个地方，其实就是他自己。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "斯通纳"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){//3
-      fourstarbook = "细雪",  // 金牛50% 双鱼30% 巨蟹20%（禁 射手 狮子）
-      fourstarbookcontent="他有过一份憧憬，一直锁在内心某个地方的憧憬，就像一个见不得人的秘密，这个憧憬表面上是一个地方，其实就是他自己。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "细雪"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic1
-        })
-      })
-      }
-    }
-
-    if (point[3]>0 && point[1]>0 && num_zero == 2 && point[3]<point[1])//喜水土，偏土，无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*1)//3
-      
-      if (bookrand == 1){
-        fourstarbook = "西方的智慧", // 处55% 蟹45% 
-        fourstarbookcontent="就像一个人不可能设想一条没有下坡路的上坡路一样，我们也不可能在不理解恶的情况下去理解善的概念。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "西方的智慧"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-    if (point[1]>0 && point[3]>0 && num_zero == 2 && point[1]==point[3])//土水平均，无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)* 2) // X
-
-      if (bookrand == 1) {
-        fourstarbook = "西方的智慧", 
-        fourstarbookcontent="就像一个人不可能设想一条没有下坡路的上坡路一样，我们也不可能在不理解恶的情况下去理解善的概念。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "西方的智慧"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2) {
-        fourstarbook = "骆驼祥子", 
-        fourstarbookcontent="人间的真话本来不多，一个女子的脸红胜过一大片话。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骆驼祥子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-    }
-
-    if (point[1]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[1]== point[2])//土水平均，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)* 2),
-      elementrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand == 1){
-        fourstarbook = "人子", 
-        fourstarbookcontent="莫非这就是乌托邦的真谛？浪子归家，家不在的乌托邦，那些渴望回到家乡的人或被剥夺土地、被驱逐、被隔离的流放者的乌托邦。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"//[平均时的bookpic怎么出现？]
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 1){//土
-        fourstarbook = "细雪", 
-        fourstarbookcontent="悲痛固然悲痛，不过那是超越个人关系、惋惜美好事物离开尘世的一种悲痛，是一种伴有音乐妙味的悲痛。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "细雪"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 2){//水
-        fourstarbook = "细雪", 
-        fourstarbookcontent="悲痛固然悲痛，不过那是超越个人关系、惋惜美好事物离开尘世的一种悲痛，是一种伴有音乐妙味的悲痛。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "细雪"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-    }
-
-    // 双元素情况  case: 水风
-    if (point[3]>0 && point[2]>0 && num_zero == 2 && point[3]>point[2])//喜水风，偏水，无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*4)
-
-      if (bookrand == 1){
-        fourstarbook = "园圃之乐", // 蟹65% 双35%
-        fourstarbookcontent="一棵树说：我的力量是信念我深信上帝在我心中，出于这样的信念我生活着。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "园圃之乐"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "头上的星空和心中的道德法则",  // 鱼60% 瓶40%  前世今生：生命轮回的启示 // 天蝎80% 天秤20%
-        fourstarbookcontent="头上的星空和心中的道德法则简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "头上的星空和心中的道德法则"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "大唐西域记",  // 蝎50% 秤50%
-        fourstarbookcontent="幼日王母亲说：“国家兴随时变化，存在灭亡各有运数。若对万物荣辱等同视之，得失就会记；若被荣辱左右你心，则毁誉相继产生。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "大唐西域记"}//在深渊里仰望星空: 魏晋名士的卑微与骄傲
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-      if (bookrand == 4){
-        fourstarbook = "骑驴找马——让子弹飞",  // 蝎50% 秤50%
-        fourstarbookcontent="真正的革命是你真正能够按人的精神世界去表达我们精神上的感受，那个时候恐怕是真正能追上人的需求了。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骑驴找马——让子弹飞"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-    }
-
-    if (point[3]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[3]>point[2])//喜水风，偏水，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-        fourstarbook = "叫魂: 1768年中国妖术大恐慌", // 巨蟹55% 双子45%（禁 水瓶 摩羯）
-        fourstarbookcontent = "毫不奇怪，冤冤相报（这是“受困扰社会”中最为普遍的社会进攻方式）仍然是中国社会生活的一个显著特点。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"// 图片地址
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "叫魂: 1768年中国妖术大恐慌"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "东京贫困女子", // 天蝎60% 天秤40%（禁 双子 金牛）
-        fourstarbookcontent="贫困会造就贫困，苦难会跨越世代持续传递，如果逃不出来，甚至会让人看见死亡。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "东京贫困女子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-    }
-
-    // if (point[3]>0 && point[2]>0 && num_zero == 1 && num_negative==1 && point[3]<point[2])//喜水风，偏风，有抗拒
-    // { 
-
-    // }
-
-    if (point[3]>0 && point[2]>0 && num_positive == 2 && point[3]<point[2])//喜水风，偏风，有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand==1){ //bookrang
-        fourstarbook = "大唐西域记", // 蝎50% 秤50%
-        fourstarbookcontent="幼日王母亲说：“国家兴随时变化，存在灭亡各有运数。若对万物荣辱等同视之，得失就会记；若被荣辱左右你心，则毁誉相继产生。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "大唐西域记"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand==2){
-        fourstarbook = "骑驴找马——让子弹飞", // 蝎50% 秤50%
-        fourstarbookcontent="真正的革命是你真正能够按人的精神世界去表达我们精神上的感受，那个时候恐怕是真正能追上人的需求了。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骑驴找马——让子弹飞"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-    }
-
-    if (point[3]>0 && point[2]>0 && num_zero == 2 && point[3]==point[2])//喜水风，平均，无抗拒 【前世今生这本书要不要放入？不要。】
-    { bookrand = Math.ceil(Math.random(0,1)*3),//2
-      elementrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand == 1){
-        fourstarbook = "园圃之乐", //
-        fourstarbookcontent="一棵树说：我的力量是信念我深信上帝在我心中，出于这样的信念我生活着。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-      
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "园圃之乐"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 1){//风
-        fourstarbook = "大唐西域记", //
-        fourstarbookcontent="幼日王母亲说：“国家兴随时变化，存在灭亡各有运数。若对万物荣辱等同视之，得失就会记；若被荣辱左右你心，则毁誉相继产生。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "大唐西域记"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 2){//水
-        fourstarbook = "大唐西域记", //
-        fourstarbookcontent="幼日王母亲说：“国家兴随时变化，存在灭亡各有运数。若对万物荣辱等同视之，得失就会记；若被荣辱左右你心，则毁誉相继产生。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "大唐西域记"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-      
-
-      if (bookrand == 3 && elementrand == 1){//风
-        fourstarbook = "骑驴找马——让子弹飞", //
-        fourstarbookcontent="真正的革命是你真正能够按人的精神世界去表达我们精神上的感受，那个时候恐怕是真正能追上人的需求了。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-      
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骑驴找马——让子弹飞"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 2){//水
-        fourstarbook = "骑驴找马——让子弹飞", //
-        fourstarbookcontent="真正的革命是你真正能够按人的精神世界去表达我们精神上的感受，那个时候恐怕是真正能追上人的需求了。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骑驴找马——让子弹飞"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-      
-    }
-
-    if (point[3]>0 && point[2]>0 && num_negative == 1 && num_zero == 1 && point[3]==point[2])//喜水风，平均，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-        fourstarbook = "叫魂: 1768年中国妖术大恐慌", //
-        fourstarbookcontent="毫不奇怪，冤冤相报（这是“受困扰社会”中最为普遍的社会进攻方式）仍然是中国社会生活的一个显著特点。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-      
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "叫魂: 1768年中国妖术大恐慌"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "东京贫困女子", //
-        fourstarbookcontent="贫困会造就贫困，苦难会跨越世代持续传递，如果逃不出来，甚至会让人看见死亡。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "东京贫困女子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-
-    // 三类元素
-    if (point[0]>0 && point[1]>0 && point[2]>0 && num_zero == 1)//喜火-土-风
-    { bookrand = Math.ceil(Math.randon(0,1)*3)
-
-      if (bookrand==1){
-        fourstarbook = "人类群星闪耀时", //"喜火-土-风"
-        fourstarbookcontent="人生中最大的幸事，莫过于在富于创造力的壮年发现了自己的使命。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" //待定 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人类群星闪耀时"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand==2){
-        fourstarbook = "雕刻时光", //"喜火-土-风"
-        fourstarbookcontent="电影创作工作的实质是什么？一定程度上可以界定为雕刻时光。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" //待定 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "雕刻时光"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "白云之道", //"喜火-土-风"
-        fourstarbookcontent="白云之道简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "白云之道"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-    }
-
-    if (point[0]>0 && point[1]>0 && point[3]>0 && num_zero == 1)//喜火-土-水
-    { bookrand = Math.ceil(Math.randon(0,1)*4)
-      
-      if (bookrand == 1){
-        fourstarbook = "吃的美德: 餐桌上的哲学思考",//吃的美德-餐桌上的哲学思考
-        fourstarbookcontent="美德要求我们不做味觉欲望的奴隶。被自己胃口控制的人，永远不可能成为自己的主人。",  
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "吃的美德: 餐桌上的哲学思考"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-      if (bookrand == 2){
-        fourstarbook = "艺术中的黄金、珠宝和宝石",
-        fourstarbookcontent="红宝石在希腊语中被称作“燃烧的碳”，这种精小与稀有的宝石，因其外表和特征常常和火联系在一起。",  
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "艺术中的黄金、珠宝和宝石"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "神的食物", 
-        fourstarbookcontent="完全没有想象力就是野蛮；低等的想象力只是肉欲和怯懦；而高尚的想象力则如同上帝重又在地球上行走", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "神的食物"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 4){
-        fourstarbook = "偶然的创造",// 摩羯50% 巨蟹 30% 射手20%
-        fourstarbookcontent="偶然的创造简介",  
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" //土
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "偶然的创造"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }  
-    }
-
-    if (point[0]>0 && point[2]>0 && point[3]>0 && num_zero == 1)//喜火-风-水  土
-    { bookrand = Math.ceil(Math.randon(0,1)*4)
-      elementrand = Math.ceil(Math.randon(0,1)*2)
-
-      if (bookrand == 1){
-        fourstarbook = "西方的没落", // "喜火-风-水"
-        fourstarbookcontent="真正的信仰是彻底的沉默无言的。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" // 待定 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "西方的没落"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 1){ //火
-        fourstarbook = "纳尼亚传奇", //"喜火-风-水"
-        fourstarbookcontent="如果你整夜没睡，哭得再也哭不出眼泪——你就知道到头来，心境就会有一种平静。你觉得似乎再也不会出什么事了", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" // 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "纳尼亚传奇"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-      
-      if (bookrand == 2 && elementrand == 2){//水
-        fourstarbook = "纳尼亚传奇", //"喜火-风-水"
-        fourstarbookcontent="纳尼亚传奇简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" // 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "纳尼亚传奇"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 1){
-        fourstarbook = "所罗门王的指环", //"喜火-风-水"
-        fourstarbookcontent="所罗门王的指环介绍", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" // 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "所罗门王的指环"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 2){
-        fourstarbook = "所罗门王的指环", //"喜火-风-水"
-        fourstarbookcontent="所罗门王的指环介绍", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" // 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "所罗门王的指环"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-      if (bookrand == 4){
-        fourstarbook = "万物的签名", // "喜火-风-水" 巨蟹40% 射手30% 天秤30%
-        fourstarbookcontent="万物的签名介绍", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" // 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "万物的签名"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-    if (point[1]>0 && point[2]>0 && point[3]>0 && num_zero == 1)//喜土-风-水
-    { bookrand = Math.ceil(Math.random(0,1)*5)
-      elementrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-        fourstarbook = "金花的秘密", //"喜土-风-水"
-        fourstarbookcontent="只要我们还有所牵挂，就做不了自己的主，而只要做不了自己的主，就意味着还有某种比自我更强大的东西。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" //水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "金花的秘密"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "心流", //"喜土-风-水"
-        fourstarbookcontent = "体验过心流的人都知道，那份深沉的快乐是严格的自律、集中注意力换来的。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" //待定 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "心流"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-      if (bookrand == 3){
-        fourstarbook = "重力小丑", //"喜土-风-水"
-        fourstarbookcontent="“他作出决定，紧张期待，慈爱迎接，张开双臂欢迎了春的降生。一直站在母亲的产床旁，第一个轻蹭刚出生的春的小脸，那个人当然也是父亲。”", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" //待定 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "重力小丑"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-      if (bookrand == 4 && element == 1){
-        fourstarbook = "余命十年", //"喜土-风-水" 牛40% 蟹40% 双20%
-        fourstarbookcontent="余命十年简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" //土
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "余命十年"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        }) 
-      }
-
-      if (bookrand == 4 && element == 2){
-        fourstarbook = "余命十年", //"喜土-风-水"
-        fourstarbookcontent="余命十年简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" //水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "余命十年"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-      if (bookrand == 5){
-        fourstarbook = "北海鲸梦",//巨蟹60% 双子30% 金牛10%
-        fourstarbookcontent = "北海鲸梦简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "北海鲸梦"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-    }
-
-
-    // 无明显喜好
-    if (num_zero == 4 || (num_zero == 3 && num_negative == 1))//无倾向 zeros
-    { bookrand == Math.ceil(Math.random(0,1)*3)
-      //bookrand == 2
-      
-      if (bookrand == 1){
-        fourstarbook = "伊甸园",
-        fourstarbookcontent="为什么我们不得不按照所有其他人的准则行事？我们就是我们嘛。",  
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B7%B7%E5%90%88.png?sign=568d9599ec7e40c896f04cb07caaca9c&t=1677253681" // 混合书图
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "伊甸园"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "无法触碰的爱", 
-        fourstarbookcontent="在这里，人需要为最伟大的战役而战：从入侵意识的肿瘤中保存自己领地的战争。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B7%B7%E5%90%88.png?sign=568d9599ec7e40c896f04cb07caaca9c&t=1677253681"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "无法触碰的爱"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook: "外婆的道歉信",
-        fourstarbookcontent="对外婆来说，任何事情都不是非黑即白。故事既可以是完全真实的，同时也可以是彻底虚构的。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B7%B7%E5%90%88.png?sign=568d9599ec7e40c896f04cb07caaca9c&t=1677253681"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "外婆的道歉信"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
 
     var word = "你的四星正缘书"//您的四星正缘书
 
@@ -10554,17 +7112,27 @@ fireauthorsure:function(){
     }
 
     //小人进出
-    var ani_tps_c = wx.createAnimation({
-      delay: 2550, //2800
-      duration:600,
-    })
-    ani_tps_c.opacity(0.0).step()
+    // var ani_tps_c = wx.createAnimation({
+    //   delay: 2550, //2800
+    //   duration:600,
+    // })
+    // ani_tps_c.opacity(0.0).step()
 
-    var ani_tps = wx.createAnimation({
-      delay: 11900, //11400
-      duration: 600,
-    })
-    ani_tps.opacity(1.0).step()
+    // var ani_tps = wx.createAnimation({
+    //   delay: 11900, //11400
+    //   duration: 600,
+    // })
+    // ani_tps.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#ani_person_8",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},2550)
+  
+    setTimeout(()=>{
+      this.animate("#ani_person_10",[
+        {opacity:0.0},
+        {opacity:1.0}],600,)},11900)
 
 
 
@@ -10633,11 +7201,16 @@ fireauthorsure:function(){
     //ani_tmap.translate(-1250,0).step() //进入推书页
 
     // 当前的问题和选项消失
-    var ani_tqq7_c = wx.createAnimation({
-      delay: 1600, //600
-      duration: 600
-    });
-    ani_tqq7_c.opacity(0.0).step()
+    // var ani_tqq7_c = wx.createAnimation({
+    //   delay: 1600, //600
+    //   duration: 600
+    // });
+    // ani_tqq7_c.opacity(0.0).step()
+
+    setTimeout(()=>{
+      this.animate("#questionimpress",[
+        {opacity:1.0},
+        {opacity:0.0}],600,)},1600)
 
     var ani_tsj7_op_c=wx.createAnimation({ //ani_tsj7_op_
       delay: 950, //700
@@ -10784,9 +7357,9 @@ fireauthorsure:function(){
     this.setData({
       //ani_blur: ani_t0.export(),
       //ani_blurin: ani_t0in.export(),
-      ani_person_8: ani_tps_c.export(),
-      ani_person_10: ani_tps.export(),
-      ani_impression: ani_tqq7_c.export(),
+      // ani_person_8: ani_tps_c.export(),
+      // ani_person_10: ani_tps.export(),
+      // ani_impression: ani_tqq7_c.export(),
       ani_likestar2: ani_tsj7_op_c.export(),
       ani_whateverstar2: ani_tsj_op77_c.export(),
       ani_dislikestar2: ani_tsj_op777_c.export(),
@@ -10821,125 +7394,23 @@ fireauthorsure:function(){
     }
     console.log(num_negative)
 
-    // 单元素 case：火
-    if (point[0]>0 && num_positive == 1)//喜火，有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand==1){
-        fourstarbook = "酝酿之道: 当漫画遇见葡萄酒", 
-        fourstarbookcontent="酒液滋滋作响，泡沫浮出，酵母工作，酒沫满溢。这是全年中葡萄酒最像一头活物的时刻。它精力充沛，汁液饱满，酒窖中充满了它的情绪。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"//火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "酝酿之道: 当漫画遇见葡萄酒"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data.name,//firestarbook
-            fourbookcontent: res.result.data.picture,//firebookcontent
-            fourstarintro: res.result.data.introduce,
-            bookpic: res.result.data.element
-          })
-        })
-      }
-
-      if (bookrand==2){
-        fourstarbook = "先知·沙与沫", 
-        fourstarbookcontent="学者与诗人之间相隔着一片土地，学者走过去便成为大智。诗人走过来便成为先知。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "先知·沙与沫"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
     
-    // 单元素 case：土 有无抗拒
-    if (point[1]>0 && num_positive == 1)
-    { bookrand = Math.ceil(Math.random(0,1)*3)
-
-      if (bookrand == 1){
-        fourstarbook = "杂草的故事", //赳赳说千字文
-        fourstarbookcontent="有些植物被贬为杂草，只是因为我们在道德层面不赞许它们的行为。",//fourstarintro="书籍的100字介绍",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{
-            bookname: "杂草的故事"
-          }
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].name,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
+    wx.cloud.callFunction({
+      name: "getResultBook",
+      data: {
+        point: point,
+        num_zero: num_zero,
+        num_negative: num_negative,
+        num_positive: num_positive
       }
-
-      if (bookrand == 2){
-        fourstarbook = "乞力马扎罗的雪",
-        fourstarbookcontent="就在前方，他看到的，是如整个世界一般的广阔，宏大、高耸，在阳光下闪耀着不可思议的洁白光芒，那是乞力马扎罗的方形雪山。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "乞力马扎罗的雪"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "南北极", 
-        fourstarbookcontent="简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "南北极"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-    }
-
-
-    // 单元素 case: 风
-    if (point[2]>0 && num_zero == 3)//喜风，无抗拒
-    { fourstarbook = "赳赳说千字文", 
-      fourstarbookcontent="一个人想要做到称心如意，有两种方式，一种方式是提高你的行动力。另外一种是降低你的欲望和目标。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
+    }).then(res=>{
+      console.log("获取结果书籍成功,", res.result)
+      result_bookname = res.result.fourstarbook
+      // console.log("结果书籍是1：", result_bookname)
+      
       wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "赳赳说千字文"}
+        name: "queryresultbook",
+        data:{bookname: result_bookname}
       }).then(res=>{
         console.log(res.result.data)
         this.setData({
@@ -10949,1832 +7420,9 @@ fireauthorsure:function(){
           bookpic: res.result.data[0].bookpic
         })
       })
-    }
+    })
 
-    if (point[2]>0 && num_positive == 1 && num_negative > 0)//喜风，有抗拒
-    { fourstarbook = "幻灭三部曲", 
-      fourstarbookcontent="死亡在虚无的永恒中散布了一小撮尘土便越过主宰死亡的时光。任何恢复青春的泉水此时也不能与朴实的怀念相比拟。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
 
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "幻灭三部曲"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    // 单元素 case:水
-    if (point[3]>0 && num_positive == 1)//喜水，有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*4)
-      console.log(bookrand);
-
-      if (bookrand == 1){
-      fourstarbook = "新月集", //"喜水，无抗拒"
-      fourstarbookcontent="他没有什么事情急着要做，他没有哪条街一定要走，他没有什么地方一定要去，他没有什么时间一定要回家。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "新月集"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){
-      fourstarbook = "心: 和盛稻夫的一生嘱托", //心: 和盛稻夫的寄托
-      fourstarbookcontent="全身心投入工作，精益求精，从中获得乐趣，就能抑制怠惰之心。同时，聚精会神，专注于工作，私心杂念自然就会消退。这是最有效的修行。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "心: 和盛稻夫的一生嘱托"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-    if (bookrand == 3){//4
-      fourstarbook = "次第花开", 
-      fourstarbookcontent="你永远得不到你想要的，因为没有什么是你真正想要的。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "次第花开"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (bookrand == 4){ //6
-      fourstarbook = "蜘蛛女之吻", 
-      fourstarbookcontent="一个不想获得他人东西的人也是一个...小气鬼，因为他也不喜欢给他人任何东西。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "蜘蛛女之吻"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-  }
-    
-    // 双元素情况  case: 火土
-    if (point[0]>0 && point[1]>0 && num_positive == 2 && point[0]>point[1])  //火土偏火  有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*4)
-      
-      if (bookrand == 1){
-        fourstarbook = "德米安", //狮60% 牛40%
-        fourstarbookcontent="可是我们是由世界的整个存在所组成，每一个人都是，正如我们背负了进化的家谱，一直可以追溯到鱼类，以及更多更久远之前，在我们的心灵中，也同样拥有所有曾居住过人类心灵的一切。",//德米安简介
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "德米安"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-
-      if (bookrand == 2){
-        fourstarbook = "哲学人生问答", //射手60% 金牛40%
-        fourstarbookcontent="哲学人生问答简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "哲学人生问答"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "空中有苍鹰", //白羊80% 处女20%
-        fourstarbookcontent="空中有苍鹰简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "空中有苍鹰"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      } 
-
-
-      if (bookrand == 4){
-        fourstarbook = "人生拼图版", //射手55% 处女45%
-        fourstarbookcontent="",//人生拼图版简介
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人生拼图版"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-    }
-
-    if (point[0]>0 && point[1]>0 && num_zero == 2 && point[0]<point[1])//火土偏土 无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand == 1){
-        fourstarbook = "花衣魔笛手", // 摩羯70% 狮子30% 
-        fourstarbookcontent="花衣魔笛手简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" // 书图连接 网页版
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "花衣魔笛手"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "让感受自由", // 处女70% 狮子30% （禁狮子 处女）
-        fourstarbookcontent="让感受自由简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" // 书图连接 网页版
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "让感受自由"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-    }
-
-
-    if (point[0]>0 && point[1]>0 && num_negative == 1 && num_zero == 1 && point[0]<point[1])  //火土偏土  有抗拒 //num_positive == 2
-    { fourstarbook = "下沉年代", // 金牛65% 射手35% （禁狮子 处女）
-      fourstarbookcontent="一旦道路成型，要想换一条路走，就得耗费巨大的精神和力气。因为你已经接受了那一套思维模式，它会一代又一代地传递下去。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" // 书图连接 网页版
-      
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "下沉年代"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-
-    if (point[0]>0 && point[1]>0 && num_zero == 2 && point[0]==point[1])//喜火土，平均，无抗拒
-    { bookrand = Math.ceil(Math.ceil(0,1)*3)
-
-      if (bookrand == 1){
-        fourstarbook = "德米安"
-        fourstarbookcontent = "可是我们是由世界的整个存在所组成，每一个人都是，正如我们背负了进化的家谱，一直可以追溯到鱼类，以及更多更久远之前，在我们的心灵中，也同样拥有所有曾居住过人类心灵的一切。"
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "德米安"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-
-      if (bookrand == 2){
-        fourstarbook = "哲学人生问答"
-        fourstarbookcontent = "哲学人生问答简介"
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "哲学人生问答"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "人生拼图版"
-        fourstarbookcontent = ""
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人生拼图版"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-    }
-
-    if (point[0]>0 && point[1]>0 && num_negative == 1 && num_zero == 1 && point[0]==point[1])//喜火土，平均，有抗拒  （平均可以达到 6.5: 3.5）
-    { 
-      fourstarbook = "下沉年代", //
-      fourstarbookcontent="一旦道路成型，要想换一条路走，就得耗费巨大的精神和力气。因为你已经接受了那一套思维模式，它会一代又一代地传递下去。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-      
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "下沉年代"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    // 双元素情况  case: 火风
-    if (point[0]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[0]>point[2])//喜火风，偏火，有抗拒 num_positive == 2
-    { fourstarbook = "歌德谈话录", //喜火风，偏火，有无抗拒 狮子55% 双子45%（禁摩羯 水瓶）
-      fourstarbookcontent="诗人的本领，正在于他有足够的智慧，能从惯见的平凡事物中见出引人入胜的一个侧面。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"//链接
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "歌德谈话录"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[0]>0 && point[2]>0 && num_zero == 2 && point[0]>point[2])//喜火风，偏火，无抗拒
-    {
-      fourstarbook = "不受掌控", //喜火风，偏火，无抗拒 射手60% 双子40%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"//链接
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "不受掌控"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[0]>0 && point[2]>0 && num_positive == 2 && point[0]<point[2])//喜火风，偏风，有无抗拒
-    {
-      fourstarbook = "何故为敌", //喜火风，偏风，无抗拒 射手40% 水瓶60%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"//链接
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "何故为敌"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-    
-    // if (point[0]>0 && point[2]>0 && num_zero == 1  && num_negative == 1 && point[0]<point[2])//喜火风，偏风，有抗拒
-    // {}
-
-    //
-    if (point[0]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[0]==point[2])//喜火风，平均，有抗拒
-    {
-      fourstarbook = "歌德谈话录", //
-      fourstarbookcontent="诗人的本领，正在于他有足够的智慧，能从惯见的平凡事物中见出引人入胜的一个侧面。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "歌德谈话录"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[0]>0 && point[2]>0 && num_zero == 2 && point[0]==point[2])//喜火风，平均，无抗拒
-    {
-      bookrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand == 1){
-      fourstarbook = "不受掌控", //喜火风，偏火，无抗拒 射手60% 双子40%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "不受掌控"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){
-      fourstarbook = "何故为敌", //喜火风，偏风，无抗拒 射手40% 水瓶60%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "何故为敌"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-      
-    }
-
-
-    // 双元素情况  case: 火水 // [bookrand is not defined]
-    if (point[0]>0 && point[3]>0 && num_positive == 2 && point[0]>point[3]) // 火水偏火 有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){//bandrand
-      fourstarbook = "安徒生自传: 我的童话人生", //喜火风，偏火，无抗拒  鱼40% 羊40% 狮20%
-      fourstarbookcontent="国内还有一些人早就期望着从我这里了解点什么，他们并未想到，即使幕布拉开了，也不会立即看到戏，或者一眼就把一出戏看完。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "安徒生自传: 我的童话人生"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-    if (bookrand== 2){//bandrand
-      fourstarbook = "上帝与黄金", //射手50% 天蝎50% 无抗拒
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "上帝与黄金"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic1
-        })
-      })
-    }
-    }
-
-    if (point[0]>0 && point[3]>0 && num_positive == 2 && point[0]<point[3])
-    {//火水偏水 有无抗拒
-      bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-      fourstarbook = "昨日的世界: 一个欧洲人的回忆", //巨蟹60%  狮子30% 射手10%
-      fourstarbookcontent="命运总是有办法找到它需要的那个人，要他完成那秘密的使命，哪怕这个人自己想躲起来也无济于事。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359",
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "昨日的世界: 一个欧洲人的回忆"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){
-      fourstarbook = "上帝与黄金", //巨蟹60%  狮子30% 射手10%
-      fourstarbookcontent="",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359",
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "上帝与黄金"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic2
-        })
-      })
-      }     
-    }
-
-
-    if (point[0]>0 && point[3]>0 && num_positive == 2 && point[0]==point[3])//喜火水，平均，有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*3)
-      elementrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand==1){
-        fourstarbook = "安徒生自传：我的童话人生", //
-        fourstarbookcontent="国内还有一些人早就期望着从我这里了解点什么，他们并未想到，即使幕布拉开了，也不会立即看到戏，或者一眼就把一出戏看完。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "安徒生自传: 我的童话人生"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand==2){
-        fourstarbook = "昨日的世界: 一个欧洲人的回忆", //
-        fourstarbookcontent="命运总是有办法找到它需要的那个人，要他完成那秘密的使命，哪怕这个人自己想躲起来也无济于事。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "昨日的世界: 一个欧洲人的回忆"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 1){
-        fourstarbook = "上帝与黄金", //
-        fourstarbookcontent="",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "上帝与黄金"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 2){
-        fourstarbook = "上帝与黄金", //
-        fourstarbookcontent="",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359",
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "上帝与黄金"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-    }
-
-
-    // 双元素情况  case :土风
-    if (point[2]>0 && point[1]>0 && num_zero == 1 && num_negative == 1 && point[2]>point[1])//喜风土，偏风，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand==1){
-        fourstarbook = "呼兰河传", // 双子65% 金牛35%（禁 天蝎 射手）
-        fourstarbookcontent="天空是发灰的，云彩也失了形状，好像被洗过砚台的水盆，有深有浅，混洞洞的。这样的云彩，有的带来了雨点，有时带来了细雪。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "呼兰河传"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        }) 
-      }
-
-      if (bookrand==2){
-        fourstarbook = "判断力批判",  //双子60% 金牛40%（禁 天秤）
-        fourstarbookcontent="要说一个对象是美的并证明我有品味，这取决于我怎样评价自己心中的这个表相，而不是取决于我在哪方面依赖于该对象的实存。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "判断力批判"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-    if (point[2]>0 && point[1]>0 && num_zero == 2 && point[2]>point[1])//喜风土，偏风，无抗拒
-    {
-      fourstarbook = "狂人日记", //天秤60% 处女 40%（风土）
-      fourstarbookcontent="凡是愚弱的国民，即使体格如何健全，如何茁壮，也只能做毫无意义的示众材料和看客，病死多少是不必以为不幸的。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780",
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "狂人日记"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[2]>0 && point[1]>0 && num_zero == 1 && num_negative==1 && point[2]<point[1])//喜风土，偏土，有抗拒
-    { fourstarbook = "在深渊里仰望星空: 魏晋名士的卑微与骄傲", // 处女70% 天秤30% （禁 白羊 双鱼）
-      fourstarbookcontent="人之所以为人, 并不因为完美, 恰恰是因为那些无法用理智约束的部分, 无法约束, 就无法预测到它的走向。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623",
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "在深渊里仰望星空: 魏晋名士的卑微与骄傲"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[2]>0 && point[1]>0 && num_zero == 2 && point[2]<point[1])//喜风土，偏土，无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-      fourstarbook = "阿赞德人的巫术，神谕和魔法", // 处60% 牛30% 秤10%
-      fourstarbookcontent="他们就某个人是否是巫师而请教毒药神谕，神谕说他是巫师，病人的亲属就会给这个人一只鸡翅膀，如果这个人会给鸡翅膀喷水，那么这个人就是巫师。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "阿赞德人的巫术，神谕和魔法"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){
-      fourstarbook = "这世上的偶然", // 摩80% 双20%
-      fourstarbookcontent="观察是对他人抱有关心，仔细观看和聆听其世界的行为，同时也使人重新审视自身。观察，说到底是观察包括自己在内的世界（参与观察）。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "这世上的偶然"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-    }
-
-    if (point[1]>0 && point[2]>0 && num_zero == 2 && point[1]==point[2])//土风平均，无抗拒
-    {
-      fourstarbook = "狂人日记", 
-      fourstarbookcontent="凡是愚弱的国民，即使体格如何健全，如何茁壮，也只能做毫无意义的示众材料和看客，病死多少是不必以为不幸的。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "狂人日记"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[1]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[1]== point[2])//土风平均，有抗拒
-    { bookrand =  Math.ceil(Math.random(0,1)*2)
-      if (bookrand==1){
-        fourstarbook = "呼兰河传", 
-        fourstarbookcontent="天空是发灰的，云彩也失了形状，好像被洗过砚台的水盆，有深有浅，混洞洞的。这样的云彩，有的带来了雨点，有时带来了细雪。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "呼兰河传"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand==2){
-        fourstarbook = "判断力批判", 
-        fourstarbookcontent="要说一个对象是美的并证明我有品味，这取决于我怎样评价自己心中的这个表相，而不是取决于我在哪方面依赖于该对象的实存。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "判断力批判"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      } //bopk
-    }
-
-    // 双元素情况：土水
-    if (point[3]>0 && point[1]>0 && num_zero == 2 && point[3]>point[1])//喜水土，偏水，无抗拒
-    { fourstarbook = "骆驼祥子", // 蟹60% 摩40%
-      fourstarbookcontent="人间的真话本来不多，一个女子的脸红胜过一大片话。", 
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"//小书人网页链接
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "骆驼祥子"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-    }
-
-    if (point[3]>0 && point[1]>0 && num_zero == 1 && num_negative == 1 && point[3]>point[1])//喜水土，偏水，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*3)
-      if (bookrand == 1){
-        fourstarbook = "背德者", // 巨蟹60% 金牛30% 天蝎10%（禁 射手）
-        fourstarbookcontent=" 我不喜欢往后看，我把过去远远抛开，就像小鸟为了高飞必须离开它的影子。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "背德者"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "人子", // 天蝎65% 摩羯35%（禁 金牛 巨蟹）
-        fourstarbookcontent="莫非这就是乌托邦的真谛？浪子归家，家不在的乌托邦，那些渴望回到家乡的人或被剥夺土地、被驱逐、被隔离的流放者的乌托邦。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      // 【细雪是直接放在水土平均里，还是也都放在偏土/偏水里？都放。】
-      if (bookrand == 3){
-        fourstarbook = "细雪",  // 金牛50% 双鱼30% 巨蟹20%（禁 射手 狮子） 用水元素
-        fourstarbookcontent="悲痛固然悲痛，不过那是超越个人关系、惋惜美好事物离开尘世的一种悲痛，是一种伴有音乐妙味的悲痛。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "细雪"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-    }
-
-    if (point[3]>0 && point[1]>0 && num_zero == 1 && num_negative==1 && point[3]<point[1])//喜水土，偏土，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)//3
-      
-      if (bookrand == 1){
-      fourstarbook = "斯通纳", //处女85% 巨蟹15%（禁 射手 水瓶）
-      fourstarbookcontent="他有过一份憧憬，一直锁在内心某个地方的憧憬，就像一个见不得人的秘密，这个憧憬表面上是一个地方，其实就是他自己。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "斯通纳"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic
-        })
-      })
-      }
-
-      if (bookrand == 2){//3
-      fourstarbook = "细雪",  // 金牛50% 双鱼30% 巨蟹20%（禁 射手 狮子）
-      fourstarbookcontent="他有过一份憧憬，一直锁在内心某个地方的憧憬，就像一个见不得人的秘密，这个憧憬表面上是一个地方，其实就是他自己。",
-      bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-      wx.cloud.callFunction({
-        name: "queryResultBook",
-        data:{bookname: "细雪"}
-      }).then(res=>{
-        console.log(res.result.data)
-        this.setData({
-          fourstarbook: res.result.data[0].bookname,
-          fourbookcontent: res.result.data[0].picture,
-          fourstarintro: res.result.data[0].introduce,
-          bookpic: res.result.data[0].bookpic1
-        })
-      })
-      }
-    }
-
-    if (point[3]>0 && point[1]>0 && num_zero == 2 && point[3]<point[1])//喜水土，偏土，无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*1)//3
-      
-      if (bookrand == 1){
-        fourstarbook = "西方的智慧", // 处55% 蟹45% 
-        fourstarbookcontent="就像一个人不可能设想一条没有下坡路的上坡路一样，我们也不可能在不理解恶的情况下去理解善的概念。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "西方的智慧"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-    if (point[1]>0 && point[3]>0 && num_zero == 2 && point[1]==point[3])//土水平均，无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)* 2) // X
-
-      if (bookrand == 1) {
-        fourstarbook = "西方的智慧", 
-        fourstarbookcontent="就像一个人不可能设想一条没有下坡路的上坡路一样，我们也不可能在不理解恶的情况下去理解善的概念。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "西方的智慧"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2) {
-        fourstarbook = "骆驼祥子", 
-        fourstarbookcontent="人间的真话本来不多，一个女子的脸红胜过一大片话。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骆驼祥子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-    }
-
-    if (point[1]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[1]== point[2])//土水平均，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)* 2),
-      elementrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand == 1){
-        fourstarbook = "人子", 
-        fourstarbookcontent="莫非这就是乌托邦的真谛？浪子归家，家不在的乌托邦，那些渴望回到家乡的人或被剥夺土地、被驱逐、被隔离的流放者的乌托邦。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"//[平均时的bookpic怎么出现？]
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 1){//土
-        fourstarbook = "细雪", 
-        fourstarbookcontent="悲痛固然悲痛，不过那是超越个人关系、惋惜美好事物离开尘世的一种悲痛，是一种伴有音乐妙味的悲痛。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "细雪"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 2){//水
-        fourstarbook = "细雪", 
-        fourstarbookcontent="悲痛固然悲痛，不过那是超越个人关系、惋惜美好事物离开尘世的一种悲痛，是一种伴有音乐妙味的悲痛。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "细雪"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-    }
-
-    // 双元素情况  case: 水风
-    if (point[3]>0 && point[2]>0 && num_zero == 2 && point[3]>point[2])//喜水风，偏水，无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*4)
-
-      if (bookrand == 1){
-        fourstarbook = "园圃之乐", // 蟹65% 双35%
-        fourstarbookcontent="一棵树说：我的力量是信念我深信上帝在我心中，出于这样的信念我生活着。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "园圃之乐"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "头上的星空和心中的道德法则",  // 鱼60% 瓶40%  前世今生：生命轮回的启示 // 天蝎80% 天秤20%
-        fourstarbookcontent="头上的星空和心中的道德法则简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "头上的星空和心中的道德法则"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "大唐西域记",  // 蝎50% 秤50%
-        fourstarbookcontent="幼日王母亲说：“国家兴随时变化，存在灭亡各有运数。若对万物荣辱等同视之，得失就会记；若被荣辱左右你心，则毁誉相继产生。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "在深渊里仰望星空: 魏晋名士的卑微与骄傲"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-      if (bookrand == 4){
-        fourstarbook = "骑驴找马——让子弹飞",  // 蝎50% 秤50%
-        fourstarbookcontent="真正的革命是你真正能够按人的精神世界去表达我们精神上的感受，那个时候恐怕是真正能追上人的需求了。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骑驴找马——让子弹飞"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-    }
-
-    if (point[3]>0 && point[2]>0 && num_zero == 1 && num_negative == 1 && point[3]>point[2])//喜水风，偏水，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-        fourstarbook = "叫魂: 1768年中国妖术大恐慌", // 巨蟹55% 双子45%（禁 水瓶 摩羯）
-        fourstarbookcontent = "毫不奇怪，冤冤相报（这是“受困扰社会”中最为普遍的社会进攻方式）仍然是中国社会生活的一个显著特点。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"// 图片地址
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "叫魂: 1768年中国妖术大恐慌"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "东京贫困女子", // 天蝎60% 天秤40%（禁 双子 金牛）
-        fourstarbookcontent="贫困会造就贫困，苦难会跨越世代持续传递，如果逃不出来，甚至会让人看见死亡。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "东京贫困女子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-    }
-
-    // if (point[3]>0 && point[2]>0 && num_zero == 1 && num_negative==1 && point[3]<point[2])//喜水风，偏风，有抗拒
-    // { 
-
-    // }
-
-    if (point[3]>0 && point[2]>0 && num_positive == 2 && point[3]<point[2])//喜水风，偏风，有无抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand==1){ //bookrang
-        fourstarbook = "大唐西域记", // 蝎50% 秤50%
-        fourstarbookcontent="幼日王母亲说：“国家兴随时变化，存在灭亡各有运数。若对万物荣辱等同视之，得失就会记；若被荣辱左右你心，则毁誉相继产生。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "大唐西域记"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand==2){
-        fourstarbook = "骑驴找马——让子弹飞", // 蝎50% 秤50%
-        fourstarbookcontent="真正的革命是你真正能够按人的精神世界去表达我们精神上的感受，那个时候恐怕是真正能追上人的需求了。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骑驴找马——让子弹飞"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-    }
-
-    if (point[3]>0 && point[2]>0 && num_zero == 2 && point[3]==point[2])//喜水风，平均，无抗拒 【前世今生这本书要不要放入？不要。】
-    { bookrand = Math.ceil(Math.random(0,1)*3),//2
-      elementrand = Math.ceil(Math.random(0,1)*2)
-
-      if (bookrand == 1){
-        fourstarbook = "园圃之乐", //
-        fourstarbookcontent="一棵树说：我的力量是信念我深信上帝在我心中，出于这样的信念我生活着。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-      
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "园圃之乐"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 1){//风
-        fourstarbook = "大唐西域记", //
-        fourstarbookcontent="幼日王母亲说：“国家兴随时变化，存在灭亡各有运数。若对万物荣辱等同视之，得失就会记；若被荣辱左右你心，则毁誉相继产生。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "大唐西域记"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 2){//水
-        fourstarbook = "大唐西域记", //
-        fourstarbookcontent="幼日王母亲说：“国家兴随时变化，存在灭亡各有运数。若对万物荣辱等同视之，得失就会记；若被荣辱左右你心，则毁誉相继产生。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "大唐西域记"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-      
-
-      if (bookrand == 3 && elementrand == 1){//风
-        fourstarbook = "骑驴找马——让子弹飞", //
-        fourstarbookcontent="真正的革命是你真正能够按人的精神世界去表达我们精神上的感受，那个时候恐怕是真正能追上人的需求了。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E9%A3%8E.png?sign=ba21545bbe8019993417ec7da82ddc6d&t=1677250780"
-      
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骑驴找马——让子弹飞"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 2){//水
-        fourstarbook = "骑驴找马——让子弹飞", //
-        fourstarbookcontent="真正的革命是你真正能够按人的精神世界去表达我们精神上的感受，那个时候恐怕是真正能追上人的需求了。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "骑驴找马——让子弹飞"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      } 
-    }
-
-    if (point[3]>0 && point[2]>0 && num_negative == 1 && num_zero == 1 && point[3]==point[2])//喜水风，平均，有抗拒
-    { bookrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-        fourstarbook = "叫魂: 1768年中国妖术大恐慌", //
-        fourstarbookcontent="毫不奇怪，冤冤相报（这是“受困扰社会”中最为普遍的社会进攻方式）仍然是中国社会生活的一个显著特点。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-      
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "叫魂: 1768年中国妖术大恐慌"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "东京贫困女子", //
-        fourstarbookcontent="贫困会造就贫困，苦难会跨越世代持续传递，如果逃不出来，甚至会让人看见死亡。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "东京贫困女子"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-
-    // 三类元素
-    if (point[0]>0 && point[1]>0 && point[2]>0 && num_zero == 1)//喜火-土-风
-    { bookrand = Math.ceil(Math.randon(0,1)*3)
-
-      if (bookrand==1){
-        fourstarbook = "人类群星闪耀时", //"喜火-土-风"
-        fourstarbookcontent="人生中最大的幸事，莫过于在富于创造力的壮年发现了自己的使命。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" //待定 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "人类群星闪耀时"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand==2){
-        fourstarbook = "雕刻时光", //"喜火-土-风"
-        fourstarbookcontent="电影创作工作的实质是什么？一定程度上可以界定为雕刻时光。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" //待定 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "雕刻时光"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "白云之道", //"喜火-土-风"
-        fourstarbookcontent="白云之道简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "白云之道"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }    
-    }
-
-    if (point[0]>0 && point[1]>0 && point[3]>0 && num_zero == 1)//喜火-土-水
-    { bookrand = Math.ceil(Math.randon(0,1)*4)
-      
-      if (bookrand == 1){
-        fourstarbook = "吃的美德: 餐桌上的哲学思考",//吃的美德-餐桌上的哲学思考
-        fourstarbookcontent="美德要求我们不做味觉欲望的奴隶。被自己胃口控制的人，永远不可能成为自己的主人。",  
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "吃的美德: 餐桌上的哲学思考"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-      if (bookrand == 2){
-        fourstarbook = "艺术中的黄金、珠宝和宝石",
-        fourstarbookcontent="红宝石在希腊语中被称作“燃烧的碳”，这种精小与稀有的宝石，因其外表和特征常常和火联系在一起。",  
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "艺术中的黄金、珠宝和宝石"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook = "神的食物", 
-        fourstarbookcontent="完全没有想象力就是野蛮；低等的想象力只是肉欲和怯懦；而高尚的想象力则如同上帝重又在地球上行走", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896"
-        
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "神的食物"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 4){
-        fourstarbook = "偶然的创造",// 摩羯50% 巨蟹 30% 射手20%
-        fourstarbookcontent="偶然的创造简介",  
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" //土
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "偶然的创造"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }  
-    }
-
-    if (point[0]>0 && point[2]>0 && point[3]>0 && num_zero == 1)//喜火-风-水  土
-    { bookrand = Math.ceil(Math.randon(0,1)*4)
-      elementrand = Math.ceil(Math.randon(0,1)*2)
-
-      if (bookrand == 1){
-        fourstarbook = "西方的没落", // "喜火-风-水"
-        fourstarbookcontent="真正的信仰是彻底的沉默无言的。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" // 待定 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "西方的没落"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2 && elementrand == 1){ //火
-        fourstarbook = "纳尼亚传奇", //"喜火-风-水"
-        fourstarbookcontent="如果你整夜没睡，哭得再也哭不出眼泪——你就知道到头来，心境就会有一种平静。你觉得似乎再也不会出什么事了", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" // 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "纳尼亚传奇"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-      
-      if (bookrand == 2 && elementrand == 2){//水
-        fourstarbook = "纳尼亚传奇", //"喜火-风-水"
-        fourstarbookcontent="纳尼亚传奇简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" // 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "纳尼亚传奇"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 1){
-        fourstarbook = "所罗门王的指环", //"喜火-风-水"
-        fourstarbookcontent="所罗门王的指环介绍", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E7%81%AB.png?sign=378ae551248b2e6c2af7c0dcb108104e&t=1674821896" // 火
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "所罗门王的指环"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        })
-      }
-
-      if (bookrand == 3 && elementrand == 2){
-        fourstarbook = "所罗门王的指环", //"喜火-风-水"
-        fourstarbookcontent="所罗门王的指环介绍", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" // 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "所罗门王的指环"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-      if (bookrand == 4){
-        fourstarbook = "万物的签名", // "喜火-风-水" 巨蟹40% 射手30% 天秤30%
-        fourstarbookcontent="万物的签名介绍", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" // 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "万物的签名"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-    if (point[1]>0 && point[2]>0 && point[3]>0 && num_zero == 1)//喜土-风-水
-    { bookrand = Math.ceil(Math.random(0,1)*5)
-      elementrand = Math.ceil(Math.random(0,1)*2)
-      
-      if (bookrand == 1){
-        fourstarbook = "金花的秘密", //"喜土-风-水"
-        fourstarbookcontent="只要我们还有所牵挂，就做不了自己的主，而只要做不了自己的主，就意味着还有某种比自我更强大的东西。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" //水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "金花的秘密"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "心流", //"喜土-风-水"
-        fourstarbookcontent = "体验过心流的人都知道，那份深沉的快乐是严格的自律、集中注意力换来的。",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" //待定 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "心流"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-      if (bookrand == 3){
-        fourstarbook = "重力小丑", //"喜土-风-水"
-        fourstarbookcontent="“他作出决定，紧张期待，慈爱迎接，张开双臂欢迎了春的降生。一直站在母亲的产床旁，第一个轻蹭刚出生的春的小脸，那个人当然也是父亲。”", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" //待定 水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "重力小丑"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-      
-      if (bookrand == 4 && element == 1){
-        fourstarbook = "余命十年", //"喜土-风-水" 牛40% 蟹40% 双20%
-        fourstarbookcontent="余命十年简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E5%9C%9F.png?sign=871a15b4e4abe3276aaf9bcb9fdbdb31&t=1677249623" //土
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "余命十年"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic1
-          })
-        }) 
-      }
-
-      if (bookrand == 4 && element == 2){
-        fourstarbook = "余命十年", //"喜土-风-水"
-        fourstarbookcontent="余命十年简介", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359" //水
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "余命十年"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic2
-          })
-        })
-      }
-
-      if (bookrand == 5){
-        fourstarbook = "北海鲸梦",//巨蟹60% 双子30% 金牛10%
-        fourstarbookcontent = "北海鲸梦简介",
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=0ade31165e9664d87fc46bef35620d70&t=1677251359"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "北海鲸梦"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
-
-
-    // 无明显喜好
-    if (num_zero == 4 || (num_zero == 3 && num_negative == 1))//无倾向 zeros
-    { bookrand == Math.ceil(Math.random(0,1)*3)
-      
-      if (bookrand == 1){
-        fourstarbook = "伊甸园",
-        fourstarbookcontent="为什么我们不得不按照所有其他人的准则行事？我们就是我们嘛。",  
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B7%B7%E5%90%88.png?sign=568d9599ec7e40c896f04cb07caaca9c&t=1677253681" // 混合书图
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "伊甸园"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 2){
-        fourstarbook = "无法触碰的爱", 
-        fourstarbookcontent="在这里，人需要为最伟大的战役而战：从入侵意识的肿瘤中保存自己领地的战争。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B7%B7%E5%90%88.png?sign=568d9599ec7e40c896f04cb07caaca9c&t=1677253681"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "无法触碰的爱"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-
-      if (bookrand == 3){
-        fourstarbook: "外婆的道歉信",
-        fourstarbookcontent="对外婆来说，任何事情都不是非黑即白。故事既可以是完全真实的，同时也可以是彻底虚构的。", 
-        bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B7%B7%E5%90%88.png?sign=568d9599ec7e40c896f04cb07caaca9c&t=1677253681"
-
-        wx.cloud.callFunction({
-          name: "queryResultBook",
-          data:{bookname: "外婆的道歉信"}
-        }).then(res=>{
-          console.log(res.result.data)
-          this.setData({
-            fourstarbook: res.result.data[0].bookname,
-            fourbookcontent: res.result.data[0].picture,
-            fourstarintro: res.result.data[0].introduce,
-            bookpic: res.result.data[0].bookpic
-          })
-        })
-      }
-    }
 
     var word = "你的四星正缘书"//您的四星正缘书
 
@@ -12930,11 +7578,11 @@ fireauthorsure:function(){
     
     // 小人出入
     setTimeout(()=>{
-      this.animate("#person10",[
+      this.animate("#ani_person_10",[
         {opacity:1.0}, {opacity:0.0},],600,)},2550)
     
     setTimeout(()=>{
-      this.animate("#person11",[
+      this.animate("#ani_person_11",[
         {opacity:0.0}, {opacity:1.0},],600,)},5650)
 
 
@@ -13243,6 +7891,7 @@ fireauthorsure:function(){
     num_positive = 0;
     num_zero = 0;
     num_negative = 0;
+    result_bookname = "";
 
 
     checked1 = true
@@ -13649,7 +8298,7 @@ fireauthorsure:function(){
     const self = this
     wx.loadFontFace({
       family: this.data.fontFamily,
-      source: 'url("https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E5%85%B6%E4%BB%96/SourceHanSerifCN-SemiBold.otf?sign=70c40a6bc2d15b471bbf7e56272efdf1&t=1684293584")',
+      source: 'url("https://6b65-kelpcloudenvironment-3bb91f1ee75-1317303536.tcb.qcloud.la/Hbimages/%E5%85%B6%E4%BB%96/SourceHanSerifCN-VF-subset.ttf?sign=5c22ee946d453efff5ddc234f410281f&t=1697102378")',
       //https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E5%85%B6%E4%BB%96/SourceHanSerifCN-VF-subset.ttf?sign=af0ca8cdc498f63d95cd4d127f578920&t=1671188596
       //https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/SourceHanSerifCN-VF-subset.ttf?sign=7dca92fd37e50adc25cb9a659a59281a&t=1669884925
       //https://spkf-zsxn-prod.s3.cn-north-1.amazonaws.com.cn/pic/livecenter/kaiti.ttf"  

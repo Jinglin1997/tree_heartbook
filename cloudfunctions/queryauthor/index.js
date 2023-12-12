@@ -1,6 +1,7 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
+cloud.init({ env: "kelpcloudenvironment-3bb91f1ee75"})
+// cloud.init({env:"kelptree-5g1kfwin66f6d1b0"})
 const db = cloud.database()
 
 // 云函数入口函数

@@ -55,5 +55,6 @@
       ]
     }
   },
-  "projectname": "tree_heartbook"
+  "projectname": "tree_heartbook",
+  "libVersion": "3.0.1"
 }
