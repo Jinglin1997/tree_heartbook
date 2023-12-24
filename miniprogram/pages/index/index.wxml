@@ -1,6 +1,11 @@
 <!--index.wxml-->
 <view class="main">
 
+<!-- 透明底动画调试 -->
+<!-- <view class = "test_touming_gif">
+<image src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/透明底test.gif"></image>
+</view> -->
+
 <!--数据库调试-->
 
 <!--<button class = "querydata" bindtap="queryData">查询数据库</button>-->
@@ -82,7 +87,7 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 <!--<image class = "meteor"  animation= "{{ani_meteor}}" mode = "widthFix" src = "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/心书-流星.png"></image>--->
 
 <view class = "title">
-  <view class = "title_soulbook" animation = "{{ani_title}}" id = "ani_title"><image mode="widthFix" class = "titleword" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/标题-心书.png"></image></view>
+  <view class = "title_soulbook" animation = "{{ani_title}}" id = "ani_title"><image mode="widthFix" class = "titleword" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/心书logo.png"></image></view>
   <view class = "intro" animation = "{{ani_title}}" id = "ani_title_2">心星牵引，凭书识己</view>
   <!-- <view class = "intro" animation = "{{ani_title}}"><image class = "introword" mode = "widthFix" src = "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/标志icon/简介.png"></image></view> -->
 </view>
@@ -90,14 +95,15 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 <!--<view class = "title_soulbook" animation = "{{ani_title}}"><image mode="widthFix" src = "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/标题-简介.png"></image></view>-->
 
 <!--<view> Come to test your close soulmate book!</view>-->
-<image class = "bookpic" animation = "{{ani_bookpic}}" src = "{{bookpic}}" mode = "widthFix"></image>
+<image class = "bookpic" id = "bookpic" animation = "{{ani_bookpic}}" src = "{{bookpic}}" mode = "widthFix"></image>
 
 
 <view class = "four">
 <view class = "fourstarbook2" animation = "{{ani_fourstarbook2}}" id = "fourstarbook2">你的四星正缘书</view>
 <!-- 您的四星正缘书 -->
 <view class = "fourstar2" animation = "{{ani_fourstar2}}" id = "fourstar2">{{fourstarbook}}</view>
-<view class = "fourstarintro2" id = "fourstarintro2">{{fourstarintro}}</view>
+<view class = "fourstarintro2" id = "fourstarintro2">{{fourstarintro1}}</view>
+<view class = "fourstarintro2" id = "fourstarintro2">{{fourstarintro2}}</view>
 </view>
 
 
@@ -106,16 +112,17 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 <view class = "fivestarbook2"  animation = "{{ani_fivestarbook2}}" id = "fivestarbook2">你的五星正缘书</view>
 <!-- 您的五星正缘书 -->
 <view class = "fivestar2" id = "fivestar2" animation = "{{ani_fivestar2}}">{{fivestarbooks}}</view>
-<view class = "fivestarintro2" id = "fivestarintro2">{{fivestarintro}}</view> <!--firestarintro2 > -->
+<view class = "fivestarintro2_1" id = "fivestarintro2">{{fivestarintro1}}</view> <!--firestarintro2 > -->
+<view class = "fivestarintro2_2" id = "fivestarintro2">{{fivestarintro2}}</view>
 </view>
 
-<view class = "introQRcode" animation = "{{ani_introQRcode}}">扫描二维码，关注KELP“心书” 寻找那本与你有缘的书</view><!--animatino <view>>-->
-<image class = "QRcode" animation = "{{ani_QRcode}}" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/二维码.jpeg"></image>
+<view class = "introQRcode" id = "introQRcode" animation = "{{ani_introQRcode}}">扫描二维码，关注KELP“心书” 寻找那本与你有缘的书</view><!--animatino <view>>-->
+<image class = "QRcode" id = "QRcode" animation = "{{ani_QRcode}}" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/二维码.jpeg"></image>
 
 
-<button class = "testagain" animation = "{{ani_haveanothertest}}" bindtap = "testagain" > <image  mode = "widthFix" class = "tryagain" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/再来一次.png"></image> </button>
+<button class = "testagain" id = "testagain" animation = "{{ani_haveanothertest}}" bindtap = "testagain" > <image  mode = "widthFix" class = "tryagain" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/再来一次.png"></image> </button>
 <!--src = "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/按钮-再来一遍.png"-->
-<button class = "share" animation = "{{ani_share}}" bindtap = "share" > 
+<button class = "share" id = "share" animation = "{{ani_share}}" bindtap = "share" > 
 <image  mode = "widthFix" class = "tryshare" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/保存.png"></image></button>
 <!--src = "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/按钮-分享.png"-->
 
@@ -124,14 +131,14 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 <!--style="display: block; "-->
 <view class = "viewKELP">
 <button class = "aboutKELP" id = "ani_aboutKELP" bindtap = "aboutKELP" animation = "{{ani_aboutKELP}}">关于KELP</button>
-<button class = "aboutKELP2" id = "ani_aboutKELP_2" bindtap = "aboutKELP2" animation = "{{ani_aboutKELP}}"><image src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/kelplogo.png" class = "kelplogo"></image></button>
+<button class = "aboutKELP2" id = "ani_aboutKELP" bindtap = "aboutKELP2" animation = "{{ani_aboutKELP}}"><image src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/kelplogo.png" class = "kelplogo"></image></button>
 <!--cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/标志/kelplogo.png-->
 </view>
 
 <button class = "continue" id = "continue" animation = "{{ani_continue}}" bindtap = "continue"><image class = "goahead" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/前进.png"> </image></button>
 <!-- cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/标志icon/前进2.png -->
 
-<scroll-view class = "fourstarbook" scroll-y="true" animation = "{{ani_fourstar}}" id = "fourstarbook">
+<scroll-view class = "fourstarbook" id = "fourstarbook" scroll-y="true" animation = "{{ani_fourstar}}" id = "fourstarbook">
   <view class = "fourstarword"  >
     <image class = "fourstar_item" mode = "widthFix" src = "{{fourbookcontent}}"></image> 
   </view>
@@ -139,7 +146,7 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 
 <!--<view class = "forstarbook" animation = "{{ani_fourstarbook}}" id = "fourstar">您的四星正缘之书是：</view>-->
 
-<scroll-view class = "fivestarbooks" scroll-y="true" animation = "{{ani_fivestar}}" id = "fivestarbook">
+<scroll-view class = "fivestarbooks" id = "fivestarbooks" scroll-y="true" animation = "{{ani_fivestar}}">
   <view class = "fivestarword"  >
     <image class = "fivestar_item" mode = "widthFix" src = "{{fivestarbookscontent}}"></image>
   </view>
@@ -197,12 +204,12 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 
 <!--bindtap = ddlikestar-->
 <view class = "ddlikestar" animation = "{{ani_ddlikestar}}" id = "ddlikestar">你对{{twelvestar}}印象如何？</view>
-<view class = "whichstar" animation = "{{ani_whichstar}}">你是{{twelvestar}}吗？</view>
+<view class = "whichstar" animation = "{{ani_whichstar}}" id = "whichstar">你是{{twelvestar}}吗？</view>
 
 
 <!--<image class = "introbackpic" src = "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/弹出页面.png" mode = "widthFix"></image>-->
 
-<scroll-view class = "introfirebook" animation = "{{introfirebook}}" scroll-y="true" scroll-top="{{scrollTop}}">
+<scroll-view class = "introfirebook" id = "introfirebook" animation = "{{introfirebook}}" scroll-y="true" scroll-top="{{scrollTop}}">
   <view class = "firebookword">
     <view class = "firebook_item1">{{firebookname}}</view><!--firebooka-->
     <!--<view class = "firebook_item2">{{firebookauthor}}</view>-->
@@ -215,7 +222,7 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
  </scroll-view> 
 
 
-<scroll-view class = "introearthbook" animation = "{{introearthbook}}" scroll-y = "true">
+<scroll-view class = "introearthbook" id = "introearthbook" animation = "{{introearthbook}}" scroll-y = "true">
   <view class = "earthbookword">
     <!--<image src = '{{earthbookpic}}' mode = "widthFix" class = "earthbook_pic"></image>-->
     <!--../../images/书图-黄金时代.jpeg-->
@@ -227,7 +234,7 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 </view>
 </scroll-view>
 
-<scroll-view class = "introwindbook" animation = "{{introwindbook}}" scroll-y = 'true'>
+<scroll-view class = "introwindbook" id = "introwindbook" animation = "{{introwindbook}}" scroll-y = 'true'>
   <view class = "windbookword">
   <view class = "windbook_item1">{{windbookname}}</view>
   <view class = "windbook_item2">（{{windbookauthor_na}}）{{windbookauthor}}</view>
@@ -237,7 +244,7 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
   </view>
 </scroll-view>
 
-<scroll-view class = "introwaterbook" animation = "{{introwaterbook}}" scroll-y = 'true'>
+<scroll-view class = "introwaterbook" id = "introwaterbook" animation = "{{introwaterbook}}" scroll-y = 'true'>
   <view class = "waterbookword">
   <view class = "waterbook_item1">{{waterbookname}}</view>
   <view class = "waterbook_item2">（{{waterbookauthor_na}}）{{waterbookauthor}}</view>
@@ -249,17 +256,17 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
   </view>
 </scroll-view>
 
-<button class = "likestar-2" animation = "{{ani_likestar2}}" bindtap = "honeystar2">喜欢</button>
-<button class = "whateverstar-2" animation = "{{ani_whateverstar2}}" bindtap = "coolstar2">无感 </button>
-<button class = "dislikestar-2" animation = "{{ani_dislikestar2}}" bindtap = "coldstar2">讨厌</button> <!--《不喜欢-->
+<button class = "likestar-2" id = "likestar-2" animation = "{{ani_likestar2}}" bindtap = "honeystar2">喜欢</button>
+<button class = "whateverstar-2" id = "whateverstar-2" animation = "{{ani_whateverstar2}}" bindtap = "coolstar2">无感 </button>
+<button class = "dislikestar-2" id = "dislikestar-2" animation = "{{ani_dislikestar2}}" bindtap = "coldstar2">讨厌</button> <!--《不喜欢-->
 
 <!--<<《《0  couldtap  coldtap-->
 <!--!_-《<view class = "fivestarbooks" animation = "{{ani_fivestar}}"> {{fivestarbooks}}</view>-->
-<button class = "yesstar" animation = "{{ani_yesstar}}" bindtap = "yesstar">是的</button> <!--vu，s-->
-<button class = "nostar" animation = "{{ani_nostar}}" bindtap = "nostar">不是</button><!--不是的-->
+<button class = "yesstar" id = "yesstar" animation = "{{ani_yesstar}}" bindtap = "yesstar">是的</button> <!--vu，s-->
+<button class = "nostar" id = "nostar" animation = "{{ani_nostar}}" bindtap = "nostar">不是</button><!--不是的-->
 
 
-<button class ="cardsure" animation = "{{ani_cardsure}}" bindtap = "cardsure"> <image class = "cardsure_pic" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/前进.png"></image></button><!--cardrsure cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/标志/前进.png-->
+<button class ="cardsure" id = "cardsure" animation = "{{ani_cardsure}}" bindtap = "cardsure"> <image class = "cardsure_pic" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/前进.png"></image></button><!--cardrsure cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/标志/前进.png-->
 
 
 <image class = "card"  src ="{{card}}" id = "card"></image><!--src = src = '{{card}}'src =--><!-- "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/卡牌正面/卡牌正面-双鱼座" -->
@@ -332,18 +339,18 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 <!--水象作家 s像 想 象 width = "80%"--> <!--</button></cover-view>-->
 
 
-<button class = "likestar" animation = "{{ani_honeystar}}" bindtap = "sweetstar" > 喜欢 </button>
-<button class = "whateverstar" animation = "{{ani_whateverstar}}" bindtap = "coolstar"> 无感 </button>
-<button class = "dislikestar" animation = "{{ani_nolikestar}}" bindtap= "coldstar"> 讨厌 </button>
+<button class = "likestar" id = "likestar" animation = "{{ani_honeystar}}" bindtap = "sweetstar" > 喜欢 </button>
+<button class = "whateverstar" id = "whateverstar" animation = "{{ani_whateverstar}}" bindtap = "coolstar"> 无感 </button>
+<button class = "dislikestar" id = "dislikestar" animation = "{{ani_nolikestar}}" bindtap= "coldstar"> 讨厌 </button>
 
 
-<button class = "whetherstar_yes" animation = "{{ani_whetherstar}}" bindtap = "whetherstar_yes"> 是的 </button>
-<button class = "whether_notstar" animation = "{{ani_whether_nostar}}" bindtap = "whether_notstar"> 不是 </button> <!--不是的-->
+<button class = "whetherstar_yes" id = "whetherstar_yes" animation = "{{ani_whetherstar}}" bindtap = "whetherstar_yes"> 是的 </button>
+<button class = "whether_notstar" id = "whether_notstar" animation = "{{ani_whether_nostar}}" bindtap = "whether_notstar"> 不是 </button> <!--不是的-->
 
 
-<button class = "confirmbook" animation = "{{ani_confirm}}" bindtap = "nextquestion2" ><image class = "confirmbook_pic" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/确认2.png"></image></button>
+<button class = "confirmbook" id = "confirmbook" animation = "{{ani_confirm}}" bindtap = "nextquestion2" ><image class = "confirmbook_pic" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/确认2.png"></image></button>
 <!-- 前进 -->
-<button class = "backtoconfirmbook" animation = "{{ani_bocktoconfirm}}" bindtap = "rebackquestion1" ><image class = "backtoconfirmbook_pic" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/后退.png"></image> </button>
+<button class = "backtoconfirmbook" id = "backtoconfirmbook" animation = "{{ani_bocktoconfirm}}" bindtap = "rebackquestion1" ><image class = "backtoconfirmbook_pic" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/后退.png"></image> </button>
 
 
 <!--<button class = "confirmbook" animation = "{{ani_confirm}}" bindtap = "nextquestion2" > I'm Sure. </button>
@@ -374,7 +381,7 @@ cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/标志/�
 
 <view class = "question1" animation = "{{ani_question1}}" id = "question1">你最想翻阅的书是？</view><!--请选择一本最想翻阅的书~-->
 <!-- <view class = "question1_add" animation = "{{ani_question1_add}}">*阅读完毕，单击符号继续</view> -->
-<view class = "question1_add1" animation = "{{ani_question1_add1}}" id = "ani_question1_add1">*点击书名，查看书籍金句</view>
+<!-- <view class = "question1_add1" animation = "{{ani_question1_add1}}" id = "ani_question1_add1">*点击书名，查看书籍金句</view> -->
 <view class = "question1_add2" animation = "{{ani_question1_add2}}" id = "ani_question1_add2">*滑动查看全文</view>
 <!-- *滑动查看全文。 -->
 <view class = "question1_add2_2" animation = "{{ani_question1_add2}}" id = "ani_question1_add2">点击←查看其他书籍，点击✓选择本书</view>

@@ -1,0 +1,21 @@
+<!--logs.wxml-->
+<!-- <view>这是一行测试文字</view> -->
+<scroll-view class = "introkelp" scroll-y = "true">
+<view class = "kelpword">
+  <image class = "introkelp_logo" src = "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/Hbimages/其他/logo-克朴制素.png"></image>
+  <view class = "introkelp_title">KELP·克朴制素</view>
+  <view class = "introkelp_item2">·缘起</view>
+  <view class = "introkelp_begin"> 2020年1月25日，KELP创始人Kiwei有感于突发的新冠疫情，秉持着“敬天爱人，锲而不舍”的理念，主导组建了KELP救援团队，开展疫情专项救援行动。</view>
+  <view class = "introkelp_item2">·善生</view>
+  <view class = "introkelp_content"> 应运而生，顺势而为，KELP救援团队在疫情救援行动结束后，以KELP文创团队存续。在Kiwei的引领下，成员们用两年时间内观学习、开阔思维、沉淀积累、磨合实践，创作并逐步推出自制电影《星网》，原创游戏《心灵原色》、头像定制项目《元.音.数.众》、测试程序《心-书》，以及公众号长文、主题直播、音视频等。</view>
+  <view class = "introkelp_item2">·心明</view>
+  <view class = "introkelp_thought"> KELP团队保持童真思维，秉持成熟态度，以质朴真挚的发心，追求回归人类本质的灵感与创意，希望用纯粹有爱的作品和文创产品，与精神向上者做能量和心灵的链接；谨守天理，求真务实，凝聚星星之火，点亮精神灯塔，帮助更多人回归本身应有的节奏，与志同道合者共建爱与信的心灵乐土。</view>
+  <view class = "introkelp_item3">·随行</view> 
+    <text>-Bilibili：Kelp2021</text>
+    <text>-微博：KELP克朴制素、星同信启、KELP2020</text>
+    <text>-小红书：KELP克朴制素</text>
+    <text>-微信公众号：复读回声</text>
+    <text>-网易云：Kelp_Kiwei</text>
+    <text>-抖音：KELP2020</text>
+  </view>
+</scroll-view>

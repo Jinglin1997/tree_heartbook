@@ -6,6 +6,20 @@
     "miniprogram": {
       "list": [
         {
+          "name": "",
+          "pathName": "pages/index/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/introkelp/introkelp",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "db guide",
           "pathName": "pages/databaseGuide/databaseGuide",
           "query": ""

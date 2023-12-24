@@ -1,0 +1,206 @@
+/*.log-list {
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx;
+}
+.log-item {
+  margin: 10rpx;
+}
+
+/*.introkelp{
+  height: 700rpx;
+}*/
+
+.introkelp{
+  font-family: "Bitstream Vera Serif Bold";
+}
+
+
+.kelpword{
+  height: 1050rpx; /*100 700 900rpx*/
+}
+
+@media(min-height: 600px){
+  .kelpword{
+    height: 1100rpx;
+  }
+}
+@media(min-height: 700px){
+  .kelpword{
+    height: 1350rpx;
+  }
+}
+@media(min-height: 800px){
+  .kelpword{
+    height: 1400rpx;
+  }
+}
+
+
+.introkelp_logo{
+  width: 240rpx;
+  height:240rpx;
+  margin-left:255rpx;
+  margin-top:0rpx;
+}
+
+.introkelp_title{
+  height: 10rpx; /*100rpx*/
+  font-size: 30px;
+  margin-left: 115rpx;
+  /*font-family: Serif;*/
+}
+
+@media(min-height: 600px){
+  .introkelp_title{
+    margin-left: 150rpx;
+  }
+}
+@media(min-height: 700px){
+  .introkelp_title{
+    margin-left: 150rpx;
+  }
+}
+
+@media(min-height: 800px){
+  .introkelp_title{
+    margin-left: 180rpx;
+  }
+}
+
+
+.introkelp_item2{
+  margin-top: 150rpx; /*/ 50 200rpx*/
+  margin-left: 100rpx; /*40 60 1-0 100rpx*/
+  margin-right: 80rpx;
+  display: inline-block;
+  height: 150rpx;
+  width: 650rpx;
+  font-size: 25px; /*40 30px*/
+  /*font-family: serif;*/
+}
+
+.introkelp_begin{
+  width: 580rpx;
+  margin-left: 100rpx;
+  margin-right: 110rpx;
+  display: flex; 
+  flex-wrap:wrap;
+  word-break:break-all;
+  height: 400rpx;
+  font-size: 20px;
+  /*font-family: serif;*/
+}
+@media(min-height: 600px){
+  .introkelp_begin{
+    height: 260rpx;
+  }
+}
+@media(min-height: 700px){
+  .introkelp_begin{
+    height: 260rpx;
+    width: 560rpx;
+  }
+}
+@media(min-height: 800px){
+  .introkelp_begin{
+    height: 265rpx;
+  }
+}
+
+.introkelp_content{
+  width: 580rpx;
+  margin-left: 100rpx;
+  margin-right: 110rpx;
+  display: flex; 
+  flex-wrap:wrap;
+  word-break:break-all;
+  height: 850rpx;
+  font-size: 20px;
+  /*font-family: serif;*/
+}
+@media(min-height: 600px){
+  .introkelp_content{
+    height: 600rpx;
+  }
+}
+@media(min-height: 700px){
+  .introkelp_content{
+    height: 600rpx;
+    width: 560rpx;
+  }
+}
+@media(min-height: 800px){
+  .introkelp_content{
+    height: 530rpx;
+  }
+}
+
+.introkelp_thought{
+  width: 580rpx;
+  margin-left: 100rpx;
+  margin-right: 110rpx;
+  display: flex; 
+  flex-wrap:wrap;
+  word-break:break-all;
+  height: 780rpx;
+  font-size: 20px;
+  /*font-family: serif;*/
+}
+
+@media(min-height: 600px){
+  .introkelp_thought{
+    height: 560rpx;
+  }
+}
+
+@media(min-height: 700px){
+  .introkelp_thought{
+    height: 560rpx;
+    width: 560rpx;
+  }
+}
+@media(min-height: 800px){
+  .introkelp_thought{
+    height: 480rpx;
+  }
+}
+
+.introkelp_link{
+  width: 580rpx;
+  margin-left: 100rpx;
+  margin-right: 110rpx;
+  display: flex; 
+  flex-wrap:wrap;
+  word-break:break-all;
+  height: 460rpx;
+  font-size: 20px;
+  /*font-family: serif;*/
+}
+
+@media(min-height: 600px){
+  .introkelp_link{
+    height: 460rpx;
+  }
+}
+@media(min-height: 700px){
+  .introkelp_link{
+    width: 560rpx;
+    height: 460rpx;
+  }
+}
+
+.introkelp_item3{
+  width: 550rpx;
+  margin-left: 100rpx;
+  margin-right: 100rpx;
+  /*marginl*/
+  display: flex;
+  
+  flex-wrap:wrap;
+  word-break:break-all;
+  height: 500rpx;
+  
+  font-size: 20px;
+  /*font-family: serif;*/
+}

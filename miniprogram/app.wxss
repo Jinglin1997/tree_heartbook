@@ -19,9 +19,21 @@ button::after{
 }
 
 
+  /*
+  --windowWidth: wx.getSystemInfoSync().windowWidth;
+  --windowHeight: wx.getSystemInfoSync().windowHeight;*/
+
+
+
 page {
   background: #f6f6f6;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  --window-width: 320px;
+  --window-height: 540px;
+  --window-shiyan: (wx.getSystemInfoSync().windowWidth)rpx;
+  --window-shiyan2: (wx.getSystemInfoSync().windowHeight)px;
+  --window-after: '200'px;
+  --window-after2:'500'px;
 }
