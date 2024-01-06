@@ -2090,7 +2090,7 @@
 
 @media(min-height:723px){
   .firebookword{
-    height:545rpxl
+    height:545rpx;
   }
 }
 
@@ -4251,6 +4251,7 @@
   height:73%;/*70*/
   border-radius: 20px;
   overflow:hidden;
+  z-index:1;
 }
 
 
@@ -5010,10 +5011,13 @@
 }
 
 .five{
+  opacity: 0.0;
   display: flex;
   flex-direction: column;
-  margin-top: -128rpx;/*-178 -168 -118*/
-  margin-left:132rpx;/* 135 */
+  /* position:absolute; */
+  margin-top: -278rpx;
+  margin-left:132rpx;
+  z-index:3;
 }
 
 @media(min-height:600px){
@@ -5065,12 +5069,14 @@
   }
 }
 
+.fivebookword{
+  height:267rpx;
+}
+
 
 .fivestarbook2{
-  opacity:0.0;
   color: white;
-  font-size:16px;/*16 18*/
-  /* font-weight: bold; */
+  font-size:16px;
 }
 
 @media(min-height:650px){
@@ -5087,25 +5093,21 @@
 
 @media(min-height:800px){
   .fivestarbook2{
-    /*top: 46%;*/
     font-size:20px;
   }
 }
 
 @media(min-height:830px){
   .fivestarbook2{
-    /*top: 46%;*/
     font-size:20px;
   }
 }
 
 .fivestar2{
-  opacity:0.0;
   color: white;
-  font-size:18px;/*1816 20 15*/
+  font-size:18px;
   font-weight: bold;
-  margin-top:5rpx;/*10rpx*/
-  /* margin-right:120rpx; */
+  margin-top:5rpx;
   width:490rpx;
   text-align: justify;
 }
@@ -5161,7 +5163,6 @@
 }
 
 .fivestarintro2_1{
-  opacity:0.0;
   color: white;
   font-size:10px;/*10 12 16 20 15*/
   font-weight: bold;
@@ -5213,7 +5214,6 @@
 }
 
 .fivestarintro2_2{
-  opacity:0.0;
   color: white;
   font-size:10px;
   font-weight: bold;
@@ -5264,6 +5264,7 @@
 }
 
 .four{
+  opacity:0.0;
   display: flex;
   flex-direction: column;
   margin-top: 540rpx;/*-178*/
@@ -5319,9 +5320,12 @@
   }
 }
 
+.fourbookword{
+  height:267rpx;
+}
+
 
 .fourstarbook2{
-  opacity:0.0;
   color: white;
   font-size:16px;
 }
@@ -5351,7 +5355,6 @@
 }
 
 .fourstar2{
-  opacity:0.0;
   color: white;
   font-size:18px;
   font-weight: bold;
@@ -5411,7 +5414,6 @@
 }
 
 .fourstarintro2{
-  opacity:0.0;
   color: white;
   font-size:10px;
   font-weight: bold;

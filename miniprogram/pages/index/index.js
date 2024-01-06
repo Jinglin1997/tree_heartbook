@@ -18,18 +18,18 @@ var authorelement = 0
 var fireauths = Math.ceil(Math.random(0,1)*5) 
 // var fireauths = 2
 var earthauths = Math.ceil(Math.random(0,1)*6)
-var windauths = Math.ceil(Math.random(0,1)*7) 
+// var windauths = Math.ceil(Math.random(0,1)*7)
+var windauths = 3
 var waterauths = Math.ceil(Math.random(0,1)*7) 
-var firebooks = Math.ceil(Math.random(0,1)*7)
+var firebooks = Math.ceil(Math.random(0,1)*6)
 // var firebooks = 7
-var earthbooks = Math.ceil(Math.random(0,1)*7)
+var earthbooks = Math.ceil(Math.random(0,1)*5)
 // var earthbooks = 1
-var windbooks = Math.ceil(Math.random(0,1)*7)
+var windbooks = Math.ceil(Math.random(0,1)*3)
 // var windbooks = 2
 var waterbooks  = Math.ceil(Math.random(0,1)*7)
 // var waterbooks = 1
 var result_bookname = ""
-
 var bookrand = 0
 var elementrand = 0
 var introrand = 0
@@ -102,9 +102,11 @@ Page({
     // anniu: ["《水象之书》"],
     fontFamily: 'Bitstream Vera Serif Bold',
     isRuleTrue: false,
+    isiPhone: true,
     i:'',
     hiddenName: false,
     windowHeight: wx.getSystemInfoSync().windowHeight
+
   },
 
   // 进度条系列-开始
@@ -325,7 +327,7 @@ Page({
         setTimeout(()=>{
         this.animate("#bgimg",[{
         translateX:-1500*windowWidth/750,translateY:-2750*windowWidth/750},
-        {translateX:-7000*windowWidth/750, translateY:-6250*windowWidth/750}],2400,)},1800)
+        {translateX:-1700*windowWidth/750, translateY:-1640*windowWidth/750}],2400,)},1800)
       }
   
       if (windowHeight>=700 && windowHeight<800){
@@ -718,7 +720,7 @@ Page({
         ele: "风",
       }
     }).then(res=>{
-      console.log(res.result.list[0])
+      console.log(res.result.list[windbooks-1])
       this.setData({
         windbookname: res.result.list[windbooks-1].name,
         windbookauthor_na: res.result.list[windbooks-1].nationality,
@@ -726,7 +728,6 @@ Page({
         windbookcontent1: res.result.list[windbooks-1].introduce1,
         windbookcontent2: res.result.list[windbooks-1].introduce2,
         windbookcontent3: res.result.list[windbooks-1].introduce3,
-
       })
     })
 
@@ -741,15 +742,16 @@ Page({
         ele: "水",
       }
     }).then(res=>{
-      console.log(res.result.list)
+      console.log(res.result.list[waterbooks-1])
+      console.log(waterbooks)
       this.setData({
         waterbookname: res.result.list[waterbooks-1].name,
         waterbookauthor_na: res.result.list[waterbooks-1].nationality,
-        waterbookauthor: res.result.list[windbooks-1].authorname,
-        waterbookcontent1: res.result.list[windbooks-1].introduce1,
-        waterbookcontent2: res.result.list[windbooks-1].introduce2,
-        waterbookcontent3: res.result.list[windbooks-1].introduce3,
-        //i: res.result.list[firebooks-1].authorname
+        waterbookauthor: res.result.list[waterbooks-1].authorname,
+        waterbookcontent1: res.result.list[waterbooks-1].introduce1,
+        waterbookcontent2: res.result.list[waterbooks-1].introduce2,
+        waterbookcontent3: res.result.list[waterbooks-1].introduce3,
+        //i: res.result.list[firebooks-1].authorname, windbooks-1
       })
     })
 
@@ -1001,16 +1003,14 @@ Page({
     //   ani_bocktoconfirm: ani_ti8.export(),
     // })
 
-    // whichstar = Math.ceil(Math.random(0,1)*3)
-    whichstar = 1
+    whichstar = Math.ceil(Math.random(0,1)*3)
     whichelement = 1
     if (whichstar == 1)
     {this.setData({twelvestar: "白羊座"})}
     if (whichstar == 2)
     {this.setData({twelvestar: "狮子座"})}
     if (whichstar == 3)
-    {  this.setData({twelvestar: "射手座"})
-    }
+    {this.setData({twelvestar: "射手座"})}
 
     console.log(whichstar)
     checked6 = false;
@@ -1324,8 +1324,8 @@ Page({
   // })
 
   //  产生下一轮星座对象
-  // whichstar = Math.ceil(Math.random(0,1)*3)
-  whichstar = 1
+  whichstar = Math.ceil(Math.random(0,1)*3)
+  // whichstar = 1
   whichelement = 3
   if(whichstar == 1)
   {this.setData({twelvestar : "双子座"})}
@@ -1490,6 +1490,7 @@ Page({
 
   rebackquestion1: function(){
     checked6 = true;
+    console.log(whichelement)
     if (checked8){
     //   var ani_tp3 = wx.createAnimation({
     //   delay: 935, 
@@ -1498,10 +1499,11 @@ Page({
     // ani_tp3.opacity(0.0).translate(390*2*windowWidth/750,0).step()
     // ani_tp3.opacity(1.0).translate(390*2*windowWidth/750,0).step()
 
+
     setTimeout(()=>{
       this.animate("#firebook",[
         {translateX:0, opacity:0.0},
-        {translateX:390*2*windowWidth/750, opacity:1.0},
+        {translateX:390*2*windowWidth/750, opacity:0.0},
         {translateX:390*2*windowWidth/750, opacity:1.0}
       ],800,)},700)
 
@@ -1514,7 +1516,7 @@ Page({
     setTimeout(()=>{
       this.animate("#earthbook",[
         {translateX:0, opacity:0.0},
-        {translateX:390*2*windowWidth/750, opacity:1.0},
+        {translateX:390*2*windowWidth/750, opacity:0.0},
         {translateX:390*2*windowWidth/750, opacity:1.0}
       ],800,)},700)
     
@@ -1527,7 +1529,7 @@ Page({
     setTimeout(()=>{
       this.animate("#windbook",[
         {translateX:0, opacity:0.0},
-        {translateX:390*2*windowWidth/750, opacity:1.0},
+        {translateX:390*2*windowWidth/750, opacity:0.0},
         {translateX:390*2*windowWidth/750, opacity:1.0}
       ],800,)},700)
     
@@ -1540,7 +1542,7 @@ Page({
     setTimeout(()=>{
       this.animate("#waterbook",[
         {translateX:0, opacity:0.0},
-        {translateX:390*2*windowWidth/750, opacity:1.0},
+        {translateX:390*2*windowWidth/750, opacity:0.0},
         {translateX:390*2*windowWidth/750, opacity:1.0}
       ],800,)},700)
 
@@ -1573,12 +1575,17 @@ Page({
     // ani_ti1_c.opacity(0.0).translateX(860*windowWidth/750).step()
     // ani_ti1_c.opacity(0.0).translateX(0).step()
 
-    setTimeout(()=>{
+    if (whichelement == 1){
+      setTimeout(()=>{
       this.animate("#introfirebook",[
-        {translateX:860*windowWidth/750, opacity:1.0},
+        {translateX:860*windowWidth/750},
         {translateX:860*windowWidth/750, opacity:0.0},
         {translateX:0, opacity:0.0}
       ],600,)},600)
+      console.log(whichelement)
+    }
+
+    
 
     // var ani_ti2_c = wx.createAnimation({
     //   delay: 600, //1200 1000
@@ -1587,12 +1594,15 @@ Page({
     // ani_ti2_c.opacity(0.0).translateX(860*windowWidth/750).step()//-660
     // ani_ti2_c.opacity(0.0).translateX(0).step()
 
-    setTimeout(()=>{
+    if (whichelement == 2){
+      setTimeout(()=>{
       this.animate("#introearthbook",[
-        {translateX:860*windowWidth/750, opacity:1.0},
+        {translateX:860*windowWidth/750},
         {translateX:860*windowWidth/750, opacity:0.0},
         {translateX:0, opacity:0.0}
       ],600,)},600)
+    }
+    
     
     // var ani_ti3_c = wx.createAnimation({
     //   delay: 600, //1200
@@ -1601,12 +1611,15 @@ Page({
     // ani_ti3_c.opacity(0.0).translateX(860*windowWidth/750).step()//-660
     // ani_ti3_c.opacity(0.0).translateX(0).step()
 
-    setTimeout(()=>{
+    if (whichelement == 3){
+      setTimeout(()=>{
       this.animate("#introwindbook",[
-        {translateX:860*windowWidth/750, opacity:1.0},
+        {translateX:860*windowWidth/750},
         {translateX:860*windowWidth/750, opacity:0.0},
         {translateX:0, opacity:0.0}
       ],600,)},600)
+    }
+    
 
     // var ani_ti4_c = wx.createAnimation({
     //   delay: 600, //1200
@@ -1615,13 +1628,15 @@ Page({
     // ani_ti4_c.opacity(0.0).translateX(860*windowWidth/750).step()//660
     // ani_ti4_c.opacity(0.0).translateX(0).step()
 
-    setTimeout(()=>{
+    if (whichelement == 4){
+      setTimeout(()=>{
       this.animate("#introwaterbook",[
-        {translateX:860*windowWidth/750, opacity:1.0},
+        {translateX:860*windowWidth/750},
         {translateX:860*windowWidth/750, opacity:0.0},
         {translateX:0, opacity:0.0}
       ],600,)},600)
-
+    }
+    
     // huhuan7与8
     // var ani_ti8_c = wx.createAnimation({
     //   delay: 500, // 300 600 800
@@ -2688,7 +2703,7 @@ Page({
 
     wx.cloud.callFunction({
       name: "queryresultbook",
-      data:{bookname: "哲学人生问答"}//悠悠岁月
+      data:{bookname: "悠悠岁月"}//哲学人生问答
     }).then(res=>{
       console.log(res.result.data)
       this.setData({
@@ -2707,7 +2722,7 @@ Page({
     bookpic = "https://636c-cloud1-2gx6xlsu0ca67a99-1311762654.tcb.qcloud.la/Hbimages/%E4%B9%A6%E9%81%93%E5%85%B7/%E6%B0%B4.png?sign=6fc3c700dc4ae294ae2b579619bf32e0&t=1672208303"
     wx.cloud.callFunction({
       name: "queryresultbook",
-      data:{bookname: "前世今生: 生命轮回的启示"}
+      data:{bookname: "前世今生：生命轮回的启示"}
     }).then(res=>{
       console.log(res.result.data)
       this.setData({
@@ -3116,7 +3131,7 @@ Page({
       {translateX:0, opacity:0.0},
       {translateX:290*2*windowWidth/750, opacity:0.0},
       {translateX:290*2*windowWidth/750, opacity:1.0}
-    ],1200)},5300)
+    ],1200)},7900)
 
   // var ani_tsj_op22 = wx.createAnimation({
   //   delay: 3300, //7400 3550
@@ -3130,7 +3145,7 @@ Page({
       {translateX:0, opacity:0.0},
       {translateX:290*2*windowWidth/750, opacity:0.0},
       {translateX:290*2*windowWidth/750, opacity:1.0}
-    ],1200)},5300)
+    ],1200)},7900)
 
   // var ani_tsj_op222 = wx.createAnimation({
   //   delay: 3300, //7900 3800
@@ -3144,7 +3159,7 @@ Page({
       {translateX:0, opacity:0.0},
       {translateX:290*2*windowWidth/750, opacity:0.0},
       {translateX:290*2*windowWidth/750, opacity:1.0}
-    ],1200)},5300)
+    ],1200)},7900)
 
 
 
@@ -3324,39 +3339,67 @@ this.animate("#bgimg_blur1",[
       {opacity:0.0}],800,)},1000)
 
 
-  var ani_tsj_op2_c = wx.createAnimation({
-    delay: 600,  //(300,330,400)  (500,560,680)(680,740,850)（880，940，1050）600X3
-    duration: 600 //600
-  })
-  ani_tsj_op2_c.opacity(0.0).translate(290*2*windowWidth/750,0).step() //ani_tsj2_ 235,0
-  ani_tsj_op2_c.opacity(0.0).translate(-300*2*windowWidth/750,0).step()
+  // var ani_tsj_op2_c = wx.createAnimation({
+  //   delay: 600,  //(300,330,400)  (500,560,680)(680,740,850)（880，940，1050）600X3
+  //   duration: 600 //600
+  // })
+  // ani_tsj_op2_c.opacity(0.0).translate(290*2*windowWidth/750,0).step() //ani_tsj2_ 235,0
+  // ani_tsj_op2_c.opacity(0.0).translate(-300*2*windowWidth/750,0).step()
 
-  var ani_tsj_op22_c = wx.createAnimation({
-    delay: 600,
-    duration: 600
-  })
-  ani_tsj_op22_c.opacity(0.0).translate(290*2*windowWidth/750,0).step() //235,0px
-  ani_tsj_op22_c.opacity(0.0).translate(-300*2*windowWidth/750,0).step()
-  //ani_tsj_op22_c.opacity(0.0).step()
-  //ani_tsj_op22_c.translate(-300,0).step()
+  setTimeout(()=>{
+    this.animate("#likestar",[
+      {translateX:290*2*windowWidth/750, opacity:1.0},
+      {translateX:290*2*windowWidth/750, opacity:0.0},
+      {translateX:-300*2*windowWidth/750, opacity:0.0}
+    ],600,)},600)
 
-  var ani_tsj_op222_c = wx.createAnimation({
-    delay: 600,
-    duration: 600
-  })
-  ani_tsj_op222_c.opacity(0.0).translate(290*2*windowWidth/750,0).step() //235px, 0px
-  ani_tsj_op222_c.opacity(0.0).translate(-300*2*windowWidth/750,0).step()
-  //ani_tsj_op222_c. opacity(0.0).step()
-  //ani_tsj_op222_c. translate(-300,0).step()
+
+  // var ani_tsj_op22_c = wx.createAnimation({
+  //   delay: 600,
+  //   duration: 600
+  // })
+  // ani_tsj_op22_c.opacity(0.0).translate(290*2*windowWidth/750,0).step() //235,0px
+  // ani_tsj_op22_c.opacity(0.0).translate(-300*2*windowWidth/750,0).step()
+  // //ani_tsj_op22_c.opacity(0.0).step()
+  // //ani_tsj_op22_c.translate(-300,0).step()
+
+  setTimeout(()=>{
+    this.animate("#whateverstar",[
+      {translateX:290*2*windowWidth/750, opacity:1.0},
+      {translateX:290*2*windowWidth/750, opacity:0.0},
+      {translateX:-300*2*windowWidth/750, opacity:0.0}
+    ],600,)},600)
+
+  // var ani_tsj_op222_c = wx.createAnimation({
+  //   delay: 600,
+  //   duration: 600
+  // })
+  // ani_tsj_op222_c.opacity(0.0).translate(290*2*windowWidth/750,0).step() //235px, 0px
+  // ani_tsj_op222_c.opacity(0.0).translate(-300*2*windowWidth/750,0).step()
+  // //ani_tsj_op222_c. opacity(0.0).step()
+  // //ani_tsj_op222_c. translate(-300,0).step()
+
+  setTimeout(()=>{
+    this.animate("#dislikestar",[
+      {translateX:290*2*windowWidth/750, opacity:1.0},
+      {translateX:290*2*windowWidth/750, opacity:0.0},
+      {translateX:-300*2*windowWidth/750, opacity:0.0}
+    ],600,)},600)
 
   // 选项移动到点击不到的地方
 
   // 显示问题3和选项
-  var ani_tqq3 = wx.createAnimation({
-    delay: 7700, //6000 6600 8000 6750 2750 3750 3850 3950 5400
-    duration: 1200,  //1200 1500 1800
-  })
-  ani_tqq3.opacity(1.0).step()
+  // var ani_tqq3 = wx.createAnimation({
+  //   delay: 7700, //6000 6600 8000 6750 2750 3750 3850 3950 5400
+  //   duration: 1200,  //1200 1500 1800
+  // })
+  // ani_tqq3.opacity(1.0).step()
+
+  setTimeout(()=>{
+    this.animate("#likeauthor",[
+      {opacity:0.0},
+      {opacity:1.0}
+    ],1200,)},7700)
 
   // var ani_tsj3_fire = wx.createAnimation({
   //   delay: 3600,  //(3000, 2900,2900,3000) {3300, 3500, 35000, 3300} {3500,3700,3900} {3300,3550,3800,4100} {3200, 3500, 3800, 4100} {3600 3800 4000 4200}{3650 3850 4050 4250} 3650X4  3259X4 1259X4 (800) 1759X4(800) 2600X4 3500X4
@@ -3389,30 +3432,37 @@ this.animate("#bgimg_blur1",[
   // // 象限： 1 //280px
 
   // selectauthors出现
-  var ani_tsas = wx.createAnimation({
-    delay:3700,
-    duration:1000,
-  })
-  ani_tsas.translateX(-800*windowWidth/750).step()
-  ani_tsas.opacity(1.0).step()//opaicty
+  // var ani_tsas = wx.createAnimation({
+  //   delay:3700,
+  //   duration:1000,
+  // })
+  // ani_tsas.translateX(-800*windowWidth/750).step()
+  // ani_tsas.opacity(1.0).step()//opaicty
+
+  setTimeout(()=>{
+    this.animate("#selectauthors",[
+      {translateX:0*windowWidth/750, opacity:0.0},
+      {translateX:-800*windowWidth/750, opacity:0.0},
+      {translateX:-800*windowWidth/750, opacity:1.0}
+    ],1000,)},7700)
 
   
   // 传入wxml
-  this.setData({
+  // this.setData({
     //ani_movebk: ani_tq3.export(),
     //ani_ddlikestar: ani_tsj2_c.export(),
-    ani_honeystar: ani_tsj_op2_c.export(),
-    ani_whateverstar: ani_tsj_op22_c.export(),
-    ani_nolikestar: ani_tsj_op222_c.export(),
-    ani_likeauthor: ani_tqq3.export(),
+    // ani_honeystar: ani_tsj_op2_c.export(),
+    // ani_whateverstar: ani_tsj_op22_c.export(),
+    // ani_nolikestar: ani_tsj_op222_c.export(),
+    // ani_likeauthor: ani_tqq3.export(),
     // ani_fireauthor: ani_tsj3_fire.export(),
     // ani_earthauthor: ani_tsj3_earth.export(),
     // ani_windauthor: ani_tsj3_wind.export(),
     // ani_waterauthor: ani_tsj3_water.export(),
-    ani_selectauthors: ani_tsas.export(),
+    // ani_selectauthors: ani_tsas.export(),
     // ani_person_4: ani_tps_c.export(),
     // ani_person_5: ani_tps.export(),
-  })
+  // })
 
   // 该元素累积两分 y一分
   point[whichelement-1] = point[whichelement-1] + 1 
@@ -3570,36 +3620,71 @@ this.animate("#bgimg_blur1",[
       {opacity:1.0},
       {opacity:0.0}],800,)},1000)
 
-  var ani_tsj_op2_c = wx.createAnimation({
-    delay: 600, //300 {880 904-940 1050 } 600X3
-    duration: 600
-  })
-  ani_tsj_op2_c.opacity(0.0).translate(290*2*windowWidth/750,0).step() //235px,0-px
-  //ani_tsj_op2_c.opacity(0.0).step() //ani_tsj2_
-  ani_tsj_op2_c.translate(-300*2*windowWidth/750,0).step()
+  // var ani_tsj_op2_c = wx.createAnimation({
+  //   delay: 600, //300 {880 904-940 1050 } 600X3
+  //   duration: 600
+  // })
+  // ani_tsj_op2_c.opacity(0.0).translate(290*2*windowWidth/750,0).step() //235px,0-px
+  // //ani_tsj_op2_c.opacity(0.0).step() //ani_tsj2_
+  // ani_tsj_op2_c.translate(-300*2*windowWidth/750,0).step()
 
-  var ani_tsj_op22_c = wx.createAnimation({
-    delay: 600, //330 940
-    duration: 600
-  })
-  ani_tsj_op22_c.opacity(0.0).translate(290*2*windowWidth/750,0).step()//235,0px
-  //ani_tsj_op22_c.opacity(0.0).step()
-  ani_tsj_op22_c.translate(-300*2*windowWidth/750,0).step() // 选项移动到点击不到的地方
+  // var ani_tsj_op22_c = wx.createAnimation({
+  //   delay: 600, //330 940
+  //   duration: 600
+  // })
+  // ani_tsj_op22_c.opacity(0.0).translate(290*2*windowWidth/750,0).step()//235,0px
+  // //ani_tsj_op22_c.opacity(0.0).step()
+  // ani_tsj_op22_c.translate(-300*2*windowWidth/750,0).step() // 选项移动到点击不到的地方
 
-  var ani_tsj_op222_c = wx.createAnimation({
-    delay: 600, //400 1050
-    duration: 600
-  })
-  ani_tsj_op222_c.opacity(0.0).translate(290*2*windowWidth/750,0).step() //235xp,0px
-  //ani_tsj_op222_c. opacity(0.0). step() wm
-  ani_tsj_op222_c.translate(-300*2*windowWidth/750,0).step()
+  // var ani_tsj_op222_c = wx.createAnimation({
+  //   delay: 600, //400 1050
+  //   duration: 600
+  // })
+  // ani_tsj_op222_c.opacity(0.0).translate(290*2*windowWidth/750,0).step() //235xp,0px
+  // //ani_tsj_op222_c. opacity(0.0). step() wm
+  // ani_tsj_op222_c.translate(-300*2*windowWidth/750,0).step()
+
+    // var ani_tsj_op2_c = wx.createAnimation({
+  //   delay: 600,  //(300,330,400)  (500,560,680)(680,740,850)（880，940，1050）600X3
+  //   duration: 600 //600
+  // })
+  // ani_tsj_op2_c.opacity(0.0).translate(290*2*windowWidth/750,0).step() //ani_tsj2_ 235,0
+  // ani_tsj_op2_c.opacity(0.0).translate(-300*2*windowWidth/750,0).step()
+
+  setTimeout(()=>{
+    this.animate("#likestar",[
+      {translateX:290*2*windowWidth/750, opacity:1.0},
+      {translateX:290*2*windowWidth/750, opacity:0.0},
+      {translateX:-300*2*windowWidth/750, opacity:0.0}
+    ],600,)},600)
+
+  setTimeout(()=>{
+    this.animate("#whateverstar",[
+      {translateX:290*2*windowWidth/750, opacity:1.0},
+      {translateX:290*2*windowWidth/750, opacity:0.0},
+      {translateX:-300*2*windowWidth/750, opacity:0.0}
+    ],600,)},600)
+
+  setTimeout(()=>{
+    this.animate("#dislikestar",[
+      {translateX:290*2*windowWidth/750, opacity:1.0},
+      {translateX:290*2*windowWidth/750, opacity:0.0},
+      {translateX:-300*2*windowWidth/750, opacity:0.0}
+    ],600,)},600)
+
 
   // 显示问题3和选项
-  var ani_tsj3 = wx.createAnimation({
-    delay: 7700,  //6000 6100 7100 7350 6750 2750 3750 3950 5400 7500 7700
-    duration: 1200, //1200 1800
-  })
-  ani_tsj3.opacity(1.0).step()
+  // var ani_tsj3 = wx.createAnimation({
+  //   delay: 7700,  //6000 6100 7100 7350 6750 2750 3750 3950 5400 7500 7700
+  //   duration: 1200, //1200 1800
+  // })
+  // ani_tsj3.opacity(1.0).step()
+
+  setTimeout(()=>{
+    this.animate("#likeauthor",[
+      {opacity:0.0},
+      {opacity:1.0}
+    ],1200,)},7700)
 
   // var ani_tsj3_fire = wx.createAnimation({
   //   delay: 3600, //{2750} {2950X4} {3050X4} {3150X4} {3350 3550 37450 3950} {3400 3600 3800 4000} {3500,3700, 3900,4100} 3259X4 1259X4 1859X4 2600X4 3500X4
@@ -3630,32 +3715,39 @@ this.animate("#bgimg_blur1",[
   // ani_tsj3_water.opacity(1.0).translateX(780*windowWidth/750).step()
 
   // selectauthors出现
-  var ani_tsas = wx.createAnimation({
-    delay:3600,
-    duration:1000,
-  })
-  ani_tsas.translateX(-800*windowWidth/750).step()
-  ani_tsas.opacity(1.0).step()//opaicty
+  // var ani_tsas = wx.createAnimation({
+  //   delay:3600,
+  //   duration:1000,
+  // })
+  // ani_tsas.translateX(-800*windowWidth/750).step()
+  // ani_tsas.opacity(1.0).step()//opaicty
+
+  setTimeout(()=>{
+    this.animate("#selectauthors",[
+      {translateX:0*windowWidth/750, opacity:0.0},
+      {translateX:-800*windowWidth/750, opacity:0.0},
+      {translateX:-800*windowWidth/750, opacity:1.0}
+    ],1000,)},7700)
 
 
-  this.setData({
+  // this.setData({
     //ani_movebk: ani_tq3.export(),
     //ani_ddlikestar: ani_tsj2_c.export(),
-    ani_honeystar: ani_tsj_op2_c.export(),
-    ani_whateverstar: ani_tsj_op22_c.export(),
-    ani_nolikestar: ani_tsj_op222_c.export(), 
-    ani_likeauthor: ani_tsj3.export(),
+    // ani_honeystar: ani_tsj_op2_c.export(),
+    // ani_whateverstar: ani_tsj_op22_c.export(),
+    // ani_nolikestar: ani_tsj_op222_c.export(), 
+    // ani_likeauthor: ani_tsj3.export(),
     //ani_likeauthor_part2 = ani_tsj3.export(),
     // ani_fireauthor: ani_tsj3_fire.export(),
     // ani_earthauthor: ani_tsj3_earth.export(),
     // ani_windauthor: ani_tsj3_wind.export(),
     // ani_waterauthor: ani_tsj3_water.export(),//,
-    ani_selectauthors: ani_tsas.export(),
+    // ani_selectauthors: ani_tsas.export(),
     //ani_blur: ani_t0.export(),
     //ani_blurin: ani_t0in.export(),
     // ani_person_4: ani_tps_c.export(),
     // ani_person_5: ani_tps.export(),
-  });
+  // });
 
   // 该元素累积零分
   point[whichelement-1] = point[whichelement-1] + 0 
@@ -3828,38 +3920,66 @@ this.animate("#bgimg_blur1",[
       {opacity:1.0},
       {opacity:0.0}],800,)},1000)
 
-  var ani_tsj_op2_c = wx.createAnimation({
-    delay: 600, //300,330,400 「880，940， 1050」
-    duration: 600
-  })
-  ani_tsj_op2_c.opacity(0.0).translate(290*2*windowWidth/750,0).step() //====保留 看哪个更好====
-  //ani_tsj_op2_c.opacity(0.0).step() //ani_tsj2_ // 235px
-  ani_tsj_op2_c.translate(-300,0).step()
+  // var ani_tsj_op2_c = wx.createAnimation({
+  //   delay: 600, //300,330,400 「880，940， 1050」
+  //   duration: 600
+  // })
+  // ani_tsj_op2_c.opacity(0.0).translate(290*2*windowWidth/750,0).step() //====保留 看哪个更好====
+  // //ani_tsj_op2_c.opacity(0.0).step() //ani_tsj2_ // 235px
+  // ani_tsj_op2_c.translate(-300,0).step()
 
-  var ani_tsj_op22_c = wx.createAnimation({
-    delay: 600, //、、940
-    duration: 600
-  })
-  ani_tsj_op22_c.opacity(0.0).translate(290*2*windowWidth/750,0).step()
-  //ani_tsj_op22_c.opacity(0.0).translate(235,0).step() //235px
-  ani_tsj_op22_c.translate(-300,0).step() // 选项移动到点击不到的地方
+  // var ani_tsj_op22_c = wx.createAnimation({
+  //   delay: 600, //、、940
+  //   duration: 600
+  // })
+  // ani_tsj_op22_c.opacity(0.0).translate(290*2*windowWidth/750,0).step()
+  // //ani_tsj_op22_c.opacity(0.0).translate(235,0).step() //235px
+  // ani_tsj_op22_c.translate(-300,0).step() // 选项移动到点击不到的地方
 
-  var ani_tsj_op222_c = wx.createAnimation({
-    delay: 600, //1050
-    duration: 600
-  })
-  //ani_tsj_op222_c. opacity(0.0). step()
-  //ani_tsj_op222_c.opacity(0.0).translate(235,0).step()
-  //ani_tsj_op222_c.translate(-300,0).step()
-  ani_tsj_op222_c.opacity(0.0).translate(290*2*windowWidth/750,0).step()
-  ani_tsj_op222_c.translate(-300,0).step()
+  // var ani_tsj_op222_c = wx.createAnimation({
+  //   delay: 600, //1050
+  //   duration: 600
+  // })
+  // //ani_tsj_op222_c. opacity(0.0). step()
+  // //ani_tsj_op222_c.opacity(0.0).translate(235,0).step()
+  // //ani_tsj_op222_c.translate(-300,0).step()
+  // ani_tsj_op222_c.opacity(0.0).translate(290*2*windowWidth/750,0).step()
+  // ani_tsj_op222_c.translate(-300,0).step()
+
+  setTimeout(()=>{
+    this.animate("#likestar",[
+      {translateX:290*2*windowWidth/750, opacity:1.0},
+      {translateX:290*2*windowWidth/750, opacity:0.0},
+      {translateX:-300*2*windowWidth/750, opacity:0.0}
+    ],600,)},600)
+
+  setTimeout(()=>{
+    this.animate("#whateverstar",[
+      {translateX:290*2*windowWidth/750, opacity:1.0},
+      {translateX:290*2*windowWidth/750, opacity:0.0},
+      {translateX:-300*2*windowWidth/750, opacity:0.0}
+    ],600,)},600)
+
+  setTimeout(()=>{
+    this.animate("#dislikestar",[
+      {translateX:290*2*windowWidth/750, opacity:1.0},
+      {translateX:290*2*windowWidth/750, opacity:0.0},
+      {translateX:-300*2*windowWidth/750, opacity:0.0}
+    ],600,)},600)
+
 
   // 显示问题3和选项
-  var ani_tsj3 = wx.createAnimation({
-    delay: 7700, //6000 7200 7750 6750 2750 3750 3950 5400
-    duration: 1200,
-  })
-  ani_tsj3.opacity(1.0).translate(-3,0).step()
+  // var ani_tsj3 = wx.createAnimation({
+  //   delay: 7700, //6000 7200 7750 6750 2750 3750 3950 5400
+  //   duration: 1200,
+  // })
+  // ani_tsj3.opacity(1.0).translate(-3,0).step()
+
+  setTimeout(()=>{
+    this.animate("#likeauthor",[
+      {opacity:0.0},
+      {opacity:1.0}
+    ],1200,)},7700)
 
   // var ani_tsj3_fire = wx.createAnimation({
   //   delay: 3600, //2750 {30-50 3350 3650 3950 }{3150 3350 3750 4050} {3350 3550 3750 3950} {3400 3600 3800 4000} {3500 3700 3900 4100} 3259X4 1259X4 1859X4 2600X4 3500X4 
@@ -3893,33 +4013,40 @@ this.animate("#bgimg_blur1",[
   // ani_tsj3_water.opacity(1.0).translateX(780*windowWidth/750).step()
 
   // selectauthors出现
-  var ani_tsas = wx.createAnimation({
-    delay:3600,
-    duration:1000,
-  })
-  ani_tsas.translateX(-800*windowWidth/750).step()
-  ani_tsas.opacity(1.0).step()//opaicty
+  // var ani_tsas = wx.createAnimation({
+  //   delay:3600,
+  //   duration:1000,
+  // })
+  // ani_tsas.translateX(-800*windowWidth/750).step()
+  // ani_tsas.opacity(1.0).step()//opaicty
+
+  setTimeout(()=>{
+    this.animate("#selectauthors",[
+      {translateX:0*windowWidth/750, opacity:0.0},
+      {translateX:-800*windowWidth/750, opacity:0.0},
+      {translateX:-800*windowWidth/750, opacity:1.0}
+    ],1000,)},7700)
 
 
-  this.setData({
+  // this.setData({
     //ani_movebk: ani_tq3.export(),
     //ani_ddlikestar: ani_tsj2_c.export(),
-    ani_honeystar: ani_tsj_op2_c.export(),
-    ani_whateverstar: ani_tsj_op22_c.export(),
-    ani_nolikestar: ani_tsj_op222_c.export(), 
-    ani_likeauthor: ani_tsj3.export(),
+    // ani_honeystar: ani_tsj_op2_c.export(),
+    // ani_whateverstar: ani_tsj_op22_c.export(),
+    // ani_nolikestar: ani_tsj_op222_c.export(), 
+    // ani_likeauthor: ani_tsj3.export(),
     // ani_likeauthor_part2:ani_tsj3.export(),
     // ani_fireauthor: ani_tsj3_fire.export(),
     // ani_earthauthor: ani_tsj3_earth.export(),
     // ani_windauthor: ani_tsj3_wind.export(),
     // ani_waterauthor: ani_tsj3_water.export(),
-    ani_selectauthors: ani_tsas.export(),
+    // ani_selectauthors: ani_tsas.export(),
     //ani_blur: ani_t0.export(),
     //ani_blurin: ani_t0in.export(),
     // ani_person_4: ani_tps_c.export(),
     // ani_person_5: ani_tps.export(),
     //ani_blurin: ani_toin.export(),
-  })
+  // })
 
   // 该元素累积负两分 一分
   point[whichelement-1] = point[whichelement-1] - 1
@@ -4066,13 +4193,19 @@ fireauthorsure:function(){
   }
   
   // 下一题抽卡牌问题显示
-  var ani_pc = wx.createAnimation({
-    delay: 7200, // 3700 4100 4400 4800 57500 5750 5600 5800 6700  6750 7850 6300 3300 3450 5050
-    duration: 1200 //1300 1500
-  })
-  ani_pc.translate(0,3).opacity(1.0).step()
-  //ani_pc.translate(3,0).opacity(1.0).step()
-  //ani_pc.translate(3,0).opacity(1.0).export()
+  // var ani_pc = wx.createAnimation({
+  //   delay: 7200, // 3700 4100 4400 4800 57500 5750 5600 5800 6700  6750 7850 6300 3300 3450 5050
+  //   duration: 1200 //1300 1500
+  // })
+  // ani_pc.translate(0,3).opacity(1.0).step()
+  // //ani_pc.translate(3,0).opacity(1.0).step()
+  // //ani_pc.translate(3,0).opacity(1.0).export()
+
+  setTimeout(()=>{
+    this.animate("#pick12cards",[
+      {opacity:0.0},
+      {opacity:1.0}
+    ],1200,)},7200)
 
   // 本题问题消失
   // var ani_tqq3_c = wx.createAnimation({
@@ -4089,13 +4222,20 @@ fireauthorsure:function(){
   
 
   // 卡牌浮现
-  var ani_show = wx.createAnimation({
-    delay: 8000, //4100  4800  4900 5600 6000 6300 7100 7500 7700 7800 8900 7200 4200 4350 5950
-    duration: 1200, //1200 1400
-  })
-  ani_show.opacity(1.0).translate(-370*2/750*windowWidth,0).step() 
-  //、、ani_show.translate(-370*2/750*windowWidth,0).step() //、// -320*2 -420*2
-  //ani_show.translate(0,-900).step()
+  // var ani_show = wx.createAnimation({
+  //   delay: 8000, //4100  4800  4900 5600 6000 6300 7100 7500 7700 7800 8900 7200 4200 4350 5950
+  //   duration: 1200, //1200 1400
+  // })
+  // ani_show.opacity(1.0).translate(-370*2/750*windowWidth,0).step() 
+  // //、、ani_show.translate(-370*2/750*windowWidth,0).step() //、// -320*2 -420*2
+  // //ani_show.translate(0,-900).step()
+
+  setTimeout(()=>{
+    this.animate("#wholecard",[
+      {opacity:0.0, translateX:0},
+      {opacity:0.0, translateX:-370*2/750*windowWidth},
+      {opacity:1.0, translateX:-370*2/750*windowWidth}],1200,)},8000)
+
 
 
 
@@ -4108,23 +4248,32 @@ fireauthorsure:function(){
   // ani_ta1_c.opacity(0.0).translateX(0).step()
 
   // 选择作家消失
-  var ani_tsas_c = wx.createAnimation({
-    delay: 600,
-    duration:600
-  })
-  ani_tsas_c.opacity(0.0).translate(-800*windowWidth/750).step()
-  ani_tsas_c.translate(0,0).step()
+  // var ani_tsas_c = wx.createAnimation({
+  //   delay: 600,
+  //   duration:600
+  // })
+  // ani_tsas_c.opacity(0.0).translate(-800*windowWidth/750).step()
+  // ani_tsas_c.translate(0,0).step()
+
+  setTimeout(()=>{
+    this.animate("#selectauthors",[
+      {translateX:-800*windowWidth/750, opacity:1.0},
+      {translateX:-800*windowWidth/750, opacity:0.0},
+      {translateX:0, opacity:0.0}
+    ],600,)},600)
+
+
 
 
   // 数据传入wxml
-  this.setData({
+  // this.setData({
     // ani_person_5: ani_tps_c.export(),
     // ani_person_6: ani_tps.export(),
-    ani_pickcards: ani_pc.export(),
+    // ani_pickcards: ani_pc.export(),
     // ani_likeauthor: ani_tqq3_c.export(), 
-    ani_card: ani_show.export(),
-    ani_selectauthors: ani_tsas_c.export(),
-  })
+    // ani_card: ani_show.export(),
+    // ani_selectauthors: ani_tsas_c.export(),
+  // })
 
 // 火象元素积累两分
   authorelement = 1
@@ -4374,11 +4523,17 @@ fireauthorsure:function(){
     }
     
     // 下一题抽卡牌问题显示
-    var ani_pc = wx.createAnimation({
-      delay: 7200,
-      duration: 1200,
-    })
-    ani_pc.translate(0,3).opacity(1.0).step()
+    // var ani_pc = wx.createAnimation({
+    //   delay: 7200,
+    //   duration: 1200,
+    // })
+    // ani_pc.translate(0,3).opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#pick12cards",[
+        {opacity:0.0},
+        {opacity:1.0}
+      ],1200,)},7200)
   
     // 本题问题消失
     // var ani_tqq3_c = wx.createAnimation({
@@ -4392,32 +4547,54 @@ fireauthorsure:function(){
       this.animate("#likeauthor",[
         {opacity:1.0},
         {opacity:0.0}],800,)},1000)
-  
+
     // 卡牌浮现
-    var ani_show = wx.createAnimation({
-      delay: 8000,
-      duration: 1200, 
-    })
-    ani_show.opacity(1.0).translate(-370*2/750*windowWidth,0).step() 
+  // var ani_show = wx.createAnimation({
+  //   delay: 8000, //4100  4800  4900 5600 6000 6300 7100 7500 7700 7800 8900 7200 4200 4350 5950
+  //   duration: 1200, //1200 1400
+  // })
+  // ani_show.opacity(1.0).translate(-370*2/750*windowWidth,0).step() 
+  // //、、ani_show.translate(-370*2/750*windowWidth,0).step() //、// -320*2 -420*2
+  // //ani_show.translate(0,-900).step()
+
+  setTimeout(()=>{
+    this.animate("#wholecard",[
+      {opacity:0.0, translateX:0},
+      {opacity:0.0, translateX:-370*2/750*windowWidth},
+      {opacity:1.0, translateX:-370*2/750*windowWidth}],1200,)},8000)
+
+  setTimeout(()=>{
+    this.animate("#selectauthors",[
+      {translateX:-800*windowWidth/750, opacity:1.0},
+      {translateX:-800*windowWidth/750, opacity:0.0},
+      {translateX:0, opacity:0.0}
+    ],600,)},600)
   
-    // 选择作家消失
-    var ani_tsas_c = wx.createAnimation({
-      delay: 600,
-      duration:600
-    })
-    ani_tsas_c.opacity(0.0).translate(-800*windowWidth/750).step()
-    ani_tsas_c.translate(0,0).step()
+    // // 卡牌浮现
+    // var ani_show = wx.createAnimation({
+    //   delay: 8000,
+    //   duration: 1200, 
+    // })
+    // ani_show.opacity(1.0).translate(-370*2/750*windowWidth,0).step() 
+  
+    // // 选择作家消失
+    // var ani_tsas_c = wx.createAnimation({
+    //   delay: 600,
+    //   duration:600
+    // })
+    // ani_tsas_c.opacity(0.0).translate(-800*windowWidth/750).step()
+    // ani_tsas_c.translate(0,0).step()
   
   
     // 数据传入wxml
-    this.setData({
+    // this.setData({
       // ani_person_5: ani_tps_c.export(),
       // ani_person_6: ani_tps.export(),
-      ani_pickcards: ani_pc.export(),
+      // ani_pickcards: ani_pc.export(),
       // ani_likeauthor: ani_tqq3_c.export(), 
-      ani_card: ani_show.export(),
-      ani_selectauthors: ani_tsas_c.export(),
-    })
+      // ani_card: ani_show.export(),
+      // ani_selectauthors: ani_tsas_c.export(),
+    // })
   
   // 土象元素积累两分
     authorelement = 2
@@ -4662,11 +4839,17 @@ fireauthorsure:function(){
     }
     
     // 下一题抽卡牌问题显示
-    var ani_pc = wx.createAnimation({
-      delay: 7200,
-      duration: 1200,
-    })
-    ani_pc.translate(0,3).opacity(1.0).step()
+    // var ani_pc = wx.createAnimation({
+    //   delay: 7200,
+    //   duration: 1200,
+    // })
+    // ani_pc.translate(0,3).opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#pick12cards",[
+        {opacity:0.0},
+        {opacity:1.0}
+      ],1200,)},7200)
   
     // 本题问题消失
     // var ani_tqq3_c = wx.createAnimation({
@@ -4680,31 +4863,44 @@ fireauthorsure:function(){
         {opacity:1.0},
         {opacity:0.0}],800,)},1000)
   
-    // 卡牌浮现
-    var ani_show = wx.createAnimation({
-      delay: 8000,
-      duration: 1200, 
-    })
-    ani_show.opacity(1.0).translate(-370*2/750*windowWidth,0).step() 
+    // // 卡牌浮现
+    // var ani_show = wx.createAnimation({
+    //   delay: 8000,
+    //   duration: 1200, 
+    // })
+    // ani_show.opacity(1.0).translate(-370*2/750*windowWidth,0).step() 
   
-    // 选择作家消失
-    var ani_tsas_c = wx.createAnimation({
-      delay: 600,
-      duration:600
-    })
-    ani_tsas_c.opacity(0.0).translate(-800*windowWidth/750).step()
-    ani_tsas_c.translate(0,0).step()
+    // // 选择作家消失
+    // var ani_tsas_c = wx.createAnimation({
+    //   delay: 600,
+    //   duration:600
+    // })
+    // ani_tsas_c.opacity(0.0).translate(-800*windowWidth/750).step()
+    // ani_tsas_c.translate(0,0).step()
+
+    setTimeout(()=>{
+      this.animate("#wholecard",[
+        {opacity:0.0, translateX:0},
+        {opacity:0.0, translateX:-370*2/750*windowWidth},
+        {opacity:1.0, translateX:-370*2/750*windowWidth}],1200,)},8000)
+  
+    setTimeout(()=>{
+      this.animate("#selectauthors",[
+        {translateX:-800*windowWidth/750, opacity:1.0},
+        {translateX:-800*windowWidth/750, opacity:0.0},
+        {translateX:0, opacity:0.0}
+      ],600,)},600)
   
   
     // 数据传入wxml
-    this.setData({
+    // this.setData({
       // ani_person_5: ani_tps_c.export(),
       // ani_person_6: ani_tps.export(),
-      ani_pickcards: ani_pc.export(),
+      // ani_pickcards: ani_pc.export(),
       // ani_likeauthor: ani_tqq3_c.export(), 
-      ani_card: ani_show.export(),
-      ani_selectauthors: ani_tsas_c.export(),
-    })
+    //   ani_card: ani_show.export(),
+    //   ani_selectauthors: ani_tsas_c.export(),
+    // })
   
   // 风象元素积累两分
     authorelement = 3
@@ -4948,11 +5144,17 @@ fireauthorsure:function(){
     }
     
     // 下一题抽卡牌问题显示
-    var ani_pc = wx.createAnimation({
-      delay: 7200,
-      duration: 1200,
-    })
-    ani_pc.translate(0,3).opacity(1.0).step()
+    // var ani_pc = wx.createAnimation({
+    //   delay: 7200,
+    //   duration: 1200,
+    // })
+    // ani_pc.translate(0,3).opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#pick12cards",[
+        {opacity:0.0},
+        {opacity:1.0}
+      ],1200,)},7200)
   
     // 本题问题消失
     // var ani_tqq3_c = wx.createAnimation({
@@ -4968,30 +5170,42 @@ fireauthorsure:function(){
         {opacity:0.0}],800,)},1000)
     
     // 卡牌浮现
-    var ani_show = wx.createAnimation({
-      delay: 8000,
-      duration: 1200, 
-    })
-    ani_show.opacity(1.0).translate(-370*2/750*windowWidth,0).step() 
+    // var ani_show = wx.createAnimation({
+    //   delay: 8000,
+    //   duration: 1200, 
+    // })
+    // ani_show.opacity(1.0).translate(-370*2/750*windowWidth,0).step() 
   
-    // 选择作家消失
-    var ani_tsas_c = wx.createAnimation({
-      delay: 600,
-      duration:600
-    })
-    ani_tsas_c.opacity(0.0).translate(-800*windowWidth/750).step()
-    ani_tsas_c.translate(0,0).step()
+    // // 选择作家消失
+    // var ani_tsas_c = wx.createAnimation({
+    //   delay: 600,
+    //   duration:600
+    // })
+    // ani_tsas_c.opacity(0.0).translate(-800*windowWidth/750).step()
+    // ani_tsas_c.translate(0,0).step()
   
+    setTimeout(()=>{
+      this.animate("#wholecard",[
+        {opacity:0.0, translateX:0},
+        {opacity:0.0, translateX:-370*2/750*windowWidth},
+        {opacity:1.0, translateX:-370*2/750*windowWidth}],1200,)},8000)
+  
+    setTimeout(()=>{
+      this.animate("#selectauthors",[
+        {translateX:-800*windowWidth/750, opacity:1.0},
+        {translateX:-800*windowWidth/750, opacity:0.0},
+        {translateX:0, opacity:0.0}
+      ],600,)},600)
   
     // 数据传入wxml
-    this.setData({
+    // this.setData({
       // ani_person_5: ani_tps_c.export(),
       // ani_person_6: ani_tps.export(),
-      ani_pickcards: ani_pc.export(),
+      // ani_pickcards: ani_pc.export(),
       // ani_likeauthor: ani_tqq3_c.export(), 
-      ani_card: ani_show.export(),
-      ani_selectauthors: ani_tsas_c.export(),
-    })
+      // ani_card: ani_show.export(),
+      // ani_selectauthors: ani_tsas_c.export(),
+    // })
   
   // 水象元素积累两分
     authorelement = 4
@@ -5542,24 +5756,38 @@ fireauthorsure:function(){
       ],800,)}, 1200)// 持续时间爱你，延时
 
     // 前进按钮出现
-    var ani_sure = wx.createAnimation({
-      delay: 400, //1400
-      duration: 600,
-    })
-    ani_sure.translate(485*windowWidth/750,0).step()
-    ani_sure.opacity(1.0).step()
+    // var ani_sure = wx.createAnimation({
+    //   delay: 400, //1400
+    //   duration: 600,
+    // })
+    // ani_sure.translate(485*windowWidth/750,0).step()
+    // ani_sure.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#cardsure",[
+        {translateX:0, opacity:0.0},
+        {translateX:485*windowWidth/750, opacity:0.0},
+        {translateX:485*windowWidth/750, opacity:1.0}
+      ],400,)},600)
 
     // 当前的卡牌背面消失
-    var ani_card_c = wx.createAnimation({
-      delay: 350,
-      duration: 1000,
-    })
-    ani_card_c.opacity(1.0).translate(0,0).step()
+    // var ani_card_c = wx.createAnimation({
+    //   delay: 450,
+    //   duration: 1000,
+    // })
+    // ani_card_c.opacity(1.0).translate(0,0).step()
+
+    setTimeout(()=>{
+      this.animate("#wholecard",[
+        {opacity:1.0, translateX:-370*2/750*windowWidth},
+        {opacity:0.0, translateX:-370*2/750*windowWidth},
+        {opacity:0.0, translateX:0}
+      ],1000,)},450)
     
-    this.setData({
-      ani_card: ani_card_c.export(),
-      ani_cardsure:ani_sure.export()
-    })
+    // this.setData({
+      // ani_card: ani_card_c.export(),
+      // ani_cardsure:ani_sure.export()
+    // })
     checked15 = false
     }
   },
@@ -5567,7 +5795,6 @@ fireauthorsure:function(){
   
   cardsure:function(){
     var windowHeight = wx.getSystemInfoSync().windowHeight
-
     if (checked11){
     beginnum = 6
     // var ani_t0 = wx.createAnimation({
@@ -5699,13 +5926,20 @@ fireauthorsure:function(){
     }
   
 
-    // 前进按钮消失
-    var ani_sure_c = wx.createAnimation({
-      delay: 500, //1400
-      duration: 600,
-    })
-    ani_sure_c.translate(485*windowWidth/750,0).opacity(0.0).step()
-    ani_sure_c.translate(0,0).step()
+    // // 前进按钮消失
+    // var ani_sure_c = wx.createAnimation({
+    //   delay: 600, //1400
+    //   duration: 600,
+    // })
+    // ani_sure_c.translate(485*windowWidth/750,0).opacity(0.0).step()
+    // ani_sure_c.translate(0,0).step()
+
+    setTimeout(()=>{
+      this.animate("#cardsure",[
+        {translateX:485*windowWidth/750, opacity:1.0},
+        {translateX:485*windowWidth/750, opacity:0.0},
+        {translateX:0, opacity:0.0}
+      ],600,)},600)
 
     // 当前的问题消失
     // var ani_tqq4_c = wx.createAnimation({
@@ -5754,30 +5988,44 @@ fireauthorsure:function(){
 
 
     // 显示选项：是 /不是的
-    var ani_tsj_op6 = wx.createAnimation({
-      delay: 3050, 
-      duration: 1200,
-    })
-    ani_tsj_op6.translate(0,450*2*windowWidth/750).step() 
-    ani_tsj_op6.opacity(1.0).translate(0,450*2*windowWidth/750).step()
+    // var ani_tsj_op6 = wx.createAnimation({
+    //   delay: 3050, 
+    //   duration: 1200,
+    // })
+    // ani_tsj_op6.translate(0,450*2*windowWidth/750).step() 
+    // ani_tsj_op6.opacity(1.0).translate(0,450*2*windowWidth/750).step()
 
-    var ani_tsj_op66 = wx.createAnimation({
-      delay: 3050,
-      duration: 1200,
-    })
-    ani_tsj_op66.opacity(0.0).translate(0,450*2*windowWidth/750).step()
-    ani_tsj_op66.opacity(1.0).translate(0,450*2*windowWidth/750).step()
+    setTimeout(()=>{
+      this.animate("#yesstar",[
+        {translateY:0, opacity:0.0},
+        {translateY:450*2*windowWidth/750, opacity:0.0},
+        {translateY:450*2*windowWidth/750, opacity:1.0}
+      ],1200,)},7050)
+
+    // var ani_tsj_op66 = wx.createAnimation({
+    //   delay: 3050,
+    //   duration: 1200,
+    // })
+    // ani_tsj_op66.opacity(0.0).translate(0,450*2*windowWidth/750).step()
+    // ani_tsj_op66.opacity(1.0).translate(0,450*2*windowWidth/750).step()
+
+    setTimeout(()=>{
+      this.animate("#nostar",[
+        {translateY:0, opacity:0.0},
+        {translateY:450*2*windowWidth/750, opacity:0.0},
+        {translateY:450*2*windowWidth/750, opacity:1.0}
+      ],1200,)},7050)
 
     //jiang data tranform into wxml
-    this.setData({
-      ani_cardsure: ani_sure_c.export(),
+    // this.setData({
+      // ani_cardsure: ani_sure_c.export(),
       // ani_person_6: ani_tps_c.export(),
       // ani_person_7: ani_tps.export(),
       // ani_pickcards: ani_tqq4_c.export(),
       // ani_questionstar: ani_tsj6.export(),
-      ani_yesstar: ani_tsj_op6.export(),
-      ani_nostar: ani_tsj_op66.export(),
-    })
+      // ani_yesstar: ani_tsj_op6.export(),
+      // ani_nostar: ani_tsj_op66.export(),
+    // })
 
     checked11 = false;
     }
@@ -5931,20 +6179,34 @@ fireauthorsure:function(){
         {opacity:0.0}],800)},1000)
 
     // 当前选项消失并移动到点击不到的区域
-    var ani_tsj_op6_c = wx.createAnimation({
-      delay: 600,
-      duration: 600,
-    })
-    ani_tsj_op6_c.opacity(0.0).translateY(450*2*windowWidth/750).step()
-    ani_tsj_op6_c.translate(0,1000*2*windowWidth/750).step()
+    // var ani_tsj_op6_c = wx.createAnimation({
+    //   delay: 600,
+    //   duration: 600,
+    // })
+    // ani_tsj_op6_c.opacity(0.0).translateY(450*2*windowWidth/750).step()
+    // ani_tsj_op6_c.translate(0,1000*2*windowWidth/750).step()
+
+    setTimeout(()=>{
+      this.animate("#yesstar",[
+        {translateY:450*2*windowWidth/750, opacity:1.0},
+        {translateY:450*2*windowWidth/7500, opacity:0.0},
+        {translateY:0, opacity:0.0}
+      ],600,)},600)
 
 
-    var ani_tsj_op66_c = wx.createAnimation({
-      delay: 600, 
-      duration: 600,
-    })
-    ani_tsj_op66_c.opacity(0.0).translateY(450*2*windowWidth/750).step()
-    ani_tsj_op66_c.translate(0,1100*2*windowWidth/750).step()
+    // var ani_tsj_op66_c = wx.createAnimation({
+    //   delay: 600, 
+    //   duration: 600,
+    // })
+    // ani_tsj_op66_c.opacity(0.0).translateY(450*2*windowWidth/750).step()
+    // ani_tsj_op66_c.translate(0,1100*2*windowWidth/750).step()
+
+    setTimeout(()=>{
+      this.animate("#nostar",[
+        {translateY:450*2*windowWidth/750, opacity:1.0},
+        {translateY:450*2*windowWidth/750, opacity:0.0},
+        {translateY:0, opacity:0.0}
+      ],600,)},600)
 
 
     // 显示问题：对XX星座印象
@@ -5974,7 +6236,7 @@ fireauthorsure:function(){
         {translateY:0, opacity:0.0},
         {translateY:-600*2*windowWidth/750, opacity:0.0},
         {translateY:-600*2*windowWidth/750, opacity:1.0}
-      ],1200,)},3150)
+      ],1200,)},7700)
 
     // var ani_tsj_op77 = wx.createAnimation({
     //   delay: 3150, 
@@ -5988,7 +6250,7 @@ fireauthorsure:function(){
         {translateY:0, opacity:0.0},
         {translateY:-600*2*windowWidth/750, opacity:0.0},
         {translateY:-600*2*windowWidth/750, opacity:1.0}
-      ],1200,)},3150)
+      ],1200,)},7700)
     
 
     // var ani_tsj_op777 = wx.createAnimation({
@@ -6003,20 +6265,20 @@ fireauthorsure:function(){
         {translateY:0, opacity:0.0},
         {translateY:-600*2*windowWidth/750, opacity:0.0},
         {translateY:-600*2*windowWidth/750, opacity:1.0}
-      ],1200,)},3150)
+      ],1200,)},7700)
 
     // 将数据传入wxml之中
-    this.setData({
+    // this.setData({
       // ani_questionstar: an_tqq6_c.export(),
-      ani_yesstar: ani_tsj_op6_c.export(),
-      ani_nostar: ani_tsj_op66_c.export(),
+      // ani_yesstar: ani_tsj_op6_c.export(),
+      // ani_nostar: ani_tsj_op66_c.export(),
       // ani_impression: ani_tq7.export(),
       // ani_likestar2: ani_tsj_op7.export(),
       // ani_whateverstar2: ani_tsj_op77.export(),
       // ani_dislikestar2: ani_tsj_op777.export(),
       // ani_person_7: ani_tps_c.export(),
       // ani_person_8: ani_tps.export(),
-    })
+    // })
       checked4 = false;
     }
   },
@@ -6136,19 +6398,33 @@ fireauthorsure:function(){
         {opacity:0.0}],800)},1000)
 
     // 当前界面选项消失并移动到点击不到的区域
-    var ani_tsj_op6_c = wx.createAnimation({
-      delay: 600, 
-      duration: 600 
-    })
-    ani_tsj_op6_c.translate(0,450*2*windowWidth/750).opacity(0.0).step()
-    ani_tsj_op6_c.translate(0,0).opacity(0.0).step()
+    // var ani_tsj_op6_c = wx.createAnimation({
+    //   delay: 600, 
+    //   duration: 600 
+    // })
+    // ani_tsj_op6_c.translate(0,450*2*windowWidth/750).opacity(0.0).step()
+    // ani_tsj_op6_c.translate(0,0).opacity(0.0).step()
 
-    var ani_tsj_op66_c = wx.createAnimation({
-      delay: 600, 
-      duration:600
-    })
-    ani_tsj_op66_c.translate(0,450*2*windowWidth/750).opacity(0.0).step() 
-    ani_tsj_op66_c.translate(0,0).opacity(0.0).step()
+    setTimeout(()=>{
+      this.animate("#yesstar",[
+        {translateY:450*2*windowWidth/750, opacity:1.0},
+        {translateY:450*2*windowWidth/750, opacity:0.0},
+        {translateY:0, opacity:0.0}
+      ],600,)},600)
+
+    // var ani_tsj_op66_c = wx.createAnimation({
+    //   delay: 600, 
+    //   duration:600
+    // })
+    // ani_tsj_op66_c.translate(0,450*2*windowWidth/750).opacity(0.0).step() 
+    // ani_tsj_op66_c.translate(0,0).opacity(0.0).step()
+
+    setTimeout(()=>{
+      this.animate("#nostar",[
+        {translateY:450*2*windowWidth/750, opacity:1.0},
+        {translateY:450*2*windowWidth/750, opacity:0.0},
+        {translateY:0, opacity:0.0}
+      ],600,)},600)
     
   // 介绍显示
     setTimeout(()=>{
@@ -6209,20 +6485,35 @@ fireauthorsure:function(){
     ani_fivestar.opacity(1.0).step()
 
     // xi显示：五星正缘书内容
-    var ani_five = wx.createAnimation({
-      delay: 6000,//7350
-      duration: 1000,
-    })
-    ani_five.translate(700*windowWidth/750,0).step()
-    ani_five.opacity(1.0).step()
+    // var ani_five = wx.createAnimation({
+    //   delay: 6000,//7350
+    //   duration: 1000,
+    // })
+    // ani_five.translate(700*windowWidth/750,0).step()
+    // ani_five.opacity(1.0).step()
 
+    setTimeout(()=>{
+      this.animate("#fivestarbooks",[
+        {translateX:0, opacity:0.0},
+        {translateX:700*windowWidth/750, opacity:0.0},
+        {translateX:700*windowWidth/750, opacity:1.0}
+      ],1000,)},6000)
+
+    
     // continue按钮
-    var ani_continue = wx.createAnimation({
-      delay: 6500,//7900
-      duration: 1000
-    })
-    ani_continue.opacity(0.0).translateX(550*windowWidth/750).step()
-    ani_continue.opacity(1.0).step()
+    // var ani_continue = wx.createAnimation({
+    //   delay: 6500,//7900
+    //   duration: 1000
+    // })
+    // ani_continue.opacity(0.0).translateX(550*windowWidth/750).step()
+    // ani_continue.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#continue",[
+        {translateX:0, opacity:0.0},
+        {translateX:550*windowWidth/750, opacity:0.0},
+        {translateX:550*windowWidth/750, opacity:1.0}
+      ],1000,)},6500)
 
 
     if (windowHeight>=800){
@@ -6281,19 +6572,19 @@ fireauthorsure:function(){
     }
     
     // transform infor into wxml
-    this.setData({
+    // this.setData({
       // ani_person_7: ani_tps_c.export(),
       // ani_person_10: ani_tps.export(),
       // ani_questionstar: ani_tqq6_c.export(),
-      ani_yesstar: ani_tsj_op6_c.export(),
-      ani_nostar: ani_tsj_op66_c.export(),
+      // ani_yesstar: ani_tsj_op6_c.export(),
+      // ani_nostar: ani_tsj_op66_c.export(),
       // ani_paper_1: ani_tpp1.export(),
       // ani_paper_2: ani_tpp2.export(),
       // ani_paper_3: ani_tpp3.export(),
       // ani_fivestarbook: ani_fivestar.export(),
-      ani_fivestar: ani_five.export(),
-      ani_continue: ani_continue.export(),
-    })
+    //   ani_fivestar: ani_five.export(),
+    //   ani_continue: ani_continue.export(),
+    // })
 
   console.log(whichstar2)
   // console.log(whichelement)
@@ -6866,26 +7157,48 @@ fireauthorsure:function(){
 
 
 
-    var ani_tsj7_op_c=wx.createAnimation({
-      delay: 600,
-      duration: 600,
-    });
-    ani_tsj7_op_c.opacity(0.0).translate(0,-600*2*windowWidth/750).step()
-    ani_tsj7_op_c.translate(0,0).step()
+    // var ani_tsj7_op_c=wx.createAnimation({
+    //   delay: 600,
+    //   duration: 600,
+    // });
+    // ani_tsj7_op_c.opacity(0.0).translate(0,-600*2*windowWidth/750).step()
+    // ani_tsj7_op_c.translate(0,0).step()
 
-    var ani_tsj_op77_c=wx.createAnimation({ //ani_tsj7_op_c
-      delay: 600,
-      duration: 600,
-    })
-    ani_tsj_op77_c.opacity(0.0).translate(0,-600*2*windowWidth/750).step()
-    ani_tsj_op77_c.opacity(0.0).translate(0,0).step()
+    setTimeout(()=>{
+      this.animate("#likestar-2",[
+        {translateY:-600*2*windowWidth/750, opacity:1.0},
+        {translateY:-600*2*windowWidth/750, opacity:0.0},
+        {translateY:0, opacity:0.0}
+      ],600,)},600)
 
-    var ani_tsj_op777_c=wx.createAnimation({ //ani_tsj7_op_c
-      delay: 600,
-      duration: 600, 
-    })
-    ani_tsj_op777_c.opacity(0.0).translate(0,-600*2*windowWidth/750).step()
-    ani_tsj_op777_c.translate(0,0).step()
+    // var ani_tsj_op77_c=wx.createAnimation({ //ani_tsj7_op_c
+    //   delay: 600,
+    //   duration: 600,
+    // })
+    // ani_tsj_op77_c.opacity(0.0).translate(0,-600*2*windowWidth/750).step()
+    // ani_tsj_op77_c.opacity(0.0).translate(0,0).step()
+
+    setTimeout(()=>{
+      this.animate("#whateverstar-2",[
+        {translateY:-600*2*windowWidth/750, opacity:1.0},
+        {translateY:-600*2*windowWidth/750, opacity:0.0},
+        {translateY:0, opacity:0.0}
+      ],600,)},600)
+
+    // var ani_tsj_op777_c=wx.createAnimation({ //ani_tsj7_op_c
+    //   delay: 600,
+    //   duration: 600, 
+    // })
+    // ani_tsj_op777_c.opacity(0.0).translate(0,-600*2*windowWidth/750).step()
+    // ani_tsj_op777_c.translate(0,0).step()
+
+    setTimeout(()=>{
+      this.animate("#dislikestar-2",[
+        {translateY:-600*2*windowWidth/750, opacity:1.0},
+        {translateY:-600*2*windowWidth/750, opacity:0.0},
+        {translateY:0, opacity:0.0}
+      ],600,)},600)
+
 
     // 等待加载显示
     setTimeout(()=>{
@@ -6949,18 +7262,25 @@ fireauthorsure:function(){
     
     // 四星推书显示
 
-    var ani_fourstar = wx.createAnimation({
-      delay: 14700,
-      duration: 1200,
-    })
-    ani_fourstar. opacity(1.0).step()
+    // var ani_fourstar = wx.createAnimation({
+    //   delay: 14700,
+    //   duration: 1200,
+    // })
+    // ani_fourstar.opacity(1.0).step()
 
-    var ani_four = wx.createAnimation({
-      delay: 6000,//7100
-      duration: 1000,
-    })
-    ani_four.translate(-700*windowWidth/750,0).step()
-    ani_four.opacity(1.0).step()
+    // var ani_four = wx.createAnimation({
+    //   delay: 6000,//7100
+    //   duration: 1000,
+    // })
+    // ani_four.translate(-700*windowWidth/750,0).step()
+    // ani_four.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#fourstarbook",[
+        {translateX:0, opacity:0.0},
+        {translateX:-700*windowWidth/750, opacity:0.0},
+        {translateX:-700*windowWidth/750, opacity:1.0}
+      ],1000,)},6000)
 
     // 再来一次按钮
     //var ani_again = wx.createAnimation({
@@ -6971,12 +7291,21 @@ fireauthorsure:function(){
     //ani_again.opacity(1.0).translate(140*2*windowWidth/750,0).step()
 
     // continue按钮
-    var ani_continue = wx.createAnimation({
-      delay: 6500,//7850
-      duration: 1000
-    })
-    ani_continue.opacity(0.0).translateX(550*windowWidth/750).step()
-    ani_continue.opacity(1.0).step()
+    // var ani_continue = wx.createAnimation({
+    //   delay: 6500,//7850
+    //   duration: 1000
+    // })
+    // ani_continue.opacity(0.0).translateX(550*windowWidth/750).step()
+    // ani_continue.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#continue",[
+        {translateX:0, opacity:0.0},
+        {translateX:550*windowWidth/750, opacity:0.0},
+        {translateX:550*windowWidth/750, opacity:1.0}
+      ],1000,)},6500)
+
+    
 
     // ABOUT KELPde 按钮
     // var ani_aboutKELP = wx.createAnimation({
@@ -6988,21 +7317,21 @@ fireauthorsure:function(){
 
     // 把信息传入index.wxml
     // the last steps
-    this.setData({
+    // this.setData({
       //ani_movebk: ani_tmap.export(),
       // ani_impression: ani_tqq7_c.export(),
-      ani_likestar2: ani_tsj7_op_c.export(),
-      ani_whateverstar2: ani_tsj_op77_c.export(),
-      ani_dislikestar2: ani_tsj_op777_c.export(),
+      // ani_likestar2: ani_tsj7_op_c.export(),
+      // ani_whateverstar2: ani_tsj_op77_c.export(),
+      // ani_dislikestar2: ani_tsj_op777_c.export(),
       // ani_paper_1: ani_tpp1.export(),
       // ani_paper_2: ani_tpp2.export(),
       // ani_paper_3: ani_tpp3.export(),
       // ani_fourstarbook: ani_fourstar.export(),
-      ani_fourstar: ani_four.export(),
-      ani_continue: ani_continue.export(),
+      // ani_fourstar: ani_four.export(),
+      // ani_continue: ani_continue.export(),
       // ani_person_8: ani_tps_c.export(),
       // ani_person_10: ani_tps.export()
-    })
+    // })
 
     point[whichelement-1] = point[whichelement-1] + 2
     console.log(point)
@@ -7289,32 +7618,49 @@ fireauthorsure:function(){
         {opacity:1.0},
         {opacity:0.0}],800,)},1000)
 
-    var ani_tsj7_op_c=wx.createAnimation({
-      delay: 600, //700 {900 1150 1400}
-      duration: 600 //650
-    });
-    ani_tsj7_op_c.opacity(0.0).translateY(-600*2*windowWidth/750).step() 
-    ani_tsj7_op_c.translate(0,0*2*windowWidth/750).step() //0
+    // var ani_tsj7_op_c=wx.createAnimation({
+    //   delay: 600, //700 {900 1150 1400}
+    //   duration: 600 //650
+    // });
+    // ani_tsj7_op_c.opacity(0.0).translateY(-600*2*windowWidth/750).step() 
+    // ani_tsj7_op_c.translate(0,0*2*windowWidth/750).step() //0
 
-    var ani_tsj_op77_c=wx.createAnimation({ //ani_tsj7_op_c
-      delay: 600, //700750  750700 750 1000 1150
-      duration: 600 // 650
-    });
-    //(0,-275)
-    ani_tsj_op77_c.opacity(0.0).translateY(-600*2*windowWidth/750).step() //-375*2rpx //-380*2rpx
-    ani_tsj_op77_c.opacity(0.0).translate(0,0*2*windowWidth/750).step() //0 2w
+    setTimeout(()=>{
+      this.animate("#likestar-2",[
+        {translateY:-600*2*windowWidth/750, opacity:1.0},
+        {translateY:-600*2*windowWidth/750, opacity:0.0},
+        {translateY:0, opacity:0.0}
+      ],600,)},600)
 
-    var ani_tsj_op777_c=wx.createAnimation({ //ani_tsj7_op_c
-      delay: 600, //700 1100 1400
-      duration: 600 //650
-    });
-    //(0,-275)
-    ani_tsj_op777_c.opacity(0.0).translateY(-600*2*windowWidth/750).step() //-375*2rpx -380*2rpx
-    ani_tsj_op777_c.opacity(0.0).translate(0,0*2*windowWidth/750).step()//280*2
-    //ani_tsj_op777_c.opacity(1.0).translateY(-375).step()
-    //ani_tsj_op777_c.translate(0,380).step()
-    //ani_tsj_op777_c.opacity(0.0).translate(3,0).step() //ani_tsj7_op_c
-    //ani_tsj_op777_c.translate(150,0).step() //opc, tras, ani_tsj7_op_c
+    // var ani_tsj_op77_c=wx.createAnimation({ //ani_tsj7_op_c
+    //   delay: 600, //700750  750700 750 1000 1150
+    //   duration: 600 // 650
+    // });
+    // //(0,-275)
+    // ani_tsj_op77_c.opacity(0.0).translateY(-600*2*windowWidth/750).step() //-375*2rpx //-380*2rpx
+    // ani_tsj_op77_c.opacity(0.0).translate(0,0*2*windowWidth/750).step() //0 2w
+
+    setTimeout(()=>{
+      this.animate("#whateverstar-2",[
+        {translateY:-600*2*windowWidth/750, opacity:1.0},
+        {translateY:-600*2*windowWidth/750, opacity:0.0},
+        {translateY:0, opacity:0.0}
+      ],600,)},600)
+
+    // var ani_tsj_op777_c=wx.createAnimation({ //ani_tsj7_op_c
+    //   delay: 600, //700 1100 1400
+    //   duration: 600 //650
+    // });
+    // //(0,-275)
+    // ani_tsj_op777_c.opacity(0.0).translateY(-600*2*windowWidth/750).step() //-375*2rpx -380*2rpx
+    // ani_tsj_op777_c.opacity(0.0).translate(0,0*2*windowWidth/750).step()//280*2
+
+    setTimeout(()=>{
+      this.animate("#dislikestar-2",[
+        {translateY:-600*2*windowWidth/750, opacity:1.0},
+        {translateY:-600*2*windowWidth/750, opacity:0.0},
+        {translateY:0, opacity:0.0}
+      ],600,)},600)
 
     // 等待加载
     setTimeout(()=>{
@@ -7398,27 +7744,42 @@ fireauthorsure:function(){
 
     // 四星推书显示
 
-    var ani_fourstar = wx.createAnimation({
-      delay: 14700, //12000 14500 17500 15000 3000
-      duration: 1200 //1200 1600
-    })
-    ani_fourstar.opacity(1.0).step() //opacity(1.0)s
-    //ani_fourstar.opacity(-0.0).step()
+    // var ani_fourstar = wx.createAnimation({
+    //   delay: 14700, //12000 14500 17500 15000 3000
+    //   duration: 1200 //1200 1600
+    // })
+    // ani_fourstar.opacity(1.0).step() //opacity(1.0)s
+    // //ani_fourstar.opacity(-0.0).step()
 
-    var ani_four = wx.createAnimation({
-      delay:6000, //7100 16000 4000 13000
-      duration: 1000,
-    })
-    ani_four.translate(-700*windowWidth/750,0).step()
-    ani_four.opacity(1.0).step()
+    // var ani_four = wx.createAnimation({
+    //   delay:6000, //7100 16000 4000 13000
+    //   duration: 1000,
+    // })
+    // ani_four.translate(-700*windowWidth/750,0).step()
+    // ani_four.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#fourstarbook",[
+        {translateX:0, opacity:0.0},
+        {translateX:-700*windowWidth/750, opacity:0.0},
+        {translateX:-700*windowWidth/750, opacity:1.0}
+      ],1000,)},6000)
+
 
     // continue按键
-    var ani_continue = wx.createAnimation({
-      delay: 6500,//7850
-      duration: 1000
-    })
-    ani_continue.opacity(0.0).translateX(550*windowWidth/750).step()
-    ani_continue.opacity(1.0).step()
+    // var ani_continue = wx.createAnimation({
+    //   delay: 6500,//7850
+    //   duration: 1000
+    // })
+    // ani_continue.opacity(0.0).translateX(550*windowWidth/750).step()
+    // ani_continue.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#continue",[
+        {translateX:0, opacity:0.0},
+        {translateX:550*windowWidth/750, opacity:0.0},
+        {translateX:550*windowWidth/750, opacity:1.0}
+      ],1000,)},6500)
   
 
     // 显示：再测一次
@@ -7440,21 +7801,21 @@ fireauthorsure:function(){
 
     // 把信息传入index.wxml
     // the last steps
-    this.setData({
+    // this.setData({
       // ani_person_8: ani_tps_c.export(),
       // ani_person_10: ani_tps.export(),
       //ani_movebk: ani_tmap.export(),
       // ani_impression: ani_tqq7_c.export(),
-      ani_likestar2: ani_tsj7_op_c.export(),
-      ani_whateverstar2: ani_tsj_op77_c.export(), 
-      ani_dislikestar2: ani_tsj_op777_c.export(),
+      // ani_likestar2: ani_tsj7_op_c.export(),
+      // ani_whateverstar2: ani_tsj_op77_c.export(), 
+      // ani_dislikestar2: ani_tsj_op777_c.export(),
       // ani_paper_1: ani_tpp1.export(),
       // ani_paper_2: ani_tpp2.export(),
       // ani_paper_3: ani_tpp3.export(),
       // ani_fourstarbook: ani_fourstar.export(),
-      ani_fourstar: ani_four.export(),
-      ani_continue: ani_continue.export(),    
-    })
+      // ani_fourstar: ani_four.export(),
+      // ani_continue: ani_continue.export(),    
+    // })
 
     point[whichelement-1] = point[whichelement-1] + 0
     console.log(point)
@@ -7774,39 +8135,60 @@ fireauthorsure:function(){
         {opacity:1.0},
         {opacity:0.0}],600,)},1600)
 
-    var ani_tsj7_op_c=wx.createAnimation({ //ani_tsj7_op_
-      delay: 950, //700
-      duration: 650
-    });
-    //、、-275
-    ani_tsj7_op_c.opacity(0.0).translate(0,-600*2*windowWidth/750).step() //opacity(1.0) //-375*2rpx -380*2 -480*3
-    ani_tsj7_op_c.translateY(0*2*windowWidth/750).step()
-    //ani_tsj7_op_c.opacity(0.0).step()
-    //ani_tsj7_op_c.translate(150,0).step()
-    //ani_tsj7_op_c.opacity(900,0).step()
-    //ani_tsj_op7_c.opacity(0.0).translate(0,-275).step()
-    //ani_tsj_op7_c.translate(0,280).step()
+    // var ani_tsj7_op_c=wx.createAnimation({ //ani_tsj7_op_
+    //   delay: 950, //700
+    //   duration: 650
+    // });
+    // //、、-275
+    // ani_tsj7_op_c.opacity(0.0).translate(0,-600*2*windowWidth/750).step() //opacity(1.0) //-375*2rpx -380*2 -480*3
+    // ani_tsj7_op_c.translateY(0*2*windowWidth/750).step()
+    // //ani_tsj7_op_c.opacity(0.0).step()
+    // //ani_tsj7_op_c.translate(150,0).step()
+    // //ani_tsj7_op_c.opacity(900,0).step()
+    // //ani_tsj_op7_c.opacity(0.0).translate(0,-275).step()
+    // //ani_tsj_op7_c.translate(0,280).step()
 
-    var ani_tsj_op77_c=wx.createAnimation({ //ani_tsj7_op_
-      delay: 1100,//700 7500
-      duration: 650
-    });
-    //ani_tsj_op77_c.opacity(0.0).step()
-    //ani_tsj_op77_c.translate(150,0).step() // -275 ani_tsj7777_op_c.translate(150,0).step()
-    ani_tsj_op77_c.opacity(0.0).translate(0,-600*2*windowWidth/750).step() //-375*2rpx 0380*2rpx
-    ani_tsj_op77_c.translateY(0*2*windowWidth/750).step()
+    // var ani_tsj_op77_c=wx.createAnimation({ //ani_tsj7_op_
+    //   delay: 1100,//700 7500
+    //   duration: 650
+    // });
+    // //ani_tsj_op77_c.opacity(0.0).step()
+    // //ani_tsj_op77_c.translate(150,0).step() // -275 ani_tsj7777_op_c.translate(150,0).step()
+    // ani_tsj_op77_c.opacity(0.0).translate(0,-600*2*windowWidth/750).step() //-375*2rpx 0380*2rpx
+    // ani_tsj_op77_c.translateY(0*2*windowWidth/750).step()
 
-    var ani_tsj_op777_c=wx.createAnimation({ //ani_tsj7_op_
-      delay: 1250, //700 800
-      duration: 650
-    });
-    // -275
-    ani_tsj_op777_c.opacity(0.0).translate(0,-600*2*windowWidth/750).step() //-374 -375*2rpx -380*2rpx
-    ani_tsj_op777_c.translateY(0*2*windowWidth/750).step()//280
-    //ani_tsj_op88_c.opacity(0.0).translate(0,-275).step()
-    //ani_tsj_op_c.translate(0,280).step()
-    //ani_tsj_op777_c.opacity(0.0).step()
-    //ani_tsj_op777_c.translate(150,0).step()
+    // var ani_tsj_op777_c=wx.createAnimation({ //ani_tsj7_op_
+    //   delay: 1250, //700 800
+    //   duration: 650
+    // });
+    // // -275
+    // ani_tsj_op777_c.opacity(0.0).translate(0,-600*2*windowWidth/750).step() //-374 -375*2rpx -380*2rpx
+    // ani_tsj_op777_c.translateY(0*2*windowWidth/750).step()//280
+    // //ani_tsj_op88_c.opacity(0.0).translate(0,-275).step()
+    // //ani_tsj_op_c.translate(0,280).step()
+    // //ani_tsj_op777_c.opacity(0.0).step()
+    // // ani_tsj_op777_c.translate(150,0).step()
+
+    setTimeout(()=>{
+      this.animate("#likestar-2",[
+        {translateY:-600*2*windowWidth/750, opacity:1.0},
+        {translateY:-600*2*windowWidth/750, opacity:0.0},
+        {translateY:0, opacity:0.0}
+      ],600,)},600)
+
+    setTimeout(()=>{
+      this.animate("#whateverstar-2",[
+        {translateY:-600*2*windowWidth/750, opacity:1.0},
+        {translateY:-600*2*windowWidth/750, opacity:0.0},
+        {translateY:0, opacity:0.0}
+      ],600,)},600)
+
+    setTimeout(()=>{
+      this.animate("#dislikestar-2",[
+        {translateY:-600*2*windowWidth/750, opacity:1.0},
+        {translateY:-600*2*windowWidth/750, opacity:0.0},
+        {translateY:0, opacity:0.0}
+      ],600,)},600)
     
     // 等待加载显示
     setTimeout(()=>{
@@ -7872,21 +8254,28 @@ fireauthorsure:function(){
     
     // 四星推书显示
 
-    var ani_fourstar = wx.createAnimation({
-      delay: 14700, //12000 15600 3000 14000 13500
-      duration: 1600 //1200
-    })
-    ani_fourstar.opacity(1.0).step()
-    //ani_fourstar: a
-    //ani_fourstar.opacity(-0.0).step()
+    // var ani_fourstar = wx.createAnimation({
+    //   delay: 14700, //12000 15600 3000 14000 13500
+    //   duration: 1600 //1200
+    // })
+    // ani_fourstar.opacity(1.0).step()
+    // //ani_fourstar: a
+    // //ani_fourstar.opacity(-0.0).step()
 
     // 显示 推的书是什么
-    var ani_four = wx.createAnimation({
-      delay: 6000, //7250 ;;16000 4000 13000 6900 6500
-      duration: 1000,
-    })
-    ani_four.translate(-700*windowWidth/750,0).step()
-    ani_four.opacity(1.0).step()
+    // var ani_four = wx.createAnimation({
+    //   delay: 6000, //7250 ;;16000 4000 13000 6900 6500
+    //   duration: 1000,
+    // })
+    // ani_four.translate(-700*windowWidth/750,0).step()
+    // ani_four.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#fourstarbook",[
+        {translateX:0, opacity:0.0},
+        {translateX:-700*windowWidth/750, opacity:0.0},
+        {translateX:-700*windowWidth/750, opacity:1.0}
+      ],1000,)},6000)
 
 
 
@@ -7899,12 +8288,19 @@ fireauthorsure:function(){
     //ani_again.opacity(1.0).translate(140*2*windowWidth/750,0).step()
 
    // continue按钮
-    var ani_continue = wx.createAnimation({
-      delay: 6500, //7850 7250
-      duration: 1000
-    })
-    ani_continue.opacity(0.0).translateX(550*windowWidth/750).step()
-    ani_continue.opacity(1.0).step()
+    // var ani_continue = wx.createAnimation({
+    //   delay: 6500, //7850 7250
+    //   duration: 1000
+    // })
+    // ani_continue.opacity(0.0).translateX(550*windowWidth/750).step()
+    // ani_continue.opacity(1.0).step()
+
+    setTimeout(()=>{
+      this.animate("#continue",[
+        {translateX:0, opacity:0.0},
+        {translateX:550*windowWidth/750, opacity:0.0},
+        {translateX:550*windowWidth/750, opacity:1.0}
+      ],1000,)},6500)
   
     // ABOUT KELPde 按钮
     //var ani_aboutKELP = wx.createAnimation({
@@ -7916,22 +8312,22 @@ fireauthorsure:function(){
 
     // 把信息传入index.wxml
     // the last steps
-    this.setData({
+    // this.setData({
       //ani_blur: ani_t0.export(),
       //ani_blurin: ani_t0in.export(),
       // ani_person_8: ani_tps_c.export(),
       // ani_person_10: ani_tps.export(),
       // ani_impression: ani_tqq7_c.export(),
-      ani_likestar2: ani_tsj7_op_c.export(),
-      ani_whateverstar2: ani_tsj_op77_c.export(),
-      ani_dislikestar2: ani_tsj_op777_c.export(),
+      // ani_likestar2: ani_tsj7_op_c.export(),
+      // ani_whateverstar2: ani_tsj_op77_c.export(),
+      // ani_dislikestar2: ani_tsj_op777_c.export(),
       // ani_paper_1: ani_tpp1.export(),
       // ani_paper_2: ani_tpp2.export(),
       // ani_paper_3: ani_tpp3.export(),
       // ani_fourstarbook: ani_fourstar.export(),
-      ani_fourstar: ani_four.export(),
-      ani_continue: ani_continue.export(),
-    })
+      // ani_fourstar: ani_four.export(),
+      // ani_continue: ani_continue.export(),
+    // })
 
 
     point[whichelement-1] = point[whichelement-1] - 2
@@ -8259,11 +8655,14 @@ fireauthorsure:function(){
     setTimeout(()=>{
       this.animate("#continue",[
         {translateX:550*windowWidth/750,opacity:1.0}, 
-        {translateX:550*windowWidth/750,opacity:0.0},],600,)},1200)//1800
-    setTimeout(()=>{
-      this.animate("#continue",[
-        {translateX:550*windowWidth/750,opacity:0.0}, 
-        {translateX:0,opacity:0.0},],200,)},1900)//2410
+        {translateX:550*windowWidth/750,opacity:0.0},
+        {translateX:0,opacity:0.0}
+      ],600,)},1200)
+
+    // setTimeout(()=>{
+    //   this.animate("#continue",[
+    //     {translateX:550*windowWidth/750,opacity:0.0}, 
+    //     {translateX:0,opacity:0.0},],200,)},1900)
 
     // 书图进入 6750 600
     // var ani_tbook = wx.createAnimation({
@@ -8278,36 +8677,35 @@ fireauthorsure:function(){
         {opacity:1.0}
       ],600,)},6850)
 
-    
-
 
     // 四/五星正缘书进入
     if (checked13 == 0){
+      console.log('check13:', checked13)
       setTimeout(()=>{
-        this.animate("#fivestarbook2",[
-          {opacity:0.0}, {opacity:1.0},],600,)},7750)
+        this.animate("#fivestarbook",[
+          {opacity:0.0}, 
+          {opacity:1.0}
+        ],600,)},7750)
 
-      setTimeout(()=>{
-        this.animate("#fivestar2",[
-          {opacity:0.0}, {opacity:1.0},],600,)},7950)
+      // setTimeout(()=>{
+      //   this.animate("#fivestar2",[
+      //     {opacity:0.0}, {opacity:1.0},],600,)},7950)
 
-      setTimeout(()=>{
-        this.animate("#fivestarintro2",[
-          {opacity:0.0}, {opacity:1.0},],600,)},8150)//7750
-        
+      // setTimeout(()=>{
+      //   this.animate("#fivestarintro2",[
+      //     {opacity:0.0}, {opacity:1.0},],600,)},8150)//7750
     }
     
     if (checked13 == 1){
       setTimeout(()=>{
         this.animate("#fourstarbook2",[
           {opacity:0.0}, {opacity:1.0},],600,)},7750)
-      setTimeout(()=>{
-        this.animate("#fourstar2",[
-          {opacity:0.0}, {opacity:1.0},],600,)},7950)
-      setTimeout(()=>{
-        this.animate("#fourstarintro2",[
-          {opacity:0.0}, {opacity:1.0},],600,)},8150)//7750
-
+      // setTimeout(()=>{
+      //   this.animate("#fourstar2",[
+      //     {opacity:0.0}, {opacity:1.0},],600,)},7950)
+      // setTimeout(()=>{
+      //   this.animate("#fourstarintro2",[
+      //     {opacity:0.0}, {opacity:1.0},],600,)},8150)//7750
     }
 
     // X星正缘书进入 试试看共用一个(no)
@@ -8363,7 +8761,7 @@ fireauthorsure:function(){
         {translateX:0, opacity:0.0},
         {translateX:-400*windowWidth/750, opacity:0.0},
         {translateX:-400*windowWidth/750, opacity:1.0}
-      ],600,)},4400)
+      ],600,)},7400)
 
     // var ani_tp4 = wx.createAnimation({
     //   delay: 4400,
@@ -8377,7 +8775,7 @@ fireauthorsure:function(){
         {translateX:0, opacity:0.0},
         {translateX:300*windowWidth/750, opacity:0.0},
         {translateX:300*windowWidth/750, opacity:1.0}
-      ],600,)},4400)
+      ],600,)},7400)
 
     // 关于KELP进入
     // var ani_tkelp = wx.createAnimation({
@@ -8392,7 +8790,7 @@ fireauthorsure:function(){
         {translateX:350*2*windowWidth/750, opacity:0.0},
         {translateX:0, opacity:0.0},
         {translateX:0, opacity:1.0}
-      ],600)}, 4600)
+      ],600)}, 7800)
 
 
     // this.setData({
@@ -8903,9 +9301,23 @@ fireauthorsure:function(){
         console.log(mobile_type)
       }
     })
+
+    if (mobile_type == 'iPhone'){
+      console.log('是iPhone')
+      this.setData({
+        background_picture: 'cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/心书底图/心书-无模糊底图.jpg',
+      })
+    }
+    else {
+      this.setData({
+        background_picture: 'cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/心书底图/心书-小图.jpeg',
+      })
+    }
+
+    
     
     if (model.indexOf("iPad")>=0){
-      console.log("是iPad")
+      // console.log("是iPad")
       this.setData({
         isRuleTrue: true,
       })

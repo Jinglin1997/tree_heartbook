@@ -45,14 +45,15 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 <!--遮罩层-->
 
 <view class = "container" style="background-color:rgb(80, 80, 80);" >
-  <image id = "bgimg" class = "bg"  src="cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/心书底图/心书-无模糊底图.jpg" ></image>
+  <image id = "bgimg" class = "bg"  src="{{background_picture}}"></image>
   <!-- 心书小图-无人.jpg cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/心书底图/心书-无模糊底图.jpg-->
 </view>
 
 <view class = "container">
-  <image id = "bgimg_blur1" class = "bg_blur1"  src="cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/心书底图/心书-有模糊底图.jpg"></image>
+  <image id = "bgimg_blur1" class = "bg_blur1"  src= "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/心书底图/心书-有模糊底图.jpg"></image>
   <!-- 心书全图-2MB.jpg -->
 </view>
+<!-- 'src="cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/心书底图/心书-有模糊底图.jpg" -->
 
 <!--<image class = "blurpic" mode ="widthFix" src = ""></image>-->
 
@@ -98,23 +99,56 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 <image class = "bookpic" id = "bookpic" animation = "{{ani_bookpic}}" src = "{{bookpic}}" mode = "widthFix"></image>
 
 
-<view class = "four">
+<!-- <scroll-view class = "four" scroll-y="true">
+<view class = "fourbookword">
 <view class = "fourstarbook2" animation = "{{ani_fourstarbook2}}" id = "fourstarbook2">你的四星正缘书</view>
-<!-- 您的四星正缘书 -->
 <view class = "fourstar2" animation = "{{ani_fourstar2}}" id = "fourstar2">{{fourstarbook}}</view>
 <view class = "fourstarintro2" id = "fourstarintro2">{{fourstarintro1}}</view>
 <view class = "fourstarintro2" id = "fourstarintro2">{{fourstarintro2}}</view>
 </view>
+</scroll-view> -->
 
-
-
-<view class = "five">
-<view class = "fivestarbook2"  animation = "{{ani_fivestarbook2}}" id = "fivestarbook2">你的五星正缘书</view>
-<!-- 您的五星正缘书 -->
-<view class = "fivestar2" id = "fivestar2" animation = "{{ani_fivestar2}}">{{fivestarbooks}}</view>
-<view class = "fivestarintro2_1" id = "fivestarintro2">{{fivestarintro1}}</view> <!--firestarintro2 > -->
-<view class = "fivestarintro2_2" id = "fivestarintro2">{{fivestarintro2}}</view>
+<scroll-view class = "four" scroll-y="true" id = "fourstarbook2">
+<view class = "fourbookword">
+<view class = "fourstarbook2">你的四星正缘书</view>
+<view class = "fourstar2">{{fourstarbook}}</view>
+<view class = "fourstarintro2">{{fourstarintro1}}</view>
+<view class = "fourstarintro2">{{fourstarintro2}}</view>
 </view>
+</scroll-view>
+
+
+
+<!-- <scroll-view class = "five" scroll-y="true" id = "five">
+<view class = "fivebookword">
+  <view class = "fivestarbook2"  animation = "{{ani_fivestarbook2}}" id = "fivestarbook2">你的五星正缘书</view>
+  <view class = "fivestar2" id = "fivestar2" animation = "{{ani_fivestar2}}">{{fivestarbooks}}</view>
+  <view class = "fivestarintro2_1" id = "fivestarintro2">{{fivestarintro1}}</view> 
+  <view class = "fivestarintro2_2" id = "fivestarintro2">{{fivestarintro2}}</view>
+</view>
+</scroll-view> -->
+
+
+<scroll-view class = "five" scroll-y = "true" id = "fivestarbook">
+  <view class = "fivebookword">
+    <view class = "fivestarbook2">你的五星正缘书</view>
+    <view class = "fivestar2">{{fivestarbooks}}</view>
+    <view class = "fivestarintro2_1">{{fivestarintro1}}</view>
+    <view class = "fivestarintro2_2">{{fivestarintro2}}</view>
+  </view>
+</scroll-view>
+
+<!-- 
+<scroll-view class = "introearthbook" id = "introearthbook" animation = "{{introearthbook}}" scroll-y = "true">
+  <view class = "earthbookword">
+    <view class = "earthbook_item1">{{earthbookname}}</view>
+    <view class = "earthbook_item2">（{{earthbookauthor_na}}）{{earthbookauthor}}</view>
+    <view class = "earthbook_item3_1">1. {{earthbookcontent1}}</view>
+    <view class = "earthbook_item3_2">2. {{earthbookcontent2}}</view>
+    <view class = "earthbook_item3_3">3. {{earthbookcontent3}}</view>
+  </view>
+</scroll-view> -->
+
 
 <view class = "introQRcode" id = "introQRcode" animation = "{{ani_introQRcode}}">扫描二维码，关注KELP“心书” 寻找那本与你有缘的书</view><!--animatino <view>>-->
 <image class = "QRcode" id = "QRcode" animation = "{{ani_QRcode}}" src = "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/标志icon/二维码.jpeg"></image>
@@ -163,8 +197,8 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 <view class="questionstar" animation = "{{ani_questionstar}}" id = "questionstar"> 你是{{twelvestar2}}吗？</view><!--您是不是-->  <!--ninshi, twelvestar_2-->
 
 
-<view class = "pick12cards"  animation = "{{ani_pickcards}}" id = "pick12cards"> 请随心抽取一张牌。</view><!--有12张卡牌，请随机抽取一张。 一站牌  请随心选取一张牌。-->
-<view class = "pick12cards_add" animation = "{{ani_pickcards}}" id = "pick12cards">*左右滑动选择，点击图片选中</view>
+<view class = "pick12cards" id = "pick12cards" animation = "{{ani_pickcards}}"> 请随心抽取一张牌。</view><!--有12张卡牌，请随机抽取一张。 一站牌  请随心选取一张牌。-->
+<view class = "pick12cards_add" id = "pick12cards" animation = "{{ani_pickcards}}">*左右滑动选择，点击图片选中</view>
 <!--图片点击放大 *左右滑动，点击则确定并查看正面-->
 
 
@@ -270,7 +304,7 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 
 
 <image class = "card"  src ="{{card}}" id = "card"></image><!--src = src = '{{card}}'src =--><!-- "cloud://cloud1-2gx6xlsu0ca67a99.636c-cloud1-2gx6xlsu0ca67a99-1311762654/卡牌正面/卡牌正面-双鱼座" -->
-<scroll-view scroll-x= "true" class = "whole" animation = "{{ani_card}}" style = "height:700rpx;">
+<scroll-view scroll-x= "true" class = "whole" id = "wholecard" animation = "{{ani_card}}" style = "height:700rpx;">
 <view class = "Cardbutton" >
 <view class = "cardbutton_icon" wx:for = "{{12}}"><!--12-->
 <button class = "cardbutton" style = "width: 400rpx;" bindtap = "clickcard"> <!--350 570-->
@@ -298,7 +332,7 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 <button class = "waterauthor" animation = "{{ani_waterauthor}}" bindtap = "waterauthor" style = "color: {{color}}; width:{{authorwidth}}"> {{waterauthors}} </button>
 </scroll-view> -->
 
-<scroll-view class = "selectauthors" scroll-x="true" style = "display:flex;white-space:nowrap; height:700rpx;" animation="{{ani_selectauthors}}">
+<scroll-view class = "selectauthors" id = "selectauthors" scroll-x="true" style = "display:flex;white-space:nowrap; height:700rpx;" animation="{{ani_selectauthors}}">
   <view class = "fireauthorword" style="display: inline-block;">
     <button style="width:420rpx;" bindtap = "fireauthorsure" class = "selectfireauthor">
       <image class = "fireauthor_pic" src = "{{fireauthorcontent}}" mode="widthFix"></image>
