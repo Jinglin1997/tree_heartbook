@@ -2,6 +2,7 @@
 // 获取应用实例
 const app = getApp()
 var myGolbalFunction = require('../../utils/globalFunction.js')
+var util = require('../../utils/util.js')
 const db = wx.cloud.database();
 const _ = db.command;
 
@@ -2421,12 +2422,13 @@ Page({
       wx.cloud.callFunction({
       name: "queryresultbook",
       data:{bookname: "鲁迅全集"}}).then(res=>{
-      console.log(res.result.data)
+        console.log(res.result.data)
+        const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+        console.log(starBookIntroArr);
       this.setData({
         fivestarbooks: res.result.data[0].bookname,//firestarbook
         fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-        fivestarintro1: res.result.data[0].introduce1,
-        fivestarintro2: res.result.data[0].introduce2,
+        starBookIntroArr:starBookIntroArr,
         bookpic: res.result.data[0].bookpic
       })
     })
@@ -2436,12 +2438,13 @@ Page({
       wx.cloud.callFunction({
         name: "queryresultbook",
         data:{bookname: "鲁迅全集"}}).then(res=>{
-        //console.log(res.result.data)
+        console.log(res.result.data)
+        const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+        console.log(starBookIntroArr);
         this.setData({
           fivestarbooks: res.result.data[0].bookname,//firestarbook
           fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-          fivestarintro1: res.result.data[0].introduce1,
-          fivestarintro2: res.result.data[0].introduce2,
+          starBookIntroArr:starBookIntroArr,
           bookpic: res.result.data[0].bookpic
         })
       })
@@ -2459,11 +2462,12 @@ Page({
     data:{bookname: "喻世明言"}
   }).then(res=>{
     console.log(res.result.data)
+    const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+    console.log(starBookIntroArr);
     this.setData({
       fivestarbooks: res.result.data[0].bookname,//firestarbook
       fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-      fivestarintro1: res.result.data[0].introduce1,
-      fivestarintro2: res.result.data[0].introduce2,
+      starBookIntroArr:starBookIntroArr,
       bookpic: res.result.data[0].bookpic
     })
   })
@@ -2481,11 +2485,12 @@ Page({
       data:{bookname: "晚学盲言"}
     }).then(res=>{
       console.log(res.result.data)
+      const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+      console.log(starBookIntroArr);
       this.setData({
         fivestarbooks: res.result.data[0].bookname,//firestarbook
         fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-        fivestarintro1: res.result.data[0].introduce1,
-        fivestarintro2: res.result.data[0].introduce2,
+        starBookIntroArr:starBookIntroArr,
         bookpic: res.result.data[0].bookpic
       })
     })
@@ -2504,11 +2509,12 @@ Page({
       data:{bookname: "人·兽·鬼"}
       }).then(res=>{
       console.log(res.result.data)
+      const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+      console.log(starBookIntroArr);
       this.setData({
         fivestarbooks: res.result.data[0].bookname,//firestarbook
         fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-        fivestarintro1: res.result.data[0].introduce1,
-        fivestarintro2: res.result.data[0].introduce2,
+        starBookIntroArr:starBookIntroArr,
         bookpic: res.result.data[0].bookpic
       })
     })
@@ -2521,11 +2527,12 @@ Page({
       data:{bookname: "人·兽·鬼"}
       }).then(res=>{
       console.log(res.result.data)
+      const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+      console.log(starBookIntroArr);
       this.setData({
         fivestarbooks: res.result.data[0].bookname,//firestarbook
         fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-        fivestarintro1: res.result.data[0].introduce1,
-        fivestarintro2: res.result.data[0].introduce2,
+        starBookIntroArr:starBookIntroArr,
         bookpic: res.result.data[0].bookpic
       })
     })
@@ -2538,11 +2545,12 @@ Page({
       data:{bookname: "人·兽·鬼"}//人·兽·鬼
       }).then(res=>{
       console.log(res.result.data)
+      const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+      console.log(starBookIntroArr);
       this.setData({
         fivestarbooks: res.result.data[0].bookname,//firestarbook
         fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-        fivestarintro1: res.result.data[0].introduce1,
-        fivestarintro2: res.result.data[0].introduce2,
+        starBookIntroArr:starBookIntroArr,
         bookpic: res.result.data[0].bookpic
       })
     })
@@ -2562,11 +2570,12 @@ Page({
       data:{bookname: "空谷幽兰"}
     }).then(res=>{
       console.log(res.result.data)
+      const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+      console.log(starBookIntroArr);
       this.setData({
         fivestarbooks: res.result.data[0].bookname,//firestarbook
         fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-        fivestarintro1: res.result.data[0].introduce1,
-        fivestarintro2: res.result.data[0].introduce2,
+        starBookIntroArr:starBookIntroArr,
         bookpic: res.result.data[0].bookpic
       })
     })
@@ -2579,11 +2588,12 @@ Page({
       data:{bookname: "空谷幽兰"}
     }).then(res=>{
       console.log(res.result.data)
+      const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+      console.log(starBookIntroArr);
       this.setData({
         fivestarbooks: res.result.data[0].bookname,//firestarbook
         fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-        fivestarintro1: res.result.data[0].introduce1,
-        fivestarintro2: res.result.data[0].introduce2,
+        starBookIntroArr:starBookIntroArr,
         bookpic: res.result.data[0].bookpic
       })
     })
@@ -2600,11 +2610,12 @@ Page({
     data:{bookname: "金线"}
   }).then(res=>{
     console.log(res.result.data)
+    const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+    console.log(starBookIntroArr);
     this.setData({
       fivestarbooks: res.result.data[0].bookname,//firestarbook
       fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-      fivestarintro1: res.result.data[0].introduce1,
-      fivestarintro2: res.result.data[0].introduce2,
+      starBookIntroArr:starBookIntroArr,
       bookpic: res.result.data[0].bookpic
     })
   })
@@ -2620,11 +2631,12 @@ Page({
       data:{bookname: "挚友"}
     }).then(res=>{
       console.log(res.result.data)
+      const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+      console.log(starBookIntroArr);
       this.setData({
         fivestarbooks: res.result.data[0].bookname,//firestarbook
         fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-        fivestarintro1: res.result.data[0].introduce1,
-        fivestarintro2: res.result.data[0].introduce2,
+        starBookIntroArr:starBookIntroArr,
         bookpic: res.result.data[0].bookpic
       })
     })
@@ -2640,11 +2652,12 @@ Page({
     data:{bookname: "西藏生死书"}//西藏生死书
   }).then(res=>{
     console.log(res.result.data)
+    const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+    console.log(starBookIntroArr);
     this.setData({
       fivestarbooks: res.result.data[0].bookname,//firestarbook
       fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-      fivestarintro1: res.result.data[0].introduce1,
-      fivestarintro2: res.result.data[0].introduce2,
+      starBookIntroArr:starBookIntroArr,
       bookpic: res.result.data[0].bookpic
     })
   })
@@ -2664,11 +2677,12 @@ Page({
     }
   }).then(res=>{
     console.log(res.result.data)
+    const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+    console.log(starBookIntroArr);
     this.setData({
       fivestarbooks: res.result.data[0].bookname,//firestarbook name
       fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-      fivestarintro1: res.result.data[0].introduce1,
-      fivestarintro2: res.result.data[0].introduce2,
+      starBookIntroArr:starBookIntroArr,
       bookpic: res.result.data[0].bookpic
     })
   })
@@ -2685,11 +2699,12 @@ Page({
     data:{bookname: "辨喜的生平、思想与影响"}
   }).then(res=>{
     console.log(res.result.data)
+    const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+    console.log(starBookIntroArr);
     this.setData({
       fivestarbooks: res.result.data[0].bookname,//firestarbook
       fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-      fivestarintro1: res.result.data[0].introduce1,
-      fivestarintro2: res.result.data[0].introduce2,
+      starBookIntroArr:starBookIntroArr,
       bookpic: res.result.data[0].bookpic
     })
   })
@@ -2706,11 +2721,12 @@ Page({
       data:{bookname: "悠悠岁月"}//哲学人生问答
     }).then(res=>{
       console.log(res.result.data)
+      const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+      console.log(starBookIntroArr);
       this.setData({
         fivestarbooks: res.result.data[0].bookname,//firestarbook
         fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-        fivestarintro1: res.result.data[0].introduce1,
-        fivestarintro2: res.result.data[0].introduce2,
+        starBookIntroArr:starBookIntroArr,
         bookpic: res.result.data[0].bookpic
       })
     })
@@ -2725,11 +2741,12 @@ Page({
       data:{bookname: "前世今生：生命轮回的启示"}
     }).then(res=>{
       console.log(res.result.data)
+      const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+      console.log(starBookIntroArr);
       this.setData({
         fivestarbooks: res.result.data[0].bookname,//firestarbook
         fivestarbookscontent: res.result.data[0].picture,//firebookcontent
-        fivestarintro1: res.result.data[0].introduce1,
-        fivestarintro2: res.result.data[0].introduce2,
+        starBookIntroArr:starBookIntroArr,
         bookpic: res.result.data[0].bookpic
       })
     })
@@ -6599,7 +6616,26 @@ fireauthorsure:function(){
       wx.cloud.callFunction({
       name: "queryresultbook",
       data:{bookname: "鲁迅全集"}}).then(res=>{
-      //console.log(res.result.data)
+      console.log(res.result.data)
+      
+      const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+      console.log(starBookIntroArr);
+      this.setData({
+        fivestarbooks: res.result.data[0].bookname,//firestarbook
+        fivestarbookscontent: res.result.data[0].picture,//firebookcontent
+        starBookIntroArr:starBookIntroArr,
+        bookpic: res.result.data[0].bookpic
+      })
+    })
+    }
+    if (introrand == 2){
+      fivestarbookscontent = "从来如此，便对么？"
+      wx.cloud.callFunction({
+        name: "queryresultbook",
+        data:{bookname: "鲁迅全集"}}).then(res=>{
+        console.log(res.result.data)
+        const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+        console.log(starBookIntroArr);
       this.setData({
         fivestarbooks: res.result.data[0].bookname,//firestarbook
         fivestarbookscontent: res.result.data[0].picture,//firebookcontent
@@ -6613,7 +6649,25 @@ fireauthorsure:function(){
       wx.cloud.callFunction({
         name: "queryresultbook",
         data:{bookname: "鲁迅全集"}}).then(res=>{
-        //console.log(res.result.data)
+        console.log(res.result.data)
+        const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+        console.log(starBookIntroArr);
+      this.setData({
+        fivestarbooks: res.result.data[0].bookname,//firestarbook
+        fivestarbookscontent: res.result.data[0].picture,//firebookcontent
+        starBookIntroArr:starBookIntroArr,
+        bookpic: res.result.data[0].bookpic
+      })
+    })
+    }
+    if (introrand == 2){
+      fivestarbookscontent = "从来如此，便对么？"
+      wx.cloud.callFunction({
+        name: "queryresultbook",
+        data:{bookname: "鲁迅全集"}}).then(res=>{
+        console.log(res.result.data)
+        const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+        console.log(starBookIntroArr);
         this.setData({
           fivestarbooks: res.result.data[0].bookname,//firestarbook
           fivestarbookscontent: res.result.data[0].picture,//firebookcontent
@@ -7373,10 +7427,13 @@ fireauthorsure:function(){
         data:{bookname: result_bookname}
       }).then(res=>{
         console.log(res.result.data)
+        const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+        console.log(starBookIntroArr);
         this.setData({
           fourstarbook: res.result.data[0].bookname,
           fourbookcontent: res.result.data[0].picture,
           fourstarintro1: res.result.data[0].introduce1,
+          starBookIntroArr:starBookIntroArr,
           bookpic: res.result.data[0].bookpic
         })
       })
@@ -7857,9 +7914,12 @@ fireauthorsure:function(){
         data:{bookname: result_bookname}
       }).then(res=>{
         console.log(res.result.data)
+        const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+        console.log(starBookIntroArr);
         this.setData({
           fourstarbook: res.result.data[0].bookname,
           fourbookcontent: res.result.data[0].picture,
+          starBookIntroArr:starBookIntroArr,
           fourstarintro1: res.result.data[0].introduce1,
           fourstarintro2: res.result.data[0].introduce2,
           bookpic: res.result.data[0].bookpic
@@ -8371,11 +8431,14 @@ fireauthorsure:function(){
         data:{bookname: result_bookname}
       }).then(res=>{
         console.log(res.result.data)
+        const  starBookIntroArr=util.checkData.macthDataByKey(res.result.data[0],/^introduce*?/);;
+        console.log(starBookIntroArr);
         this.setData({
           fourstarbook: res.result.data[0].bookname,
           fourbookcontent: res.result.data[0].picture,
           fourstarintro1: res.result.data[0].introduce1,
           fourstarintro2: res.result.data[0].introduce2,
+          starBookIntroArr:starBookIntroArr,
           bookpic: res.result.data[0].bookpic
         })
       })

@@ -112,8 +112,7 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 <view class = "fourbookword">
 <view class = "fourstarbook2">你的四星正缘书</view>
 <view class = "fourstar2">{{fourstarbook}}</view>
-<view class = "fourstarintro2">{{fourstarintro1}}</view>
-<view class = "fourstarintro2">{{fourstarintro2}}</view>
+<view wx:for="{{starBookIntroArr}}" wx:key="*this" class="starBookIntrocss">{{item}}</view>
 </view>
 </scroll-view>
 
@@ -129,12 +128,11 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 </scroll-view> -->
 
 
-<scroll-view class = "five" scroll-y = "true" id = "fivestarbook">
+<scroll-view class = "five" scroll-y = "true" id = "fivestarbook" >
   <view class = "fivebookword">
     <view class = "fivestarbook2">你的五星正缘书</view>
     <view class = "fivestar2">{{fivestarbooks}}</view>
-    <view class = "fivestarintro2_1">{{fivestarintro1}}</view>
-    <view class = "fivestarintro2_2">{{fivestarintro2}}</view>
+    <view wx:for="{{starBookIntroArr}}" wx:key="*this" class="starBookIntrocss">{{item}}</view>
   </view>
 </scroll-view>
 

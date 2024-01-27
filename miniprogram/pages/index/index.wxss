@@ -5162,6 +5162,58 @@
   }
 }
 
+.starBookIntrocss{
+  color: white;
+  font-size:10px;/*10 12 16 20 15*/
+  font-weight: bold;
+  margin-top: 14rpx;/*10rpx*/
+  width:490rpx;
+  /* margin-right: 120rpx;120 */
+  text-align: justify;
+}
+
+@media(min-height:600px){
+  .starBookIntrocss{
+    margin-top: 16rpx;
+    font-size: 12px;
+  }
+}
+
+@media(min-height:650px){
+  .starBookIntrocss{
+    margin-top:16rpx;
+    font-size:14px;
+  }
+}
+
+@media(min-height:700px){
+  .starBookIntrocss{
+    margin-top: 16rpx;
+  }
+}
+
+@media(min-height:800px){
+  .starBookIntrocss{
+    margin-top: 20rpx;
+    font-size:15px;/*14px*/
+  }
+}
+
+@media(min-height:820px){
+  .starBookIntrocss{
+    margin-top: 20rpx;
+    font-size: 15px;
+  }
+}
+
+@media(min-height:830px){
+  .starBookIntrocss{
+    margin-top: 20rpx;
+    font-size: 14px;
+  }
+}
+
+
 .fivestarintro2_1{
   color: white;
   font-size:10px;/*10 12 16 20 15*/
