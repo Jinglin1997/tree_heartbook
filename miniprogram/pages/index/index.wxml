@@ -50,7 +50,7 @@ controls = "{{false}}" autoplay = "true" show-progress="{{false}}"  bindtimeupda
 </view>
 
 <view class = "container">
-  <image id = "bgimg_blur1" class = "bg_blur1"  src= "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/心书底图/心书-有模糊底图.jpg"></image>
+  <image id = "bgimg_blur1" class = "bg_blur1"  src= "cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/心书底图/心书-有模糊底图-111.jpg"></image>
   <!-- 心书全图-2MB.jpg -->
 </view>
 <!-- 'src="cloud://kelpcloudenvironment-3bb91f1ee75.6b65-kelpcloudenvironment-3bb91f1ee75-1317303536/Hbimages/心书底图/心书-有模糊底图.jpg" -->
